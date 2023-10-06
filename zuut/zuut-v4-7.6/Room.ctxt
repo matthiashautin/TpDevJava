@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.target=Room
+comment0.text=\r\n\ Classe\ Room\ -\ un\ lieu\ du\ jeu\ d'aventure\ Zuul.\r\n\r\n\ @author\ votre\ nom\r\n
+comment1.params=pDescription
+comment1.target=Room(java.lang.String)
+comment2.params=pNorthExit\ pSouthExit\ pWestExit\ pEastExit
+comment2.target=void\ setExits(Room,\ Room,\ Room,\ Room)
+comment3.params=
+comment3.target=java.lang.String\ getDescription()
+numComments=4

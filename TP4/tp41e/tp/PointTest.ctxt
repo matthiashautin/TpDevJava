@@ -1,0 +1,21 @@
+#BlueJ class context
+comment0.target=PointTest
+comment1.params=
+comment1.target=void\ setUp()
+comment2.params=
+comment2.target=void\ tearDown()
+comment3.params=
+comment3.target=void\ test1_classe()
+comment4.params=
+comment4.target=void\ test2_attributs()
+comment5.params=
+comment5.target=void\ test3_constructeurs()
+comment6.params=
+comment6.target=void\ test4_deplace()
+comment7.params=
+comment7.target=void\ test5_toString()
+comment8.params=
+comment8.target=void\ test6_affiche()
+comment9.params=
+comment9.target=void\ test7_equals()
+numComments=10

@@ -1,0 +1,19 @@
+#BlueJ class context
+comment0.target=PointColoreTest
+comment1.params=
+comment1.target=void\ setUp()
+comment2.params=
+comment2.target=void\ tearDown()
+comment3.params=
+comment3.target=void\ test1_classe()
+comment4.params=
+comment4.target=void\ test2_attributs()
+comment5.params=
+comment5.target=void\ test0_constructeurNaturel()
+comment6.params=
+comment6.target=void\ test3_constructeurs()
+comment7.params=
+comment7.target=void\ test4_toString()
+comment8.params=
+comment8.target=void\ test5_equals()
+numComments=9

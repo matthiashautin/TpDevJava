@@ -1,0 +1,20 @@
+#BlueJ class context
+comment0.target=Game
+comment0.text=\r\n\ Classe\ Game\ -\ le\ moteur\ du\ jeu\ d'aventure\ Zuul.\r\n\r\n\ @author\ votre\ nom\r\n
+comment1.params=
+comment1.target=Game()
+comment2.params=
+comment2.target=void\ createRooms()
+comment3.params=
+comment3.target=void\ play()
+comment4.params=pCommand
+comment4.target=void\ goRoom(Command)
+comment5.params=
+comment5.target=void\ printWelcome()
+comment6.params=
+comment6.target=void\ printHelp()
+comment7.params=pSecondMot
+comment7.target=boolean\ quit(Command)
+comment8.params=pAppelBonneMethod
+comment8.target=boolean\ processCommand(Command)
+numComments=9

@@ -1,0 +1,17 @@
+#BlueJ class context
+comment0.target=MaPremiereClasseTest
+comment0.text=\r\n\ Classe-test\ MaPremiereClasseTest.\r\n\r\n\ @author\ \ (votre\ nom)\r\n\ @version\ (un\ num\u00E9ro\ de\ version\ ou\ une\ date)\r\n\r\n\ Les\ classes-test\ sont\ document\u00E9es\ ici\ \:\r\n\ http\://junit.sourceforge.net/javadoc/junit/framework/TestCase.html\r\n\ et\ sont\ bas\u00E9es\ sur\ le\ document\ \u0160\ 2002\ Robert\ A.\ Ballance\ intitul\u00E9\r\n\ "JUnit\:\ Unit\ Testing\ Framework".\r\n\r\n\ Les\ objets\ Test\ (et\ TestSuite)\ sont\ associ\u00E9s\ aux\ classes\ \u00E0\ tester\r\n\ par\ la\ simple\ relation\ yyyTest\ (e.g.\ qu'un\ Test\ de\ la\ classe\ Name.java\r\n\ se\ nommera\ NameTest.java);\ les\ deux\ se\ retrouvent\ dans\ le\ m?me\ paquetage.\r\n\ Les\ "engagements"\ (anglais\ \:\ "fixture")\ forment\ un\ ensemble\ de\ conditions\r\n\ qui\ sont\ vraies\ pour\ chaque\ m\u00E9thode\ Test\ \u00E0\ ex\u00E9cuter.\ \ Il\ peut\ y\ avoir\r\n\ plus\ d'une\ m\u00E9thode\ Test\ dans\ une\ classe\ Test;\ leur\ ensemble\ forme\ un\r\n\ objet\ TestSuite.\r\n\ BlueJ\ d\u00E9couvrira\ automatiquement\ (par\ introspection)\ les\ m\u00E9thodes\r\n\ Test\ de\ votre\ classe\ Test\ et\ g\u00E9n\u00E9rera\ la\ TestSuite\ cons\u00E9quente.\r\n\ Chaque\ appel\ d'une\ m\u00E9thode\ Test\ sera\ pr\u00E9c\u00E9d\u00E9\ d'un\ appel\ de\ setUp(),\r\n\ qui\ r\u00E9alise\ les\ engagements,\ et\ suivi\ d'un\ appel\ \u00E0\ tearDown(),\ qui\ les\r\n\ d\u00E9truit.\r\n
+comment1.params=
+comment1.target=MaPremiereClasseTest()
+comment1.text=\r\n\ Constructeur\ de\ la\ classe-test\ MaPremiereClasseTest\r\n
+comment2.params=
+comment2.target=void\ setUp()
+comment2.text=\r\n\ Met\ en\ place\ les\ engagements.\r\n\r\n\ M\u00E9thode\ appel\u00E9e\ avant\ chaque\ appel\ de\ m\u00E9thode\ de\ test.\r\n
+comment3.params=
+comment3.target=void\ tearDown()
+comment3.text=\r\n\ Supprime\ les\ engagements\r\n\r\n\ M\u00E9thode\ appel\u00E9e\ apr\u00E8s\ chaque\ appel\ de\ m\u00E9thode\ de\ test.\r\n
+comment4.params=
+comment4.target=void\ m1_procedure()
+comment5.params=
+comment5.target=void\ m2_fonction()
+numComments=6

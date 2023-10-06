@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.target=Maison
+comment0.text=\r\n\ D\u00E9crivez\ votre\ classe\ Oiseaux\ ici.\r\n\r\n\ @author\ (votre\ nom)\r\n\ @version\ (un\ num\u00E9ro\ de\ version\ ou\ une\ date)\r\n
+comment1.params=
+comment1.target=Maison()
+comment2.params=pNbP\ pSup\ pSalSpt
+comment2.target=Maison(int,\ int,\ boolean)
+comment3.params=pNbp
+comment3.target=void\ setaNombrePiece(int)
+numComments=4

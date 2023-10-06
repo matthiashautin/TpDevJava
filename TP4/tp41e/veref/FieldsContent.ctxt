@@ -1,0 +1,22 @@
+#BlueJ class context
+comment0.params=pClass
+comment0.target=FieldsContent(java.lang.Class)
+comment1.params=pCC
+comment1.target=FieldsContent(ClassContent)
+comment2.params=pName
+comment2.target=FieldsContent(java.lang.String)
+comment3.params=
+comment3.target=java.lang.Class\ getTheClass()
+comment4.params=
+comment4.target=int\ getNbFields()
+comment5.params=
+comment5.target=FieldContent\ firstField()
+comment6.params=pName
+comment6.target=FieldContent\ findField(java.lang.String)
+comment7.params=pType
+comment7.target=FieldContent\ findFieldType(java.lang.String)
+comment8.params=pType
+comment8.target=boolean\ hasFieldType(java.lang.String)
+comment9.params=
+comment9.target=java.lang.String\ toString()
+numComments=10

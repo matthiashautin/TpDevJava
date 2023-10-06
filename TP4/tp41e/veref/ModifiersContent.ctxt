@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.params=pM
+comment0.target=ModifiersContent(int)
+comment1.params=pMod
+comment1.target=void\ decodeModifiers(int)
+comment2.params=
+comment2.target=java.util.List\ listModifiers()
+comment3.params=pM
+comment3.target=boolean\ hasModifier(java.lang.String)
+comment4.params=
+comment4.target=java.lang.String\ accessString()
+comment5.params=
+comment5.target=java.lang.String\ toString()
+numComments=6

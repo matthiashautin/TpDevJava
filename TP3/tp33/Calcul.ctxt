@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.target=Calcul
+comment0.text=\r\n\ D\u00E9crivez\ votre\ classe\ Calcul\ ici.\r\n\r\n\ @author\ (votre\ nom)\r\n\ @version\ (un\ num\u00E9ro\ de\ version\ ou\ une\ date)\r\n
+comment1.params=
+comment1.target=void\ expressions()
+comment2.params=pX
+comment2.target=double\ recNeg(double)
+comment3.params=pN
+comment3.target=void\ aficheMoities(int)
+comment4.params=pPremier\ pDeuxieme
+comment4.target=boolean\ sontProches(double,\ double)
+numComments=5

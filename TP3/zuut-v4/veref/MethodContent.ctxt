@@ -1,0 +1,26 @@
+#BlueJ class context
+comment0.params=pM
+comment0.target=MethodContent(java.lang.reflect.Method)
+comment1.params=pObj\ pTArgs
+comment1.target=java.lang.Object\ invoke(java.lang.Object,\ java.lang.Object[])
+comment10.params=
+comment10.target=java.lang.String\ genParName()
+comment11.params=
+comment11.target=java.lang.String\ toString()
+comment2.params=
+comment2.target=java.lang.String\ getParameterString()
+comment3.params=
+comment3.target=java.lang.String\ getExceptionString()
+comment4.params=
+comment4.target=java.lang.String\ getAnnotationString()
+comment5.params=
+comment5.target=ModifiersContent\ getModifiers()
+comment6.params=
+comment6.target=java.lang.String\ getName()
+comment7.params=
+comment7.target=java.lang.String\ getReturnType()
+comment8.params=
+comment8.target=java.util.List\ getParameters()
+comment9.params=
+comment9.target=java.util.List\ getExceptions()
+numComments=12

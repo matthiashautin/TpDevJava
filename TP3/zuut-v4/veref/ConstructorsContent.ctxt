@@ -1,0 +1,22 @@
+#BlueJ class context
+comment0.params=pClass
+comment0.target=ConstructorsContent(java.lang.Class)
+comment1.params=pName
+comment1.target=ConstructorsContent(java.lang.String)
+comment2.params=
+comment2.target=java.lang.Class\ getTheClass()
+comment3.params=
+comment3.target=int\ getNbConstructors()
+comment4.params=
+comment4.target=boolean\ hasConstructor()
+comment5.params=pParams
+comment5.target=boolean\ hasConstructor(java.lang.String)
+comment6.params=pParams
+comment6.target=ConstructorContent\ getConstructor(java.lang.String)
+comment7.params=pNP
+comment7.target=boolean\ hasConstructorNP(int)
+comment8.params=
+comment8.target=ConstructorContent\ firstConstructor()
+comment9.params=
+comment9.target=java.lang.String\ toString()
+numComments=10

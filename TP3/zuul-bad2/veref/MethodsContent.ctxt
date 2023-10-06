@@ -1,0 +1,26 @@
+#BlueJ class context
+comment0.params=pClass
+comment0.target=MethodsContent(java.lang.Class)
+comment1.params=pName
+comment1.target=MethodsContent(java.lang.String)
+comment10.params=pName\ pRT\ pProto
+comment10.target=MethodContent\ getMethod(java.lang.String,\ java.lang.String,\ java.lang.String)
+comment11.params=
+comment11.target=java.lang.String\ toString()
+comment2.params=
+comment2.target=java.lang.Class\ getTheClass()
+comment3.params=
+comment3.target=int\ getNbMethods()
+comment4.params=pName
+comment4.target=boolean\ hasMethod(java.lang.String)
+comment5.params=pName\ pParams
+comment5.target=boolean\ hasMethod(java.lang.String,\ java.lang.String)
+comment6.params=pName\ pRT
+comment6.target=boolean\ hasMethodRT(java.lang.String,\ java.lang.String)
+comment7.params=pName\ pNP
+comment7.target=boolean\ hasMethodNP(java.lang.String,\ int)
+comment8.params=pName\ pRT\ pNP
+comment8.target=boolean\ hasMethodRTNP(java.lang.String,\ java.lang.String,\ int)
+comment9.params=pName\ pRT\ pProto
+comment9.target=boolean\ hasMethod(java.lang.String,\ java.lang.String,\ java.lang.String)
+numComments=12

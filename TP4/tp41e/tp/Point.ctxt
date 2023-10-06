@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.target=Point
+comment0.text=\r\n\ D\u00E9crivez\ votre\ classe\ Point\ ici.\r\n\r\n\ @author\ (votre\ nom)\r\n\ @version\ (un\ num\u00E9ro\ de\ version\ ou\ une\ date)\r\n
+comment1.params=pAX\ pAY
+comment1.target=Point(int,\ int)
+comment2.params=
+comment2.target=Point()
+comment3.params=pDeltaX\ pDeltaY
+comment3.target=void\ deplace(int,\ int)
+comment4.params=
+comment4.target=java.lang.String\ toString()
+comment5.params=
+comment5.target=void\ affiche()
+comment6.params=pObj
+comment6.target=boolean\ equals(java.lang.Object)
+numComments=7

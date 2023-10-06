@@ -1,0 +1,27 @@
+#BlueJ class context
+comment0.target=Tabs
+comment0.text=\r\n\ Utilisation\ de\ procedure\ pour\ des\ tableaux\r\n\r\n\ @author\ Mr.Hautin\ Matthias\r\n\ @version\ 29/09/2023\r\n
+comment1.params=pTab
+comment1.target=void\ affTab(int[])
+comment1.text=\ @method\ affTab()\r\n\ \ afficher\ un\ tableau\r\n
+comment2.params=pTabInv
+comment2.target=void\ affTabInv(int[])
+comment2.text=\ @method\ affTabInv()\r\n\ \ afficher\ un\ tableau\ inverse\r\n
+comment3.params=pInitTab
+comment3.target=void\ initTab(int[])
+comment3.text=\ @method\ initTab()\r\n\ \ afficher\ l'indice\ de\ chaque\ valeur\ en\ le\ multipliant\ par\ 2\r\n
+comment4.params=pSommeTab
+comment4.target=void\ somme(int[])
+comment4.text=\ @method\ somme()\r\n\ \ afficher\ la\ somme\ d'un\ Tableau\r\n
+comment5.params=pValeurTab
+comment5.target=void\ valeurMinimale(double[])
+comment5.text=\ @method\ valeurMinimale()\r\n\ \ afficher\ la\ valeur\ minimale\ d'un\ tableau\r\n
+comment6.params=pIndMinTab
+comment6.target=void\ indiceDuMinimuInt(int[])
+comment6.text=\ @method\ indiceDuMinimuInt()\r\n\ Pour\ un\ Int,\ afficher\ l'indice\ de\ la\ valeur\ minimale,\ avec\ le\ plus\ petit\ indice\ \r\n
+comment7.params=pIndMinTab
+comment7.target=void\ indiceDuMinimumDouble(double[])
+comment7.text=\ @method\ indiceDuMinimumDouble()\r\n\ Pour\ un\ Double,\ afficher\ l'indice\ de\ la\ valeur\ minimale,\ avec\ le\ plus\ petit\ indice\ \r\n
+comment8.params=
+comment8.target=void\ essai()
+numComments=9

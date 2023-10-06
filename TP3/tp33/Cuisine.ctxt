@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.target=Cuisine
+comment0.text=\r\n\ D\u00E9crivez\ votre\ classe\ Cuisine\ ici.\r\n\r\n\ @author\ (votre\ nom)\r\n\ @version\ (un\ num\u00E9ro\ de\ version\ ou\ une\ date)\r\n
+comment1.params=pNbP\ pSup\ pSalSpt\ pNBR\ pNDLC
+comment1.target=Cuisine(int,\ int,\ boolean,\ int,\ java.lang.String)
+comment2.params=
+comment2.target=void\ essai()
+numComments=3
