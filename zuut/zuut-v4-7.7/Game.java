@@ -183,6 +183,6 @@ public class Game
         System.out.print("Exits: ");
         this.aCurrentRoom.getExitString();
         System.out.println("\n");
-    } //printLocationInfo()
+    } //printLocationInfo()k
     
 } // Game
