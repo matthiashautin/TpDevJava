@@ -4,7 +4,7 @@ import java.util.Scanner;
 /**
  * Classe Game - le moteur du jeu d'aventure Zuul.
  *
- * @author votre nom
+ * @author Hautin Matthias 
  */
 public class Game
 {
@@ -15,7 +15,13 @@ public class Game
         createRooms();
         play();
     } //Game()
-
+    
+    
+    /**
+     * create all rooms for the game with calling class Room and create the all directions for each rooms
+     * @method procedure createRooms()
+     * 
+     */
     private void createRooms() {
         //Main :
         Room vMainPilot = new Room("in main pilot room");
@@ -116,7 +122,7 @@ public class Game
             return;
         } else {
             this.aCurrentRoom = vNextRoom;
-            printLactionInfo();
+            printLocationInfo();
         }
     } // goRoom()
 
@@ -124,7 +130,7 @@ public class Game
         System.out.print("Welcome to the world of Zuut!\nWorld of Zuul is an incredibly boring new adventure game. \nType < help > if you need help.");
         System.out.println("\nYou are in the pilot room of the ship you can exit to: South");
         System.out.println();
-        printLactionInfo();
+        printLocationInfo();
     } //printWelcome()
     
     private void printHelp() {
@@ -163,7 +169,14 @@ public class Game
         }   
     } //processCommand()
     
-    private void printLactionInfo() {
+    
+    /**
+     * give: the current room in which the user is located, the room description, its different exits
+     * it was created to aviod code duplication between printWelcome() and goRoom()
+     * @method procedure printLactionInfo()
+     * 
+     */
+    private void printLocationInfo() {
         System.out.println("You are " + this.aCurrentRoom.getDescription());
         System.out.print("Exits: ");
             
@@ -183,6 +196,6 @@ public class Game
                 System.out.print("east ");
             }
             System.out.println();
-    }
+    } //printLocationInfo()
     
 } // Game

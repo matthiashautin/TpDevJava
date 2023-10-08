@@ -17,6 +17,10 @@ public class Room
         this.aDescription = pDescription;
     } // Room()
     
+    public String getDescription() {
+        return this.aDescription;
+    } //getDescription()
+    
     /**
      * define the exits for the all rooms. All direction if its possible, if that rooms egal null no exits here 
      * @method setExits(Room pNorthExit,Room pSouthExit,Room pWestExit,Room pEastExit)
@@ -41,7 +45,7 @@ public class Room
     
     /**
      * return all attribute relative to the direction
-     * @getExit(String pDirection)
+     * @method getExit(String pDirection)
      */
     public Room getExit(final String pDirection) {
         if(pDirection.equals("north")) {
@@ -63,7 +67,28 @@ public class Room
         return null;
     } //getExit()
     
-        public String getDescription() {
-        return this.aDescription;
-    } //getDescription()
+    /**
+     * print different output calls in printLocationInfo() in Game class if output is not null
+     * @method 
+     */
+    public String getExitString() {
+        if(this.aNorthExit != null) {
+            System.out.print("north ");
+        }
+        
+        if(this.aSouthExit != null) {
+            System.out.print("south ");
+        }
+        
+        if(this.aWestExit != null) {
+            System.out.print("west ");
+        }
+        
+        if(this.aEastExit != null) {
+            System.out.print("east ");
+        }
+
+        return null;
+    } //getExitString 
+
 } // Room

@@ -5,6 +5,6 @@ comment1.params=
 comment1.target=Parser()
 comment1.text=\r\n\ Constructeur\ par\ defaut\ qui\ cree\ les\ 2\ objets\ prevus\ pour\ les\ attributs\r\n
 comment2.params=
-comment2.target=Command\ getCommand()
+comment2.target=v1.Command\ getCommand()
 comment2.text=\r\n\ @return\ The\ next\ command\ from\ the\ user.\r\n
 numComments=3
