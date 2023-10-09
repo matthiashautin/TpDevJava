@@ -10,7 +10,7 @@ public class Game
 {
     private Room aCurrentRoom;
     private Parser aParser;
-    
+
     public Game() {
         createRooms();
         play();
@@ -98,8 +98,23 @@ public class Game
 
         Room vNextRoom = null;
         String vDirection = pCommand.getSecondWord();
-        
-        vNextRoom = this.aCurrentRoom.getExit(vDirection);
+
+        if(vDirection.equals("north")) {
+            vNextRoom = this.aCurrentRoom.getExit("north");
+
+        } else if( vDirection.equals("south")) {
+            vNextRoom = this.aCurrentRoom.getExit("south");
+
+        } else if( vDirection.equals("west")) {
+            vNextRoom = this.aCurrentRoom.getExit("west");
+
+        } else if( vDirection.equals("east")) {
+            vNextRoom = this.aCurrentRoom.getExit("east");
+
+        } else {
+            System.out.println("Unknown Direction !");
+            return;
+        }
         
         if (vNextRoom == null) {
             System.out.println("There is no door !");
@@ -166,8 +181,23 @@ public class Game
     private void printLocationInfo() {
         System.out.println("You are " + this.aCurrentRoom.getDescription());
         System.out.print("Exits: ");
-        this.aCurrentRoom.getExitString();
-        System.out.println("\n");
-    } //printLocationInfo()k
+            
+            if(this.aCurrentRoom.getExit("north") != null) {
+                System.out.print("north ");
+            }
+            
+            if(this.aCurrentRoom.getExit("south") != null) {
+                System.out.print("south "); 
+            }
+            
+            if(this.aCurrentRoom.getExit("west") != null) {
+                System.out.print("west ");
+            }
+            
+            if(this.aCurrentRoom.getExit("east") != null) {
+                System.out.print("east ");
+            }
+            System.out.println();
+    } //printLocationInfo()
     
 } // Game

@@ -49,26 +49,64 @@ public class Game
         Room vCorridorHiddenLeft = new Room("in hidden corridor left between left wing and left engine");
         
         
-        //Direction : pNorthExit, pSouthExit, pWestExit, pEastExit
-        vMainPilot.setExits(null, vMainWing, null, null);
-        vMainWing.setExits(vMainPilot, vCorridorMainWingMainEngine, vCorridorLeftWing, vCorridorRightWing);
-        vMainEngine.setExits(vCorridorMainWingMainEngine ,null, vCorridorLeftEngine, vCorridorRightEngine);
+        //setExits : String pDirection, Room pNeighbor
+        // for vMainPilot:
+        vMainPilot.setExits("south", vMainWing);
         
-        vRightWing.setExits(null, vCorridorHiddenRight, vCorridorRightWing, null);
-        vLeftWing.setExits(null, vCorridorHiddenLeft, null ,vCorridorLeftWing);
-        vRightEngine.setExits(vCorridorHiddenRight, null, vCorridorRightEngine, null);
-        vLeftEngine.setExits(vCorridorHiddenLeft, null, null, vCorridorLeftEngine);
+        //for vMainWing
+        vMainWing.setExits("north", vMainPilot);
+        vMainWing.setExits("south", vCorridorMainWingMainEngine);
+        vMainWing.setExits("west", vCorridorLeftWing);
+        vMainWing.setExits("east", vCorridorRightWing);
         
-        vCorridorRightWing.setExits(null, null, vMainWing, vRightWing);
-        vCorridorLeftWing.setExits(null, null, vLeftWing, vMainWing);
+        //for vMainEngine
+        vMainEngine.setExits("north", vCorridorMainWingMainEngine);
+        vMainEngine.setExits("west", vCorridorLeftEngine);
+        vMainEngine.setExits("east", vCorridorRightEngine);
         
-        vCorridorMainWingMainEngine.setExits(vMainWing, vMainEngine, null, null);
+        //for vRightWing
+        vRightWing.setExits("south", vCorridorHiddenRight);
+        vRightWing.setExits("west", vCorridorRightWing);
         
-        vCorridorRightEngine.setExits(null, null, vMainEngine, vRightEngine);
-        vCorridorLeftEngine.setExits(null, null, vLeftEngine, vMainEngine);
+        //for vLeftWing
+        vLeftWing.setExits("south", vCorridorHiddenLeft);
+        vLeftWing.setExits("east", vCorridorLeftWing);
         
-        vCorridorHiddenRight.setExits(vRightWing, vRightEngine, null, null);
-        vCorridorHiddenLeft.setExits(vLeftWing, vLeftEngine, null, null);
+        //for vRightEngine
+        vRightEngine.setExits("north", vCorridorHiddenRight);
+        vRightEngine.setExits("west", vCorridorRightEngine);
+        
+        //for vLeftEngine
+        vLeftEngine.setExits("north", vCorridorHiddenLeft);
+        vLeftEngine.setExits("east", vCorridorLeftEngine);
+        
+        //vCorridorRightWing
+        vCorridorRightWing.setExits("west", vMainWing);
+        vCorridorRightWing.setExits("east", vRightWing);
+        
+        //vCorridorLeftWing
+        vCorridorLeftWing.setExits("west", vLeftWing);
+        vCorridorLeftWing.setExits("east", vMainWing);
+
+        //vCorridorMainWingMainEngine
+        vCorridorMainWingMainEngine.setExits("north", vMainWing);
+        vCorridorMainWingMainEngine.setExits("south", vMainEngine);
+        
+        //vCorridorRightEngine
+        vCorridorRightEngine.setExits("west", vMainEngine);
+        vCorridorRightEngine.setExits("east", vRightEngine);
+        
+        //vCorridorLeftEngine
+        vCorridorLeftEngine.setExits("west", vLeftEngine);
+        vCorridorLeftEngine.setExits("east", vMainEngine);
+        
+        //vCorridorHiddenRight
+        vCorridorHiddenRight.setExits("north", vRightWing);
+        vCorridorHiddenRight.setExits("south", vRightEngine);
+        
+        //vCorridorHiddenLeft
+        vCorridorHiddenLeft.setExits("north", vLeftWing);
+        vCorridorHiddenLeft.setExits("south", vLeftEngine);
 
         this.aCurrentRoom = vMainPilot;
 
@@ -166,7 +204,6 @@ public class Game
     private void printLocationInfo() {
         System.out.println("You are " + this.aCurrentRoom.getDescription());
         System.out.print("Exits: ");
-        this.aCurrentRoom.getExitString();
         System.out.println("\n");
     } //printLocationInfo()k
     
