@@ -52,10 +52,10 @@ public class Game
         
         //setExits : String pDirection, Room pNeighbor
         // for vMainPilot:
-        vMainPilot.setExits("south", vMainWing);
+        vMainPilot.setExits("down", vMainWing);
         
         //for vMainWing
-        vMainWing.setExits("north", vMainPilot);
+        vMainWing.setExits("up", vMainPilot);
         vMainWing.setExits("south", vCorridorMainWingMainEngine);
         vMainWing.setExits("west", vCorridorLeftWing);
         vMainWing.setExits("east", vCorridorRightWing);
