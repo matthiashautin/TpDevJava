@@ -1,14 +1,16 @@
 #BlueJ class context
 comment0.target=Room
-comment0.text=\r\n\ Classe\ Room\ -\ un\ lieu\ du\ jeu\ d'aventure\ Zuul.\r\n\r\n\ @author\ votre\ nom\r\n
+comment0.text=\r\n\ Classe\ Room\ -\ un\ lieu\ du\ jeu\ d'aventure\ Zuul.\r\n\r\n\ @author\ Hautin\ Matthias\r\n
 comment1.params=pDescription
 comment1.target=Room(java.lang.String)
+comment1.text=\r\n\ initialize\ all\ attribute\r\n\ @Constructor\ Room()\ use\ for\ create\ new\ room\r\n\ @param\ String\ pDescription\ intialize\ Room\ descrioption\ \r\n
 comment2.params=
 comment2.target=java.lang.String\ getDescription()
+comment2.text=\r\n\ return\ aDescription\ attribute,\ String,\ getter\r\n\ @method\ getDescription()\r\n
 comment3.params=pDirection\ pNeighbor
 comment3.target=void\ setExits(java.lang.String,\ Room)
-comment3.text=\r\n\ define\ the\ exits\ for\ the\ all\ rooms.\ All\ direction\ if\ its\ possible,\ if\ that\ rooms\ egal\ null\ no\ exits\ here\ \r\n\ @method\ setExits(Room\ pNorthExit,Room\ pSouthExit,Room\ pWestExit,Room\ pEastExit)\r\n
+comment3.text=\r\n\ define\ the\ exits\ for\ the\ all\ rooms.\ All\ direction\ if\ its\ possible,\ if\ that\ rooms\ egal\ null\ no\ exits\ here,\ procedure,\ setter\r\n\ @method\ setExits()\r\n\ @param\ pDirection\ Exit\ direction\ \r\n\ @param\ pNeighbor\ the\ given\ direction\ room\r\n
 comment4.params=pDirection
 comment4.target=Room\ getExit(java.lang.String)
-comment4.text=\r\n\ return\ all\ attribute\ relative\ to\ the\ direction\r\n\ @method\ getExit(String\ pDirection)\r\n
+comment4.text=\r\n\ return\ all\ directions\ relating\ to\ room\ ,\ Room,\ getter\r\n\ @method\ getExit()\r\n\ @params\ String\ pDirection\ given\ all\ direction\ for\ next\ room\ else\ null\ if\ direction\ is\ null\r\n
 numComments=5

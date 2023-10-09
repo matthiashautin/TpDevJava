@@ -4,22 +4,23 @@ import java.util.Scanner;
 /**
  * Classe Game - le moteur du jeu d'aventure Zuul.
  *
- * @author votre nom
+ * @author Hautin Matthias
  */
 public class Game
 {
     private Room aCurrentRoom;
     private Parser aParser;
-    
+    /**
+     * @Constructor
+     */
     public Game() {
         createRooms();
         play();
     } //Game()
 
-        /**
+    /**
      * create all rooms for the game with calling class Room and create the all directions for each rooms
      * @method procedure createRooms()
-     * 
      */
     private void createRooms() {
         //Main :
@@ -50,33 +51,33 @@ public class Game
         
         
         //setExits : String pDirection, Room pNeighbor
-        // for vMainPilot:
-        vMainPilot.setExits("south", vMainWing);
+        //vMainPilot:
+        vMainPilot.setExits("up", vMainWing);
         
-        //for vMainWing
-        vMainWing.setExits("north", vMainPilot);
+        //vMainWing
+        vMainWing.setExits("down", vMainPilot);
         vMainWing.setExits("south", vCorridorMainWingMainEngine);
         vMainWing.setExits("west", vCorridorLeftWing);
         vMainWing.setExits("east", vCorridorRightWing);
         
-        //for vMainEngine
+        //vMainEngine
         vMainEngine.setExits("north", vCorridorMainWingMainEngine);
         vMainEngine.setExits("west", vCorridorLeftEngine);
         vMainEngine.setExits("east", vCorridorRightEngine);
         
-        //for vRightWing
+        //vRightWing
         vRightWing.setExits("south", vCorridorHiddenRight);
         vRightWing.setExits("west", vCorridorRightWing);
         
-        //for vLeftWing
+        //vLeftWing
         vLeftWing.setExits("south", vCorridorHiddenLeft);
         vLeftWing.setExits("east", vCorridorLeftWing);
         
-        //for vRightEngine
+        //vRightEngine
         vRightEngine.setExits("north", vCorridorHiddenRight);
         vRightEngine.setExits("west", vCorridorRightEngine);
         
-        //for vLeftEngine
+        //vLeftEngine
         vLeftEngine.setExits("north", vCorridorHiddenLeft);
         vLeftEngine.setExits("east", vCorridorLeftEngine);
         
@@ -112,6 +113,7 @@ public class Game
 
     } // createRooms()
     
+    
     private void play() {
         printWelcome();
         boolean vFinished = false;
@@ -126,7 +128,8 @@ public class Game
         }
         
     } // play()
-
+    
+    
     public void goRoom(final Command pCommand) {
 
         if(! pCommand.hasSecondWord()) {

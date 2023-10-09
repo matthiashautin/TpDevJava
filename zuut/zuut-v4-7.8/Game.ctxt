@@ -1,11 +1,12 @@
 #BlueJ class context
 comment0.target=Game
-comment0.text=\r\n\ Classe\ Game\ -\ le\ moteur\ du\ jeu\ d'aventure\ Zuul.\r\n\r\n\ @author\ votre\ nom\r\n
+comment0.text=\r\n\ Classe\ Game\ -\ le\ moteur\ du\ jeu\ d'aventure\ Zuul.\r\n\r\n\ @author\ Hautin\ Matthias\r\n
 comment1.params=
 comment1.target=Game()
+comment1.text=\r\n\ @Constructor\r\n
 comment2.params=
 comment2.target=void\ createRooms()
-comment2.text=\r\n\ create\ all\ rooms\ for\ the\ game\ with\ calling\ class\ Room\ and\ create\ the\ all\ directions\ for\ each\ rooms\r\n\ @method\ procedure\ createRooms()\r\n\ \r\n
+comment2.text=\r\n\ create\ all\ rooms\ for\ the\ game\ with\ calling\ class\ Room\ and\ create\ the\ all\ directions\ for\ each\ rooms\r\n\ @method\ procedure\ createRooms()\r\n
 comment3.params=
 comment3.target=void\ play()
 comment4.params=pCommand
