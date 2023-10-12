@@ -56,7 +56,7 @@ public class Room
         String vReturnString = "Exits: ";
         Set<String> vKeys = this.aExits.keySet();
         for(String vExit : vKeys) {
-            vReturnString += " " + vExit;
+            vReturnString += " | " + vExit + " | ";
         }
         return vReturnString;
         

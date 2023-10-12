@@ -65,8 +65,8 @@ public class Game
         
         //for vMainEngine
         vMainEngine.setExits("north", vCorridorMainWingMainEngine);
-        vMainEngine.setExits("west", vCorridorLeftEngine);
-        vMainEngine.setExits("east", vCorridorRightEngine);
+        vMainEngine.setExits("downwest", vCorridorLeftEngine);
+        vMainEngine.setExits("downeast", vCorridorRightEngine);
         
         //for vRightWing
         vRightWing.setExits("south", vCorridorHiddenRight);
@@ -77,11 +77,11 @@ public class Game
         vLeftWing.setExits("east", vCorridorLeftWing);
         
         //for vRightEngine
-        vRightEngine.setExits("north", vCorridorHiddenRight);
+        vRightEngine.setExits("upnorth", vCorridorHiddenRight);
         vRightEngine.setExits("west", vCorridorRightEngine);
         
         //for vLeftEngine
-        vLeftEngine.setExits("north", vCorridorHiddenLeft);
+        vLeftEngine.setExits("upnorth", vCorridorHiddenLeft);
         vLeftEngine.setExits("east", vCorridorLeftEngine);
         
         //vCorridorRightWing
@@ -97,20 +97,20 @@ public class Game
         vCorridorMainWingMainEngine.setExits("south", vMainEngine);
         
         //vCorridorRightEngine
-        vCorridorRightEngine.setExits("west", vMainEngine);
+        vCorridorRightEngine.setExits("upwest", vMainEngine);
         vCorridorRightEngine.setExits("east", vRightEngine);
         
         //vCorridorLeftEngine
         vCorridorLeftEngine.setExits("west", vLeftEngine);
-        vCorridorLeftEngine.setExits("east", vMainEngine);
+        vCorridorLeftEngine.setExits("upeast", vMainEngine);
         
         //vCorridorHiddenRight
         vCorridorHiddenRight.setExits("north", vRightWing);
-        vCorridorHiddenRight.setExits("south", vRightEngine);
+        vCorridorHiddenRight.setExits("downsouth", vRightEngine);
         
         //vCorridorHiddenLeft
         vCorridorHiddenLeft.setExits("north", vLeftWing);
-        vCorridorHiddenLeft.setExits("south", vLeftEngine);
+        vCorridorHiddenLeft.setExits("downsouth", vLeftEngine);
 
         this.aCurrentRoom = vMainPilot;
 
