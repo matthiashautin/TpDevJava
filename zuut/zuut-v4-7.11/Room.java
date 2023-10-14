@@ -22,7 +22,7 @@ public class Room
     } // Room()
     
     /**
-     * return aDescription attribute, String, getter
+     * @return aDescription attribute, String, getter
      * @method getDescription()
      */
     public String getDescription() {
@@ -40,7 +40,7 @@ public class Room
     } //setExits()
     
     /**
-     * return all directions relating to room , Room, getter
+     * @return all directions relating to room , Room, getter
      * @method getExit()
      * @params String pDirection given all direction for next room else null if direction is null
      */
@@ -62,6 +62,13 @@ public class Room
         
     } //getExitString 
     
+    /**
+     * @return getDescription() and getExitString() to avoid calling its 2 getters in printLocationInfo()
+     * print for example:
+     * You are in main pilot room.
+     * Exits:  | down | 
+     * @method getLongDescription()
+     */
     public String getLongDescription() {
         return "You are " + getDescription() + ".\n" + getExitString() + "\n";
     } //getLongDescription
