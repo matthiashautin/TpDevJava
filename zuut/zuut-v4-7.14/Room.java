@@ -59,7 +59,6 @@ public class Room
             vReturnString += " | " + vExit + " | ";
         }
         return vReturnString;
-        
     } //getExitString 
     
     /**

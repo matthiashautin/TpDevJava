@@ -222,7 +222,11 @@ public class Game
         else if(pAppelBonneMethod.getCommandWord().equals("go")) { //si la commande tapée est "go"
             goRoom(pAppelBonneMethod);
             return false;
-        } 
+        }
+        else if(pAppelBonneMethod.getCommandWord().equals("look")) { //si la commande tpaée est "look"
+            look(pAppelBonneMethod);
+            return false;
+        }
         else { //si print "Erreur du programmeur : commande non reconnue !"
            System.out.println("Erreur du programmeur : commande non reconnue !");
            return false;
@@ -233,10 +237,22 @@ public class Game
      * give: the current room in which the user is located, the room description, its different exits
      * it was created to aviod code duplication between printWelcome() and goRoom()
      * @method procedure printLactionInfo()
-     * 
      */
     private void printLocationInfo() {
         System.out.println(this.aCurrentRoom.getLongDescription());
-    } //printLocationInfo()k
+    } //printLocationInfo()
     
+    /**
+     * print "I don't know how to look at something in particular yet." if there have a second word after look
+     * else give: the current room in which the user is located, the room description, its different exits
+     * @method procedure look()
+     */
+    private void look(final Command pSecondMot) {
+         if(pSecondMot.hasSecondWord() == true ) {//si l'utilisateur tap un second mot aprés "quit" (exemple: "quit program")
+            System.out.println("I don't know how to look at something in particular yet.");
+            
+        } else {
+            System.out.println(this.aCurrentRoom.getLongDescription());
+        }
+    } //look()
 } // Game

@@ -13,19 +13,8 @@
 public class CommandWords
 {
     // a constant array that will hold all valid command words
-    private final String[] aValidCommands;
-
-    /**
-     * Constructor - initialise the command words.
-     */
-    public CommandWords()
-    {
-        this.aValidCommands = new String[3];
-        this.aValidCommands[0] = "go";
-        this.aValidCommands[1] = "help";
-        this.aValidCommands[2] = "quit";
-    } // CommandWords()
-
+    private static final String aValidCommands[] = {"go", "help", "quit", "look"};
+    
     /**
      * Check whether a given String is a valid command word. 
      * @return true if a given string is a valid command,
