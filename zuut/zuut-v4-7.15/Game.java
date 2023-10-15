@@ -183,7 +183,7 @@ public class Game
      * @method printHelp()
      */
     private void printHelp() {
-        System.out.println("You are lost. You are alone.\nYou wander around at the ship. \nYour command words are: go quit help");
+        System.out.println("You are lost. You are alone.\nYou wander around at the ship. \nYour command words are: go quit help. \n");
     } //printHelp()
     
     /**
@@ -213,7 +213,7 @@ public class Game
             return false;
         } 
         else if(pAppelBonneMethod.getCommandWord().equals("quit")) { //si la commande tapée est "quit"
-             return quit(pAppelBonneMethod);
+            return quit(pAppelBonneMethod);
         } 
         else if(pAppelBonneMethod.getCommandWord().equals("help")) { //si la commande tapée est "help"
             printHelp();
@@ -223,8 +223,12 @@ public class Game
             goRoom(pAppelBonneMethod);
             return false;
         }
-        else if(pAppelBonneMethod.getCommandWord().equals("look")) { //si la commande tpaée est "look"
+        else if(pAppelBonneMethod.getCommandWord().equals("look")) { //si la commande tapée est "look"
             look(pAppelBonneMethod);
+            return false;
+        }
+        else if(pAppelBonneMethod.getCommandWord().equals("eat")) { //si la commande tpaée est "eat"
+            eat(pAppelBonneMethod);
             return false;
         }
         else { //si print "Erreur du programmeur : commande non reconnue !"
@@ -249,11 +253,20 @@ public class Game
      */
     private void look(final Command pSecondMot) {
          if(pSecondMot.hasSecondWord() == true ) {//si l'utilisateur tap un second mot aprés "quit" (exemple: "quit program")
-            System.out.println("I don't know how to look at something in particular yet.");
+            System.out.println("I don't know how to look at something in particular yet.\n");
             
         } else {
             System.out.println(this.aCurrentRoom.getLongDescription());
         }
     } //look()
-
+    
+    
+    private void eat(final Command pSecondMot) {
+        if(pSecondMot.hasSecondWord() == true ) {//si l'utilisateur tap un second mot aprés "quit" (exemple: "quit program")
+                System.out.println("Just one thing at a time.\n");
+                
+        } else {
+                System.out.println(this.aCurrentRoom.getEat());
+        }
+    } //eat()
 } // Game
