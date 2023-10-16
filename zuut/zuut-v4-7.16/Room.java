@@ -72,7 +72,12 @@ public class Room
         return "You are " + getDescription() + ".\n" + getExitString() + "\n";
     } //getLongDescription
     
+    /**
+     * @return "You have eaten now and you are not hungry any more.\n"
+     * @method getEat()
+     */
     public String getEat() {
         return "You have eaten now and you are not hungry any more.\n";
     } //getEat()
+    
 } // Room

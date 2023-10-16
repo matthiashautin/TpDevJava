@@ -9,4 +9,5 @@ comment2.target=Command\ getCommand()
 comment2.text=\r\n\ @return\ The\ next\ command\ from\ the\ user.\r\n
 comment3.params=
 comment3.target=void\ showCommands()
+comment3.text=\r\n\ allows\ you\ to\ display\ commands\ with\ this.aValidCommands\ object\r\n\ @method\ procedure\ showCommands()\r\n
 numComments=4

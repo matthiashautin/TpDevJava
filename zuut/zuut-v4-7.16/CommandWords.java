@@ -30,12 +30,15 @@ public class CommandWords
         return false;
     } // isCommand()
     
-    
+    /**
+     * print all possible command + " | " 
+     * @method procedure showAll()
+     */
     public void showAll() {
-        for(String Command : this.aValidCommands){
+        for(String Command : this.aValidCommands){ //pour toutes les commandes qu'il existe dans aValidCommands
             System.out.print(Command + " | ");
         }
         System.out.println();
-    }//shawAll()
+    }//showAll()
     
 } // CommandWords

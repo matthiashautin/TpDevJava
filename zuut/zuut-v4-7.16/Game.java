@@ -180,6 +180,7 @@ public class Game
     
     /**
      * printHelp to print if you write "help"
+     * call showCommands() for give you all possible commmands
      * @method printHelp()
      */
     private void printHelp() {
@@ -254,7 +255,7 @@ public class Game
      * @method procedure look()
      */
     private void look(final Command pSecondMot) {
-         if(pSecondMot.hasSecondWord() == true ) {//si l'utilisateur tap un second mot aprés "quit" (exemple: "quit program")
+         if(pSecondMot.hasSecondWord() == true ) {//si l'utilisateur tape un second mot apres "quit" (exemple: "quit program")
             System.out.println("I don't know how to look at something in particular yet.\n");
             
         } else {
@@ -262,11 +263,15 @@ public class Game
         }
     } //look()
     
-    
+    /**
+     * print "Just one thing at a time." if there have a second word after eat
+     * else print: "You have eaten now and you are not hungry any more."
+     * @method procedure eat()
+     */
     private void eat(final Command pSecondMot) {
-        if(pSecondMot.hasSecondWord() == true ) {//si l'utilisateur tap un second mot aprés "quit" (exemple: "quit program")
+        if(pSecondMot.hasSecondWord() == true ) {//si l'utilisateur tape un second mot apres "eat" (exemple: "eat fish")
                 System.out.println("Just one thing at a time.\n");
-                
+        
         } else {
                 System.out.println(this.aCurrentRoom.getEat());
         }

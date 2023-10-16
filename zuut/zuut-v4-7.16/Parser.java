@@ -67,6 +67,10 @@ public class Parser
         }
     } // getCommand()
     
+    /**
+     * allows you to display commands with this.aValidCommands object
+     * @method procedure showCommands()
+     */
     public void showCommands() {
         this.aValidCommands.showAll();
     }
