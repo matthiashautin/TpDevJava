@@ -77,7 +77,7 @@ public class Room
      * @method getEat()
      */
     public String getEat() {
-        return "You have eaten now and you are not hungry any more.\n";
+        return "You have eaten now and you are not hungry anymore.\n";
     } //getEat()
     
 } // Room
