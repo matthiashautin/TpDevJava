@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=CommandWords
+comment0.text=\r\n\ This\ class\ is\ the\ main\ class\ of\ the\ "World\ of\ Zuul"\ application.\ \r\n\ "World\ of\ Zuul"\ is\ a\ very\ simple,\ text\ based\ adventure\ game.\r\n\ \r\n\ This\ class\ holds\ an\ enumeration\ of\ all\ command\ words\ known\ to\ the\ game.\r\n\ It\ is\ used\ to\ recognise\ commands\ as\ they\ are\ typed\ in.\r\n\r\n\ @author\ \ Michael\ Kolling\ and\ David\ J.\ Barnes\r\n\ @version\ 1.0\ (February\ 2002)\ DBMOD\:\ 04/04/2008\r\n
+comment1.params=
+comment1.target=CommandWords()
+comment1.text=\r\n\ Constructor\ -\ initialise\ the\ command\ words.\r\n
+comment2.params=aString
+comment2.target=boolean\ isCommand(java.lang.String)
+comment2.text=\r\n\ Check\ whether\ a\ given\ String\ is\ a\ valid\ command\ word.\ \r\n\ Return\ true\ if\ it\ is,\ false\ if\ it\ isn't.\r\n
+comment3.params=
+comment3.target=java.lang.String\ getCommandList()
+comment3.text=\r\n\ returns\ a\ String\ of\ all\ valid\ commands.\r\n
+numComments=4
