@@ -10,15 +10,17 @@ public class Room
 {
     private HashMap<String, Room> aExits;
     private String aDescription;
+    private String aImageName;
     
     /**
      * initialize all attribute
      * @Constructor Room() use for create new room
      * @param String pDescription intialize Room descrioption 
      */
-    public Room(final String pDescription) {
+    public Room(final String pDescription, final String pImage) {
         this.aDescription = pDescription;
         this.aExits = new HashMap<String, Room>();
+        this.aImageName = pImage;
     } // Room()
     
     /**
@@ -79,5 +81,9 @@ public class Room
     public String getEat() {
         return "You have eaten now and you are not hungry anymore.\n";
     } //getEat()
+    
+    public String getImageName() {
+        return this.aImageName;
+    }
     
 } // Room

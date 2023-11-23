@@ -5,6 +5,6 @@ comment1.params=pString
 comment1.target=boolean\ isCommand(java.lang.String)
 comment1.text=\r\n\ Check\ whether\ a\ given\ String\ is\ a\ valid\ command\ word.\ \r\n\ @return\ true\ if\ a\ given\ string\ is\ a\ valid\ command,\r\n\ false\ if\ it\ isn't.\r\n
 comment2.params=
-comment2.target=java.lang.String[]\ getCommandList()
+comment2.target=java.lang.String\ getCommandList()
 comment2.text=\r\n\ @return\ all\ commands\ that\ exist\ in\ aValidCommands()\ in\ a\ board\r\n\ @method\ getCommandList()\r\n
 numComments=3

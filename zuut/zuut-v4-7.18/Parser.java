@@ -1,6 +1,4 @@
- 
-
-import java.util.Scanner;
+import java.util.StringTokenizer;
 
 /**
  * This class is part of the "World of Zuul" application. 
@@ -20,42 +18,37 @@ import java.util.Scanner;
  */
 public class Parser 
 {
-    private CommandWords aValidCommands;  // (voir la classe CommandWords)
-    private Scanner      aReader;         // permettra de lire les commandes au clavier
-
+    private CommandWords aValidCommands;  // (voir la classe CommandWords)        
+    
     /**
      * Constructeur par defaut qui cree les 2 objets prevus pour les attributs
      */
     public Parser() 
     {
         this.aValidCommands = new CommandWords();
-        this.aReader        = new Scanner( System.in );
         // System.in designe le clavier, comme System.out designe l'ecran
     } // Parser()
 
     /**
      * @return The next command from the user.
      */
-    public Command getCommand() 
+    public Command getCommand(final String pInputLine) 
     {
-        String vInputLine;    // contiendra toute la ligne tapee
         String vWord1 = null;
         String vWord2 = null;
 
-        System.out.print( "> " );  // affiche le prompt (invite de commande)
-
-        vInputLine = this.aReader.nextLine(); // lit la ligne tapee au clavier
+        StringTokenizer vtokenizer = new StringTokenizer(pInputLine); // lit la ligne tapee au clavier
 
         // cherche jusqu'a 2 mots dans la ligne tapee
-        Scanner vTokenizer = new Scanner( vInputLine );
-        if ( vTokenizer.hasNext() ) {     // y a-t-il un mot suivant ?
-            vWord1 = vTokenizer.next();      // recupere le premier mot
-            if ( vTokenizer.hasNext() ) { // y a-t-il encore un mot suivant ?
-                vWord2 = vTokenizer.next();  // recupere le deuxieme mot
-                // note : on ignore tout le reste de la ligne tapee !
-            } // if
-        } // if
+        if ( vtokenizer.hasMoreTokens() )
+            vWord1 = vtokenizer.nextToken();      // get first word
+        else
+            vWord1 = null;
 
+        if ( vtokenizer.hasMoreTokens() )
+            vWord2 = vtokenizer.nextToken();      // get second word
+        else
+            vWord2 = null;
         // Verifie si le premier mot est une commande connue.
         // Si oui, cree un objet Command avec ce mot. (vWord2 peut etre null)
         // Sinon, cree une commande vide avec "null" (pour dire 'commande inconnue').
@@ -63,7 +56,7 @@ public class Parser
             return new Command( vWord1, vWord2 );
         }
         else {
-            return new Command( null, null ); 
+            return new Command( null, vWord2 ); 
         }
     } // getCommand()
     
@@ -72,7 +65,7 @@ public class Parser
      * call getCommandList()
      * @method getShowCommands()
      */
-    public String[] getShowCommands() {
+    public String getShowCommands() {
         return this.aValidCommands.getCommandList();
     } //getShowCommands()
 } // Parser

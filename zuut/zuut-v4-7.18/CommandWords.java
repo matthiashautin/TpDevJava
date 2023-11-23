@@ -1,6 +1,4 @@
- 
-
-/**
+ /**
  * This class is part of the "World of Zuul" application. 
  * "World of Zuul" is a very simple, text based adventure game.  
  * 
@@ -34,8 +32,15 @@ public class CommandWords
      * @return all commands that exist in aValidCommands() in a board
      * @method getCommandList()
      */
-    public String[] getCommandList() {
-        return this.aValidCommands;
-    }//getCommandList()
+    public String getCommandList() {
+        StringBuilder vCommands = new StringBuilder();
+        
+        for(int i = 0; i < this.aValidCommands.length; i++) {            
+            vCommands.append( this.aValidCommands[i] + " | " );        
+        }        
+        return vCommands.toString();   
+        
+    }//getCommandList()  
     
 } // CommandWords
+
