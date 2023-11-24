@@ -28,6 +28,8 @@ public class GameEngine
          */
     private void createRooms() {
         Room vMainPilot, vMainWing, vMainEngine, vRightWing, vLeftWing, vRightEngine, vLeftEngine, vCorridorRightWing, vCorridorLeftWing, vCorridorMainWingMainEngine, vCorridorRightEngine, vCorridorLeftEngine, vCorridorHiddenRight, vCorridorHiddenLeft;
+        String vLienImages = "";
+        
         //Main :
         vMainPilot = new Room("in main pilot room", "");
         vMainWing = new Room("in main wing room", "");

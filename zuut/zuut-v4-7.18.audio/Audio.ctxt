@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.target=Audio
+comment0.text=\r\n\ D\u00E9crivez\ votre\ classe\ Audio\ ici.\r\n\r\n\ @author\ (votre\ nom)\r\n\ @version\ (un\ num\u00E9ro\ de\ version\ ou\ une\ date)\r\n
+comment1.params=pSon
+comment1.target=Audio(java.lang.String)
+comment2.params=
+comment2.target=javax.sound.sampled.Clip\ getClip()
+comment3.params=
+comment3.target=void\ play()
+comment4.params=
+comment4.target=void\ stop()
+comment5.params=pSon
+comment5.target=void\ playSound(java.lang.String)
+numComments=6
