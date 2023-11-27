@@ -209,7 +209,7 @@ public class GameEngine
         else if(vCommandWord.equals("eat")) { //si la commande tpaée est "eat"
             eat(vCommand);
         }
-        else if(vCommandWord.equals("audio")) { //si la commande tpaée est "eat"
+        else if(vCommandWord.equals("audio")) { //si la commande tpaée est "audio"
              this.toggleAudio();
         }
         
