@@ -22,6 +22,7 @@ public class UserInterface implements ActionListener
     private JButton    aBtnQuit;
     private JButton    aBtnHelp;
     private JButton    aBtnEat;
+    private JButton atest;
     private boolean    aBool;
     
 
