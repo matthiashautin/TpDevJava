@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.target=Inventaire
+comment1.params=
+comment1.target=Inventaire()
+comment2.params=pItem
+comment2.target=Item\ getItem(java.lang.String)
+comment2.text=\r\n\ pour\ tous\ les\ items\ de\ la\ liste\ \r\n\ return\ l'item\ si\ le\ param\u00E8tre\ cr\u00E9\u00E9(pItem)\ est\ \u00E9gale\ \u00E0\ un\ des\ items\ de\ la\ liste\ cr\u00E9\u00E9\r\n
+comment3.params=pItem
+comment3.target=boolean\ contientItem(java.lang.String)
+comment4.params=pNom\ pPrix
+comment4.target=void\ ajouteItem(java.lang.String,\ int)
+comment5.params=pNom
+comment5.target=void\ enleveItem(java.lang.String)
+comment6.params=
+comment6.target=java.lang.String\ toString()
+numComments=7

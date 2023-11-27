@@ -1,0 +1,25 @@
+#BlueJ class context
+comment0.target=InventaireTest
+comment0.text=\r\n\ The\ test\ class\ InventaireTest.\r\n\r\n\ @author\ \ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=
+comment1.target=InventaireTest()
+comment1.text=\r\n\ Default\ constructor\ for\ test\ class\ ItemTest\r\n
+comment2.params=
+comment2.target=void\ test_attributs_2()
+comment3.params=
+comment3.target=void\ test_getItem_4()
+comment4.params=
+comment4.target=void\ test_contientItem_5()
+comment5.params=
+comment5.target=void\ test_ajouteItem_6()
+comment6.params=
+comment6.target=void\ test_enleveItem_7()
+comment7.params=
+comment7.target=void\ test_toString_8()
+comment8.params=
+comment8.target=void\ setUp()
+comment8.text=\r\n\ Sets\ up\ the\ test\ fixture.\r\n\r\n\ Called\ before\ every\ test\ case\ method.\r\n
+comment9.params=
+comment9.target=void\ tearDown()
+comment9.text=\r\n\ Tears\ down\ the\ test\ fixture.\r\n\r\n\ Called\ after\ every\ test\ case\ method.\r\n
+numComments=10
