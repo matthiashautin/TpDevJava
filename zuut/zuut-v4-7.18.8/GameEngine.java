@@ -209,6 +209,10 @@ public class GameEngine
         else if(vCommandWord.equals("eat")) { //si la commande tpaée est "eat"
             eat(vCommand);
         }
+        else if(vCommandWord.equals("audio")) { //si la commande tpaée est "eat"
+             this.toggleAudio();
+        }
+        
         else { //si print "Erreur du programmeur : commande non reconnue !"
            this.aGui.println("Erreur du programmeur : commande non reconnue !");
         }   
@@ -262,8 +266,7 @@ public class GameEngine
     private void endGame()
     {
         this.aGui.println( "Thank you for playing.  Good bye." );
-        this.aGui.enable( false );
-        toggleAudio(); // Arrête le son à la fin du jeu
+        this.aGui.enable( false ); 
     } //endGame()
     
     public void toggleAudio() {
