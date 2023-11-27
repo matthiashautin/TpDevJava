@@ -37,8 +37,6 @@ public class GameEngine
         
         //Main :
         vMainPilot = new Room("in main pilot room", vLienImages + "mainpilot.jpg" , vLienAudios + "mainpilot.wav");
-        Item vTW = new Item("Talkie Walkie", 2);
-        vMainPilot.setItem(vTW);
         
         vMainWing = new Room("in main wing room", vLienImages + "mainwing.jpg" , vLienAudios + "mainwing.wav");
         vMainEngine = new Room("in main engine room", vLienImages + "mainengine.jpg" ,vLienAudios + "mainengine.wav");

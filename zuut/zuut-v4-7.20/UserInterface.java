@@ -25,7 +25,6 @@ public class UserInterface implements ActionListener
     private JButton    aBtnLook;
     private boolean    aBool;
     
-
     /**
      * Construct a UserInterface. As a parameter, a Game Engine
      * (an object processing and executing the game commands) is

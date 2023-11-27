@@ -16,7 +16,6 @@ public class Room
     private String aImageName;
     private String aAudioName;
     private Clip aAudioClip;
-    private Item aItem;
     
     /**
      * initialize all attribute
@@ -78,7 +77,7 @@ public class Room
      * @method getLongDescription()
      */
     public String getLongDescription() {
-        return "You are " + getDescription() + ".\n" + getExitString() + "\n" + getItemString() + "\n";
+        return "You are " + getDescription() + ".\n" + getExitString() + "\n";
     } //getLongDescription
     
     /**
@@ -117,23 +116,6 @@ public class Room
             this.aAudioClip.stop();
         }
     }
-    
-    //Item
-    public void setItem(Item pItem) {
-        this.aItem = pItem;
-    }
-    
-    public Item getItem() {
-        return this.aItem;
-    }
-    
-    public String getItemString() {
-        if(this.aItem != null) {
-            return "Object : " + this.aItem.getNameItem()+ " (Weight: " + this.aItem.getPoids() + " )";   
-        }else {
-            return "No object in this room.";
-        }
-    } //getExitString 
     
     
 } // Room
