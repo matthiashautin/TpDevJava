@@ -271,6 +271,7 @@ public class GameEngine
     {
         this.aGui.println( "Thank you for playing.  Good bye." );
         this.aGui.enable( false ); 
+        this.aGui.closeFrame();
     } //endGame()
     
     public void toggleAudio() {

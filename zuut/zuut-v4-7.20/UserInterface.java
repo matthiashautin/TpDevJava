@@ -23,6 +23,10 @@ public class UserInterface implements ActionListener
     private JButton    aBtnHelp;
     private JButton    aBtnEat;
     private JButton    aBtnLook;
+    private JButton    aBtnNorth;
+    private JButton    aBtnSouth;
+    private JButton    aBtnEast;
+    private JButton    aBtnWest;
     private boolean    aBool;
     
     /**
@@ -118,6 +122,18 @@ public class UserInterface implements ActionListener
         this.aBtnLook = new JButton("look");
         this.aBtnLook.setPreferredSize(new Dimension(100,25));
         
+        this.aBtnNorth = new JButton("North");
+        this.aBtnNorth.setPreferredSize(new Dimension(75,25));
+        
+        this.aBtnSouth = new JButton("South");
+        this.aBtnSouth.setPreferredSize(new Dimension(75,25));
+
+        this.aBtnEast = new JButton("East");
+        this.aBtnEast.setPreferredSize(new Dimension(75,25));
+
+        this.aBtnWest = new JButton("West");
+        this.aBtnWest.setPreferredSize(new Dimension(75,25));
+        
         
         //JLabel
         this.aImage = new JLabel();
@@ -125,31 +141,44 @@ public class UserInterface implements ActionListener
         //temporraire je change la size de l'emplacement de l'image 
         //this.aImage.setPreferredSize(new Dimension(500, 400));
         
-        JPanel vPanel = new JPanel();
-        JPanel vPane2 = new JPanel();
-        vPanel.setLayout( new BorderLayout() ); // ==> only five places
-        vPanel.add( this.aImage, BorderLayout.NORTH );
-        vPanel.add( vListScroller, BorderLayout.CENTER );
-        vPanel.add( this.aEntryField, BorderLayout.SOUTH );
-        vPanel.add( vPane2, BorderLayout.EAST);//le placer à l'est
+        JPanel vPaneCommand = new JPanel();   
+        vPaneCommand.setLayout(new GridLayout(3, 2) );
+        vPaneCommand.add(this.aBtnAudio, BorderLayout.CENTER );
+        vPaneCommand.add(this.aBtnQuit,BorderLayout.CENTER );
+        vPaneCommand.add(this.aBtnHelp,BorderLayout.CENTER );
+        vPaneCommand.add(this.aBtnEat,BorderLayout.CENTER );
+        vPaneCommand.add(this.aBtnLook,BorderLayout.CENTER );
         
+        JPanel vPaneDirection = new JPanel();
+        vPaneDirection.setLayout(new BorderLayout() );
+        vPaneDirection.add(this.aBtnNorth, BorderLayout.NORTH );
+        vPaneDirection.add(this.aBtnSouth,BorderLayout.SOUTH );
+        vPaneDirection.add(this.aBtnEast,BorderLayout.EAST );
+        vPaneDirection.add(this.aBtnWest,BorderLayout.WEST );
         
-        vPane2.setLayout(new GridLayout(3, 2) );
-        vPane2.add(this.aBtnAudio, BorderLayout.CENTER );
-        vPane2.add(this.aBtnQuit,BorderLayout.CENTER );
-        vPane2.add(this.aBtnHelp,BorderLayout.CENTER );
-        vPane2.add(this.aBtnEat,BorderLayout.CENTER );
-        vPane2.add(this.aBtnLook,BorderLayout.CENTER );
+        JPanel vMainPanel = new JPanel();      
+        vMainPanel.setLayout( new BorderLayout()); // ==> only five places
+        vMainPanel.add( this.aImage, BorderLayout.NORTH );
+        vMainPanel.add( vListScroller, BorderLayout.CENTER );
+        vMainPanel.add( this.aEntryField, BorderLayout.SOUTH );
+        vMainPanel.add( vPaneCommand, BorderLayout.EAST);//le placer à l'est
+        vMainPanel.add( vPaneDirection, BorderLayout.WEST);//le placer à l'est
         
-        this.aMyFrame.getContentPane().add( vPanel, BorderLayout.CENTER );
+        this.aMyFrame.getContentPane().add( vMainPanel, BorderLayout.CENTER );
 
         // add some event listeners to some components
         this.aEntryField.addActionListener( this );
+        
         this.aBtnAudio.addActionListener( this );
         this.aBtnQuit.addActionListener( this );
         this.aBtnHelp.addActionListener( this );
         this.aBtnEat.addActionListener( this );
         this.aBtnLook.addActionListener( this );
+        
+        this.aBtnNorth.addActionListener( this );
+        this.aBtnSouth.addActionListener( this );
+        this.aBtnEast.addActionListener( this );
+        this.aBtnWest.addActionListener( this );
 
         // to end program when window is closed
         this.aMyFrame.addWindowListener(
@@ -170,44 +199,60 @@ public class UserInterface implements ActionListener
      */
     @Override public void actionPerformed( final ActionEvent pE ) 
     {
-        if (pE.getSource() == this.aBtnAudio) {
-            this.aBool =! this.aBool;
-            if(aBool == false) {
-                this.aBtnAudio.setText("stop audio");
-                this.aEngine.toggleAudio();
-            }else {
-                this.aBtnAudio.setText("play audio");
-                this.aEngine.toggleAudio();
-            }
-        } else if(pE.getSource() == this.aBtnQuit ){
-            this.aEngine.interpretCommand(this.aBtnQuit.getActionCommand());   
+    String vGo = "go";
+    if (pE.getSource() == this.aBtnAudio) {
+        this.aBool =! this.aBool;
+        if(aBool == false) {
+            this.aBtnAudio.setText("stop audio");
+            this.aEngine.toggleAudio();
+        }else {
+            this.aBtnAudio.setText("play audio");
+            this.aEngine.toggleAudio();
+        }
+    } else if(pE.getSource() == this.aBtnQuit ){
+        this.aEngine.interpretCommand(this.aBtnQuit.getActionCommand());   
         
-        } else if(pE.getSource() == this.aBtnHelp ){
-            this.aEngine.interpretCommand(this.aBtnHelp.getActionCommand()); 
+    } else if(pE.getSource() == this.aBtnHelp ){
+        this.aEngine.interpretCommand(this.aBtnHelp.getActionCommand()); 
         
-        }else if(pE.getSource() == this.aBtnEat ){
-            this.aEngine.interpretCommand(this.aBtnEat.getActionCommand());
+    }else if(pE.getSource() == this.aBtnEat ){
+        this.aEngine.interpretCommand(this.aBtnEat.getActionCommand());
         
-        }else if(pE.getSource() == this.aBtnLook ){
-            this.aEngine.interpretCommand(this.aBtnLook.getActionCommand());
+    }else if(pE.getSource() == this.aBtnLook ){
+        this.aEngine.interpretCommand(this.aBtnLook.getActionCommand());
         
-        }else 
+    }else if(pE.getSource() == this.aBtnNorth ){
+        this.aEngine.goRoom(new Command(vGo, "north"));
+            
+    }else if(pE.getSource() == this.aBtnSouth ){
+        this.aEngine.goRoom(new Command(vGo, "south"));
+    
+    }else if(pE.getSource() == this.aBtnEast ){
+        this.aEngine.goRoom(new Command(vGo, "east"));
+    
+    }else if(pE.getSource() == this.aBtnWest ){
+        this.aEngine.goRoom(new Command(vGo, "west"));
+    
+    } else 
         // no need to check the type of action at the moment
         // because there is only one possible action (text input)
-        this.processCommand(); // never suppress this line
-        } // actionPerformed(.)
+    this.processCommand(); // never suppress this line
+    } // actionPerformed(.)
 
     /**
      * A command has been entered in the entry field.  
      * Read the command and do whatever is necessary to process it.
      */
-    private void processCommand()
-    {
+    private void processCommand(){
         String vInput = this.aEntryField.getText();
         this.aEntryField.setText( "" );
 
         this.aEngine.interpretCommand( vInput );
     } // processCommand()
     
-    
+    public void closeFrame() {
+        if (this.aMyFrame != null) {
+            this.aMyFrame.dispose();
+        }
+    }
 } // UserInterface 
