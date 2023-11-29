@@ -245,7 +245,7 @@ public class UserInterface implements ActionListener
      */
     private void processCommand(){
         String vInput = this.aEntryField.getText();
-        this.aEntryField.setText( "" );
+        this.aEntryField.setText( "\n" );
 
         this.aEngine.interpretCommand( vInput );
     } // processCommand()
