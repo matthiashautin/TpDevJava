@@ -24,4 +24,5 @@ comment7.target=java.lang.String\ getEat()
 comment7.text=\r\n\ @return\ "You\ have\ eaten\ now\ and\ you\ are\ not\ hungry\ any\ more.\\n"\r\n\ @method\ getEat()\r\n
 comment8.params=
 comment8.target=java.lang.String\ getImageName()
+comment8.text=\r\n\ @return\ "You\ have\ eaten\ now\ and\ you\ are\ not\ hungry\ any\ more.\\n"\r\n\ @method\ getEat()\r\n
 numComments=9

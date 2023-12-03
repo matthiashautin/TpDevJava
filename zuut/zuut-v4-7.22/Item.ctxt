@@ -1,12 +1,15 @@
 #BlueJ class context
 comment0.target=Item
-comment0.text=\r\n\ D\u00E9crivez\ votre\ classe\ Item\ ici.\r\n\r\n\ @author\ (votre\ nom)\r\n\ @version\ (un\ num\u00E9ro\ de\ version\ ou\ une\ date)\r\n
+comment0.text=\r\n\ D\u00E9crivez\ votre\ classe\ Item\ ici.\r\n\r\n\ @author\ Matthias\ Hautin\ \ \r\n\ @version\ 25/11/23\r\n\ this\ class\ allows\ you\ to\ create\ an\ item\ from\ any\ room\u0000\r\n
 comment1.params=pNameItem\ pPoids\ pLongDescription
 comment1.target=Item(java.lang.String,\ int,\ java.lang.String)
 comment2.params=
 comment2.target=java.lang.String\ getNameItem()
+comment2.text=\r\n\ @return\ aNameItem\r\n\ @method\ getNameItem()\r\n
 comment3.params=
 comment3.target=int\ getPoids()
+comment3.text=\r\n\ @return\ aPoids\r\n\ @method\ getPoids()\r\n
 comment4.params=
 comment4.target=java.lang.String\ getLongDescrptionItem()
+comment4.text=\r\n\ @return\ aLongDescription\r\n\ @method\ getLongDescrptionItem()\r\n
 numComments=5

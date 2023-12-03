@@ -82,8 +82,12 @@ public class Room
         return "You have eaten now and you are not hungry anymore.\n";
     } //getEat()
     
+    /**
+     * @return "You have eaten now and you are not hungry any more.\n"
+     * @method getEat()
+     */
     public String getImageName() {
         return this.aImageName;
-    }
+    } //getImageName()
     
 } // Room

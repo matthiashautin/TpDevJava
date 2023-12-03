@@ -90,7 +90,10 @@ public class Room
         return "You have eaten now and you are not hungry anymore.\n";
     } //getEat()
     
-    //Image Audio
+    /**
+     * @return aImageName
+     * @method getImageName()
+     */
     public String getImageName() {
         return this.aImageName;
     } //getImageName()

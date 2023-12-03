@@ -209,7 +209,8 @@ public class GameEngine
     } //processCommand()
     
     /**
-     * give: the current room in which the user is located, the room description, its different exits
+     * give: the current room in which the user is located, the room description, its different exits 
+     * and displays the image of the current room
      * it was created to aviod code duplication between printWelcome() and goRoom()
      * @method procedure printLactionInfo()
      */

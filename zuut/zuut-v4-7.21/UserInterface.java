@@ -206,11 +206,11 @@ public class UserInterface implements ActionListener
         
         JPanel vMainPanel = new JPanel();      
         vMainPanel.setLayout( new BorderLayout()); // ==> only five places
-        vMainPanel.add( this.aImage, BorderLayout.NORTH );
-        vMainPanel.add( vListScroller, BorderLayout.CENTER );
-        vMainPanel.add( this.aEntryField, BorderLayout.SOUTH );
+        vMainPanel.add( this.aImage, BorderLayout.NORTH );//le placer au Nord
+        vMainPanel.add( vListScroller, BorderLayout.CENTER );//le placer au centre
+        vMainPanel.add( this.aEntryField, BorderLayout.SOUTH );//le placer au sud
         vMainPanel.add( vPaneCommand, BorderLayout.EAST);//le placer à l'est
-        vMainPanel.add( vPaneDirection, BorderLayout.WEST);//le placer à l'est
+        vMainPanel.add( vPaneDirection, BorderLayout.WEST);//le placer à l'ouest
         
         this.aMyFrame.getContentPane().add( vMainPanel, BorderLayout.CENTER );
 

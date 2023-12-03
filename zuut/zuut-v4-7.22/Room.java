@@ -72,10 +72,12 @@ public class Room
     } //getExitString 
     
     /**
-     * @return getDescription() and getExitString() to avoid calling its 2 getters in printLocationInfo()
+     * @return getDescription() and getExitString() and getItemString and getItemLongDescription to avoid calling its 4 getters in printLocationInfo()
      * print for example:
      * You are in main pilot room.
-     * Exits:  | down | 
+     *   Exits:  | down | 
+     *   Object : Talkie Walkie (Weight: 2 )
+     *   Item Talkie Walkie description : Le talkie Walkie vous permetra de toujours être connecté avec Lara ...
      * @method getLongDescription()
      */
     public String getLongDescription() {
@@ -90,14 +92,21 @@ public class Room
         return "You have eaten now and you are not hungry anymore.\n";
     } //getEat()
     
-    //Image Audio
+    /**
+     * @return aImageName
+     * @method getImageName()
+     */
     public String getImageName() {
         return this.aImageName;
-    }
+    } //getImageName()
     
+    /**
+     * @return aAudioName
+     * @method getAudioName()
+     */
     public String getAudioName() {
         return this.aAudioName;
-    }
+    } //getAudioName()
     
     public void playAudio() {
         try {
@@ -119,15 +128,19 @@ public class Room
         }
     }
     
-    //Item
+    /**
+     * define the items that are given to a room.
+     * @method setItem()
+     * @param pItem (string, int, string) of Item 
+     */
     public void setItem(Item pItem) {
         this.aItem = pItem;
-    }
+    } //setItem()
     
-    public Item getItem() {
-        return this.aItem;
-    }
-    
+    /**
+     * @return "Object : " + this.aItem.getNameItem()+ " (Weight: " + this.aItem.getPoids() + " )" if exist an Item 
+     * @method getItemString()
+     */
     public String getItemString() {
         if(this.aItem != null) {
             return "Object : " + this.aItem.getNameItem()+ " (Weight: " + this.aItem.getPoids() + " )";   
@@ -136,12 +149,17 @@ public class Room
         }
     } //getExitString 
 
+    
+    /**
+     * @return "Item " + this.aItem.getNameItem() + " description : "  + this.aItem.getLongDescrptionItem(); 
+     * @method getItemLongDescription()
+     */
     public String getItemLongDescription() {
         if(this.aItem != null) {
             return "Item " + this.aItem.getNameItem() + " description : "  + this.aItem.getLongDescrptionItem();   
         }else {
             return "";
         }
-    } //getExitString 
+    } //getItemLongDescription 
     
 } // Room
