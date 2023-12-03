@@ -115,8 +115,8 @@ public class UserInterface implements ActionListener
         this.aLog = new JTextArea();
         this.aLog.setEditable( false );
         JScrollPane vListScroller = new JScrollPane( this.aLog );
-        vListScroller.setPreferredSize( new Dimension(350, 350) );
-        vListScroller.setMinimumSize( new Dimension(100,100) );
+        vListScroller.setPreferredSize( new Dimension(450, 450) );
+        vListScroller.setMinimumSize( new Dimension(200,200) );
         
         //JButton
         this.aBtnAudio = new JButton("play audio");

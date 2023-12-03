@@ -17,7 +17,7 @@ public class Room
     private String aImageName;
     private String aAudioName;
     private Clip aAudioClip;
-    private Item aItem;
+    private HashMap<String, Item> aItems;
     
     /**
      * initialize all attribute
@@ -29,6 +29,7 @@ public class Room
         this.aExits = new HashMap<String, Room>();
         this.aImageName = pImage;
         this.aAudioName = pAudio;
+        this.aItems = new HashMap<String, Item>() ;
     } // Room()
     
     /**
@@ -128,38 +129,62 @@ public class Room
         }
     }
     
+    
+
+    //ITEMSsss
     /**
      * define the items that are given to a room.
      * @method setItem()
      * @param pItem (string, int, string) of Item 
      */
-    public void setItem(Item pItem) {
-        this.aItem = pItem;
+    public void setItem(final String pItemName, final Item pItem) {
+        this.aItems.put(pItemName, pItem);
     } //setItem()
+    
+    // Récupérer un objet de la pièce
+    public Item getItem(String pItemName) {
+        return this.aItems.get(pItemName);
+    }
+
+    // Autres méthodes pour obtenir des informations sur les objets dans la pièce
+    public String getAllItemNames() {
+        Set<String> vItemName = this.aItems.keySet();
+        return String.join(", ", vItemName);
+    }
     
     /**
      * @return "Object : " + this.aItem.getNameItem()+ " (Weight: " + this.aItem.getPoids() + " )" if exist an Item 
      * @method getItemString()
      */
     public String getItemString() {
-        if(this.aItem != null) {
-            return "Object : " + this.aItem.getNameItem()+ " (Weight: " + this.aItem.getPoids() + " )";   
-        }else {
-            return "No object in this room.";
+       if(this.aItems != null){
+        StringBuilder vItemsString = new StringBuilder("Objects: ");
+        for (Item vItem : this.aItems.values()) {
+            vItemsString.append(vItem.getNameItem()).append(" (Weight: ").append(vItem.getPoids()).append("), ");
         }
+        return vItemsString.substring(0, vItemsString.length() - 2); // Pour enlever la virgule finale
+    } else {
+        return "No objects in this room.";
+    }
+
     } //getExitString 
 
-    
     /**
      * @return "Item " + this.aItem.getNameItem() + " description : "  + this.aItem.getLongDescrptionItem(); 
      * @method getItemLongDescription()
      */
     public String getItemLongDescription() {
-        if(this.aItem != null) {
-            return "Item " + this.aItem.getNameItem() + " description : "  + this.aItem.getLongDescrptionItem();   
-        }else {
-            return "";
+        StringBuilder vItemsDescription = new StringBuilder("Item descriptions:\n");
+        if (this.aItems != null) {
+            for (Item vItem : this.aItems.values()) {
+                vItemsDescription.append(vItem.getNameItem()).append(": ").append(vItem.getLongDescrptionItem()).append("\n");
+            }
+        } else {
+            vItemsDescription.append("No objects in this room.");
         }
+    
+        return vItemsDescription.toString();
     } //getItemLongDescription 
+    
     
 } // Room
