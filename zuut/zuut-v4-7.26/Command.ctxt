@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.target=Command
+comment0.text=\r\n\ Classe\ Command\ -\ une\ commande\ du\ jeu\ d'aventure\ Zuul.\r\n\r\n\ @author\ votre\ nom\r\n
+comment1.params=pCommandWord\ pSecondWord
+comment1.target=Command(java.lang.String,\ java.lang.String)
+comment2.params=
+comment2.target=java.lang.String\ getCommandWord()
+comment3.params=
+comment3.target=java.lang.String\ getSecondWord()
+comment4.params=
+comment4.target=boolean\ hasSecondWord()
+comment5.params=
+comment5.target=boolean\ isUnknown()
+numComments=6

@@ -1,4 +1,4 @@
-import java.util.List;
+import java.util.Stack;
 import java.util.ArrayList;
 
 /**
@@ -13,7 +13,7 @@ public class GameEngine
     private Room            aCurrentRoom;
     private UserInterface   aGui;
     private Item            aItem;
-    private Room            aPreviousRoom;
+    private Stack<Room>     aPreviousRoom;
     
     //pour activer ou non l'audio
     private boolean aIsAudioEnabled;
@@ -23,6 +23,7 @@ public class GameEngine
         this.aParser = new Parser();
         this.createRooms();
         this.aIsAudioEnabled = false; //l'audio est désactiver par défaut
+        this.aPreviousRoom = new Stack<Room>();
     }
     
     public void setGUI( final UserInterface pUserInterface )
@@ -155,7 +156,7 @@ public class GameEngine
             this.aGui.println("There is no door !");
             return;
         } else {//si on change de room on donne la valeur de aCurrentRoom a notre nouvelle room
-            this.aPreviousRoom = this.aCurrentRoom; // mettre à jour la pièce précédente 
+            this.aPreviousRoom.push(this.aCurrentRoom); // mettre à jour la pièce précédente 
             this.aCurrentRoom = vNextRoom;
             printLocationInfo();
         }
@@ -300,8 +301,8 @@ public class GameEngine
         if(pSecondMot.hasSecondWord() == true ) {//si l'utilisateur tape un second mot apres "eat" (exemple: "eat fish")
             this.aGui.println("Just back.\n");
         
-        } else if (this.aPreviousRoom != null) {
-            this.aCurrentRoom = this.aPreviousRoom;
+        } else if (!this.aPreviousRoom.isEmpty()) {
+            this.aCurrentRoom = this.aPreviousRoom.pop();
             printLocationInfo();
         } else {
             this.aGui.println("You can't go back!");
