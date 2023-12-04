@@ -24,6 +24,7 @@ public class UserInterface implements ActionListener
     private JButton    aBtnHelp;
     private JButton    aBtnEat;
     private JButton    aBtnLook;
+    private JButton    aBtnBack;
     //Btn Basic Direction
     private JButton    aBtnNorth;
     private JButton    aBtnSouth;
@@ -134,6 +135,10 @@ public class UserInterface implements ActionListener
         this.aBtnLook = new JButton("look");
         this.aBtnLook.setPreferredSize(new Dimension(100,25));
         
+        this.aBtnBack = new JButton("back");
+        this.aBtnBack.setPreferredSize(new Dimension(100,25));
+        
+        
         this.aBtnNorth = new JButton("North");
         this.aBtnNorth.setPreferredSize(new Dimension(100,25));
         
@@ -185,6 +190,7 @@ public class UserInterface implements ActionListener
         vPaneCommand.add(this.aBtnHelp,BorderLayout.CENTER );
         vPaneCommand.add(this.aBtnEat,BorderLayout.CENTER );
         vPaneCommand.add(this.aBtnLook,BorderLayout.CENTER );
+        vPaneCommand.add(this.aBtnBack,BorderLayout.CENTER );
 
         JPanel vPaneDirection = new JPanel();
         vPaneDirection.setLayout(new GridLayout(3, 4) );
@@ -221,6 +227,7 @@ public class UserInterface implements ActionListener
         this.aBtnHelp.addActionListener( this );
         this.aBtnEat.addActionListener( this );
         this.aBtnLook.addActionListener( this );
+        this.aBtnBack.addActionListener(this );
         
         this.aBtnNorth.addActionListener( this );
         this.aBtnSouth.addActionListener( this );
@@ -276,7 +283,10 @@ public class UserInterface implements ActionListener
             
         }else if(pE.getSource() == this.aBtnLook ){
             this.aEngine.interpretCommand(this.aBtnLook.getActionCommand());
-                
+            
+        }else if(pE.getSource() == this.aBtnBack ){
+            this.aEngine.interpretCommand(this.aBtnBack.getActionCommand());
+            
         }else if(pE.getSource() == this.aBtnNorth ){
             this.aEngine.goRoom(new Command(vGo, "north"));
                 

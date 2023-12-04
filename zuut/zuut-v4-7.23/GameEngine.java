@@ -13,6 +13,7 @@ public class GameEngine
     private Room            aCurrentRoom;
     private UserInterface   aGui;
     private Item            aItem;
+    private Room            aPreviousRoom;
     
     //pour activer ou non l'audio
     private boolean aIsAudioEnabled;
@@ -154,6 +155,7 @@ public class GameEngine
             this.aGui.println("There is no door !");
             return;
         } else {//si on change de room on donne la valeur de aCurrentRoom a notre nouvelle room
+            this.aPreviousRoom = this.aCurrentRoom; // mettre à jour la pièce précédente 
             this.aCurrentRoom = vNextRoom;
             printLocationInfo();
         }
@@ -221,6 +223,8 @@ public class GameEngine
         else if(vCommandWord.equals("audio")) { //si la commande tpaée est "audio"
             this.toggleAudio();
              
+        }else if(vCommandWord.equals("back")) { //si la commande tpaée est "audio"
+            goback(vCommand);
         }
         else { //si print "Erreur du programmeur : commande non reconnue !"
            this.aGui.println("Erreur du programmeur : commande non reconnue !");
@@ -291,4 +295,18 @@ public class GameEngine
             } // Jouer le son lorsque l'audio est activé
         }
     } //toggleAudio()
+    
+    private void goback(final Command pSecondMot) {
+        if(pSecondMot.hasSecondWord() == true ) {//si l'utilisateur tape un second mot apres "eat" (exemple: "eat fish")
+            this.aGui.println("Just back.\n");
+        
+        } else if (this.aPreviousRoom != null) {
+            this.aCurrentRoom = this.aPreviousRoom;
+            printLocationInfo();
+        } else {
+            this.aGui.println("You can't go back!");
+        }
+            
+    }  //goback()
+    
 }
