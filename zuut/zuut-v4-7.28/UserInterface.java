@@ -261,7 +261,6 @@ public class UserInterface implements ActionListener
      */
     @Override public void actionPerformed( final ActionEvent pE ) 
     {
-        String vGo = "go";
         if (pE.getSource() == this.aBtnAudio) {
             this.aBool =! this.aBool;
             if(aBool == false) {
@@ -287,45 +286,42 @@ public class UserInterface implements ActionListener
             this.aEngine.interpretCommand(this.aBtnBack.getActionCommand());
             
         }else if(pE.getSource() == this.aBtnNorth ){
-            this.aEngine.goRoom(new Command(vGo, "north"));
+            this.aEngine.interpretCommand("go north");
                 
         }else if(pE.getSource() == this.aBtnSouth ){
-            this.aEngine.goRoom(new Command(vGo, "south"));
+            this.aEngine.interpretCommand("go south");
         
         }else if(pE.getSource() == this.aBtnEast ){
-            this.aEngine.goRoom(new Command(vGo, "east"));
+            this.aEngine.interpretCommand("go east");
         
         }else if(pE.getSource() == this.aBtnWest ){
-            this.aEngine.goRoom(new Command(vGo, "west"));
+            this.aEngine.interpretCommand("go west");
             
         }else if(pE.getSource() == this.aBtnUp ){
-            this.aEngine.goRoom(new Command(vGo, "up"));
+            this.aEngine.interpretCommand("go up");
         
         }else if(pE.getSource() == this.aBtnDown ){
-            this.aEngine.goRoom(new Command(vGo, "down"));
+            this.aEngine.interpretCommand("go down");
             
         }else if(pE.getSource() == this.aBtnDownWest ){
-            this.aEngine.goRoom(new Command(vGo, "downwest"));
+            this.aEngine.interpretCommand("go downwest");
             
         }else if(pE.getSource() == this.aBtnDownEast ){
-            this.aEngine.goRoom(new Command(vGo, "downeast"));
+            this.aEngine.interpretCommand("go downeast");
             
         }else if(pE.getSource() == this.aBtnUpNorth ){
-            this.aEngine.goRoom(new Command(vGo, "upnorth"));
+            this.aEngine.interpretCommand("go upnorth");
             
         }else if(pE.getSource() == this.aBtnUpEast ){
-            this.aEngine.goRoom(new Command(vGo, "upeast"));
+            this.aEngine.interpretCommand("go upeast");
             
         }else if(pE.getSource() == this.aBtnUpWest ){
-            this.aEngine.goRoom(new Command(vGo, "upwest"));
+            this.aEngine.interpretCommand("go upwest");
             
         }else if(pE.getSource() == this.aBtnDownSouth ){
-            this.aEngine.goRoom(new Command(vGo, "downsouth"));
+            this.aEngine.interpretCommand("go downsouth");
         
-        }
-            else 
-            // no need to check the type of action at the moment
-            // because there is only one possible action (text input)
+        }else 
         this.processCommand(); // never suppress this line
     } // actionPerformed(.)
 
@@ -345,6 +341,5 @@ public class UserInterface implements ActionListener
             this.aMyFrame.dispose();
         }
     } //closeFrame()
-    
     
 } // UserInterface 

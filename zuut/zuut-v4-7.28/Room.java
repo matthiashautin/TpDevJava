@@ -138,12 +138,12 @@ public class Room
      */
     public String getItemString() {
        if(!this.aItems.isEmpty()){
-       StringBuilder vItemsString = new StringBuilder("Objects: ");
-            for (Item vItem : this.aItems.values()) {
+           StringBuilder vItemsString = new StringBuilder("Objects: ");
+                for (Item vItem : this.aItems.values()) {
                 vItemsString.append(vItem.getNameItem()).append(" (Weight: ").append(vItem.getPoids()).append("), ");
-            }
-            return vItemsString.substring(0, vItemsString.length() - 2); // Pour enlever la virgule finale
-       } else {
+                }
+                return vItemsString.substring(0, vItemsString.length() - 2); // Pour enlever la virgule finale
+           } else {
            return "No objects in this room.";
        }
     } //getItemString()
@@ -158,7 +158,7 @@ public class Room
                 vItemsDescription.append(vItem.getNameItem()).append(": ").append(vItem.getLongDescrptionItem()).append("\n");
             }
         } else {
-            vItemsDescription.append("No objects in this room.\n");
+            return "";
         }
         return vItemsDescription.toString();
     } //getItemLongDescription 

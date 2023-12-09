@@ -1,5 +1,7 @@
 import java.util.Stack;
+import java.util.Scanner;
 import java.util.ArrayList;
+import java.io.File;
 
 /**
  * Allows create all rooms and command management 
@@ -212,14 +214,17 @@ public class GameEngine
         else if(vCommandWord.equals("look")) { //si la commande tapée est "look"
             look(vCommand);
         }
-        else if(vCommandWord.equals("eat")) { //si la commande tpaée est "eat"
+        else if(vCommandWord.equals("eat")) { //si la commande tapée est "eat"
             eat(vCommand);
         }
-        else if(vCommandWord.equals("audio")) { //si la commande tpaée est "audio"
+        else if(vCommandWord.equals("audio")) { //si la commande tapée est "audio"
             this.toggleAudio();
              
-        }else if(vCommandWord.equals("back")) { //si la commande tpaée est "audio"
+        }else if(vCommandWord.equals("back")) { //si la commande tapée est "audio"
             goback(vCommand);
+            
+        }else if (vCommandWord.equals("test")) { //si la commande tepée est "test"
+            test(vCommand);
         }
         else { //si print "Erreur du programmeur : commande non reconnue !"
            this.aGui.println("Erreur du programmeur : commande non reconnue !");
@@ -307,12 +312,29 @@ public class GameEngine
             this.aGui.println("You can't go back!");
         }
     }  //goback()
-    
+
     /**
-     * 
-     */
-    private void test(final Command pSecondMot) {
-        
-    } //test()
+     * test permet de tester automatiquement le jeu.
+     * @param pCommand est une commande taper par le joueur.
+    */
+    private void test(final Command pFileName){
+        if (!pFileName.hasSecondWord()){
+          this.aGui.println( "tester quoi? (court, tour, )");
+          return;
+        }
+
+        try {
+          File vTest = new File("./Commands/"+pFileName.getSecondWord()+".txt");
+          Scanner vScanner = new Scanner(vTest);
+          
+          while(vScanner.hasNextLine()){
+              interpretCommand(vScanner.nextLine());
+          }
+          vScanner.close();
+        }
+        catch(final java.io.FileNotFoundException pE){
+          this.aGui.println("il n'y a pas le fichier demandé.");
+        }
+    }   //test()
     
 } //GameEngine
