@@ -319,7 +319,7 @@ public class GameEngine
     */
     private void test(final Command pFileName){
         if (!pFileName.hasSecondWord()){
-          this.aGui.println( "tester quoi? (court, tour, )");
+          this.aGui.println( "tester quoi? (court, exploration, ideal)");
           return;
         }
 
