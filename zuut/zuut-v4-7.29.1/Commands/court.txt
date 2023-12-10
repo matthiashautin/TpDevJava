@@ -1,0 +1,10 @@
+go down
+look
+help
+go south
+eat
+look
+back
+eat meat
+go north 
+go up

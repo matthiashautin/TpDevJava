@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.target=Player
+comment0.text=\r\n\ D\u00E9crivez\ votre\ classe\ Player\ ici.\r\n\r\n\ @author\ (votre\ nom)\r\n\ @version\ (un\ num\u00E9ro\ de\ version\ ou\ une\ date)\r\n
+comment1.params=pNamePlayer\ pCurrentRoom\ pPoidsMax\ pVie
+comment1.target=Player(java.lang.String,\ Room,\ int,\ int)
+comment2.params=
+comment2.target=java.lang.String\ getNamePlayer()
+comment3.params=
+comment3.target=Room\ getCurrentRoom()
+comment4.params=
+comment4.target=int\ getPoidsMax()
+comment5.params=
+comment5.target=int\ getVie()
+comment6.params=pCurrentRoom
+comment6.target=void\ setCurrentRoom(Room)
+numComments=7
