@@ -335,7 +335,7 @@ public class GameEngine
           }
           vScanner.close();
         }
-        catch(final java.io.FileNotFoundException pE){
+        catch(final java.io.FileNotFoundException pE){ 
           this.aGui.println("il n'y a pas le fichier demandé.");
         }
     }   //test()
