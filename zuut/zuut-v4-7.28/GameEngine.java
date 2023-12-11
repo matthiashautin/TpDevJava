@@ -314,25 +314,25 @@ public class GameEngine
     }  //goback()
 
     /**
-     * test permet de tester automatiquement le jeu.
-     * @param pCommand est une commande taper par le joueur.
+     * test allows you to automatically test the game
+     * @param pCommand is a command typed by the player
     */
     private void test(final Command pFileName){
         if (!pFileName.hasSecondWord()){
-          this.aGui.println( "tester quoi? (court, exploration, ideal)");
-          return;
+          this.aGui.println( "tester quoi? (court, exploration, ideal)"); //si le joueur tape seulement test
+          return; //sortir directement de la fonction
         }
 
-        try {
-          File vTest = new File("./Commands/"+pFileName.getSecondWord()+".txt");
-          Scanner vScanner = new Scanner(vTest);
+        try { //faire toutes les commandes même si erreur
+          File vTest = new File("./Commands/"+pFileName.getSecondWord()+".txt"); //récupération du fichier pour le test
+          Scanner vScanner = new Scanner(vTest); //scanner le fichier
           
-          while(vScanner.hasNextLine()){
-              interpretCommand(vScanner.nextLine());
+          while(vScanner.hasNextLine()){ //tant qu'on détecte une ligne passer à la suivante
+              interpretCommand(vScanner.nextLine()); //appele de interpretCommand()
           }
           vScanner.close();
         }
-        catch(final java.io.FileNotFoundException pE){
+        catch(final java.io.FileNotFoundException pE){ //si le fichier demandé n'existe pas 
           this.aGui.println("il n'y a pas le fichier demandé.");
         }
     }   //test()

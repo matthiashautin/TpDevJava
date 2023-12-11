@@ -1,18 +1,24 @@
 #BlueJ class context
 comment0.target=Player
-comment0.text=\r\n\ D\u00E9crivez\ votre\ classe\ Player\ ici.\r\n\r\n\ @author\ (votre\ nom)\r\n\ @version\ (un\ num\u00E9ro\ de\ version\ ou\ une\ date)\r\n
+comment0.text=\r\n\ player\ permet\ la\ cr\u00E9ation\ de\ nouveaux\ joueur\ et\ aussi\ d'ennemi\r\n\r\n\ @author\ Matthias\ Hautin\r\n\ @version\ 11/12/2023\r\n
 comment1.params=pNamePlayer\ pCurrentRoom\ pPoidsMax\ pVie
 comment1.target=Player(java.lang.String,\ Room,\ int,\ int)
 comment2.params=
 comment2.target=java.lang.String\ getNamePlayer()
+comment2.text=\ getter\r\n\ \ return\ this.aNamePlayer\r\n
 comment3.params=
 comment3.target=Room\ getCurrentRoom()
+comment3.text=\ getter\r\n\ \ return\ this.aCurrentRoom\r\n
 comment4.params=
 comment4.target=int\ getPoidsMax()
+comment4.text=\ getter\r\n\ \ return\ this.aPoidsMax\r\n
 comment5.params=
 comment5.target=int\ getVie()
+comment5.text=\ getter\r\n\ \ return\ this.aVie\r\n
 comment6.params=
 comment6.target=java.util.Stack\ getPreviousRoom()
+comment6.text=\ getter\r\n\ \ return\ this.aPreviousRoom\r\n
 comment7.params=pCurrentRoom
 comment7.target=void\ setCurrentRoom(Room)
+comment7.text=\ setter\r\n\ \ @param\ pCurrentRoom\ \r\n
 numComments=8
