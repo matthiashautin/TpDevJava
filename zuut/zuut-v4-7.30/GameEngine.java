@@ -42,10 +42,10 @@ public class GameEngine
         
         //Main :
         vMainPilot = new Room("in main pilot room", vLienImages + "mainpilot.jpg" , vLienAudios + "mainpilot.wav");
-        Item vTW = new Item("Talkie Walkie", 2, "Le talkie Walkie vous permetra de toujours être connecté avec Lara pour vous indiquer les étapes du jeu. Ces donc un outil important même obligatoire dans le jeu.");
-        Item vTest = new Item("Test", 2, "un item en plus"); 
+        Item vTW = new Item("Talkie-Walkie", 2, "Le talkie Walkie vous permetra de toujours être connecté avec Lara pour vous indiquer les étapes du jeu. Ces donc un outil important même obligatoire dans le jeu.");
+        Item vTest = new Item("Test", 15, "un item en plus"); 
         vMainPilot.setItems("Test", vTest);
-        vMainPilot.setItems("Talkie Walkie", vTW);
+        vMainPilot.setItems("Talkie-Walkie", vTW);
         
         vMainWing = new Room("in main wing room", vLienImages + "mainwing.jpg" , vLienAudios + "mainwing.wav");
         vMainEngine = new Room("in main engine room", vLienImages + "mainengine.jpg" ,vLienAudios + "mainengine.wav");
@@ -228,6 +228,12 @@ public class GameEngine
             
         }else if (vCommandWord.equals("test")) { //si la commande tepée est "test"
             test(vCommand);
+            
+        }else if (vCommandWord.equals("take")) { //si la commande tepée est "test"
+            takeItem(vCommand);
+            
+        }else if (vCommandWord.equals("drop")) { //si la commande tepée est "test"
+            dropItem(vCommand);
         }
         else { //si print "Erreur du programmeur : commande non reconnue !"
            this.aGui.println("Erreur du programmeur : commande non reconnue !");
@@ -339,5 +345,39 @@ public class GameEngine
           this.aGui.println("il n'y a pas le fichier demandé.");
         }
     }   //test()
+    
+    private void takeItem(final Command pCommand) {
+        if (pCommand.hasSecondWord()) {
+            String vItemName = pCommand.getSecondWord();
+            boolean vSuccessTake = this.aPlayer.take(vItemName);
+    
+            if (vSuccessTake) {
+                this.aGui.println("You took the " + vItemName + ".");
+                this.aGui.println("Your Maximum possible weight now is " + this.aPlayer.getPoidsMax() + ".");
+            } else {
+                this.aGui.println("Unable to take the " + vItemName + ".");
+            }
+            
+        } else {
+            this.aGui.println("Take what?");
+        }
+    } //takeItem
+    
+    private void dropItem(final Command pCommand) {
+        if (pCommand.hasSecondWord()) {
+            String vItemName = pCommand.getSecondWord();
+            boolean vSuccessDrop = this.aPlayer.drop(vItemName);
+            
+            if (vSuccessDrop) {
+                this.aGui.println("You drop the " + vItemName + ".");
+                this.aGui.println("Your Maximum possible weight now is " + this.aPlayer.getPoidsMax() + ".");
+            }else {
+                this.aGui.println("Unable to drop the " + vItemName + ".");
+            }
+            
+        }else {
+            this.aGui.println("Drop What?");    
+        }
+    } //dropItem
     
 } //GameEngine

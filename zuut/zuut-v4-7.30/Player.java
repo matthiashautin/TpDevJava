@@ -60,13 +60,56 @@ public class Player
    /** setter
     *  @param pCurrentRoom 
     */
-    public void setCurrentRoom(final Room pCurrentRoom) {
+   public void setCurrentRoom(final Room pCurrentRoom) {
        this.aCurrentRoom = pCurrentRoom;
    } //setCurrentRoom() 
    
    /**
-    *  take Item
-    */
-   //public Item 
+     * Prendre un objet de la pièce actuelle et l'ajouter à l'inventaire du joueur.
+     * @param itemName Nom de l'objet à prendre.
+     * @return true si l'objet a été pris avec succès, false sinon.
+     */
+   public boolean take(final String pItemName) {
+       Item vItem = this.aCurrentRoom.removeItem(pItemName);
+
+       if (vItem != null) {
+           if (getTotalWeight() + vItem.getPoids() <= getPoidsMax()) {
+                aItem = vItem;
+                this.aPoidsMax = this.aPoidsMax - this.aItem.getPoids();
+                return true;
+           } else {
+                // L'objet est trop lourd pour être porté.
+                this.aCurrentRoom.setItems(pItemName, vItem); // Remettre l'objet dans la pièce.
+           }
+       }
+       return false; // L'objet n'a pas été trouvé dans la pièce.
+   }
+    
+   /**
+     * Poser un objet de l'inventaire du joueur dans la pièce actuelle.
+     * @return true si l'objet a été posé avec succès, false sinon.
+     */
+   public boolean drop(String pItemName) {
+       if (this.aItem != null && this.aItem.getNameItem().equalsIgnoreCase(pItemName)) {
+           this.aCurrentRoom.setItems(pItemName, this.aItem);
+           this.aPoidsMax = this.aPoidsMax + this.aItem.getPoids();
+           aItem = null;
+           return true;
+       }
+
+       return false; // L'objet n'a pas été trouvé dans l'inventaire du joueur.
+   }
    
+   /**
+     * Calculer le poids total des objets dans l'inventaire du joueur.
+     * @return Poids total des objets dans l'inventaire.
+     */
+   private int getTotalWeight() {
+       if (aItem != null) {
+           return aItem.getPoids();
+       } else {
+           return 0;
+       }
+   }
+    
 }

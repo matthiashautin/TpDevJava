@@ -163,4 +163,13 @@ public class Room
         return vItemsDescription.toString();
     } //getItemLongDescription 
     
+     /**
+     * Supprimer un objet de la pièce en fonction de son nom.
+     * @param itemName Nom de l'objet à supprimer.
+     * @return L'objet supprimé, ou null si l'objet n'est pas trouvé.
+     */
+    public Item removeItem(String itemName) {
+        return aItems.remove(itemName);
+    }
+    
 } // Room
