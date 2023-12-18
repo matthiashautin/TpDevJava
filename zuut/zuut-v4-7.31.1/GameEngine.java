@@ -45,8 +45,8 @@ public class GameEngine
         vMainPilot = new Room("in main pilot room", vLienImages + "mainpilot.jpg" , vLienAudios + "mainpilot.wav");
         Item vTW = new Item("Talkie-Walkie", 2, "Le talkie Walkie vous permetra de toujours être connecté avec Lara pour vous indiquer les étapes du jeu. Ces donc un outil important même obligatoire dans le jeu.");
         Item vTest = new Item("Test", 15, "un item en plus"); 
-        vMainPilot.setItems("Test", vTest);
-        vMainPilot.setItems("Talkie-Walkie", vTW);
+        vMainPilot.setItems(vTest);
+        vMainPilot.setItems(vTW);
         
         vMainWing = new Room("in main wing room", vLienImages + "mainwing.jpg" , vLienAudios + "mainwing.wav");
         vMainEngine = new Room("in main engine room", vLienImages + "mainengine.jpg" ,vLienAudios + "mainengine.wav");
@@ -231,10 +231,10 @@ public class GameEngine
             test(vCommand);
             
         }else if (vCommandWord.equals("take")) { //si la commande tepée est "test"
-            takeItem(vCommand);
+            take(vCommand);
             
         }else if (vCommandWord.equals("drop")) { //si la commande tepée est "test"
-            dropItem(vCommand);
+            drop(vCommand);
             
         }else if (vCommandWord.equals("infoplayer")) {
             printPlayer();
@@ -350,40 +350,47 @@ public class GameEngine
         }
     }   //test()
     
-    private void takeItem(final Command pCommand) {
-        if (pCommand.hasSecondWord()) {
+    private void take(final Command pCommand) {
+        if (!pCommand.hasSecondWord()) {
+            this.aGui.println("Take what?");
+            return;
+        }else {
             String vItemName = pCommand.getSecondWord();
-            boolean vSuccessTake = this.aPlayer.take(vItemName);
+            Item vItem = this.aPlayer.getCurrentRoom().getItem(vItemName);
     
-            if (vSuccessTake) {
+            if (vItem != null) {
+                this.aPlayer.takeItem(vItemName, vItem);
+                this.aPlayer.getCurrentRoom().dropItem(vItemName);
                 this.aGui.println("You took the " + vItemName + ".");
                 this.aGui.println("Your Maximum possible weight now is " + this.aPlayer.getPoidsMax() + ".\n");
             } else {
                 this.aGui.println("Unable to take the " + vItemName + ".\n");
             }
             
-        } else {
-            this.aGui.println("Take what?");
         }
+    
     } //takeItem
     
-    private void dropItem(final Command pCommand) {
-        if (pCommand.hasSecondWord()) {
+    private void drop(final Command pCommand) {
+        if (!pCommand.hasSecondWord()) {
+            this.aGui.println("Drop what?");
+            return;
+        } else {
             String vItemName = pCommand.getSecondWord();
-            boolean vSuccessDrop = this.aPlayer.drop(vItemName);
-            
-            if (vSuccessDrop) {
-                this.aGui.println("You drop the " + vItemName + ".");
-                this.aGui.println("Your Maximum possible weight now is " + this.aPlayer.getPoidsMax() + ".\n");
-            }else {
-                this.aGui.println("Unable to drop the " + vItemName + ".\n");
-            }
-            
-        }else {
-            this.aGui.println("Drop What?");    
-        }
-    } //dropItem
+            Item vItem = this.aPlayer.getItem(vItemName);
     
+            if (vItem != null) {
+                this.aPlayer.getCurrentRoom().takeItem(vItemName, vItem);
+                this.aPlayer.dropItem(vItemName);
+                this.aGui.println("You dropped the " + vItemName + ".");
+                this.aGui.println("Your Maximum possible weight now is " + this.aPlayer.getPoidsMax() + ".\n");
+            } else {
+                this.aGui.println("Error: The " + vItemName + " is not in your inventory.\n");
+            }
+        }
+        
+    }
+
     private void printPlayer() {
         this.aGui.println("Your name : " + this.aPlayer.getNamePlayer());
         this.aGui.println("Your life : " + this.aPlayer.getVie());
