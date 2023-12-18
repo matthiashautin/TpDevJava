@@ -1,0 +1,13 @@
+go down
+go east
+go east
+go west
+go west
+go west
+go west
+go south
+go downsouth
+go east
+go upeast
+go downeast
+go east
