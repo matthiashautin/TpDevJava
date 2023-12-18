@@ -134,7 +134,6 @@ public class GameEngine
         vCorridorHiddenLeft.setExits("downsouth", vLeftEngine);
 
         this.aPlayer = new Player("Mike", vMainPilot, 20, 100);//creation du premier joueur
-        
     } // createRooms()
 
     /**
@@ -183,7 +182,6 @@ public class GameEngine
         this.aGui.println("You are lost. You are alone.\nYou wander around at the ship. \n");
         this.aGui.println("Your command words are: | " + this.aParser.getShowCommands());
     } //printHelp()
-    
     
     /**
      * analyse entered command and determines what action must be taken based on this commad and manages the different actions
@@ -338,7 +336,5 @@ public class GameEngine
           this.aGui.println("il n'y a pas le fichier demandé.");
         }
     }   //test()
-    
-    
     
 } //GameEngine

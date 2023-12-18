@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.target=ItemList
+comment0.text=\r\n\ D\u00E9crivez\ votre\ classe\ ItemList\ ici.\r\n\r\n\ @author\ (votre\ nom)\r\n\ @version\ (un\ num\u00E9ro\ de\ version\ ou\ une\ date)\r\n
+comment1.params=
+comment1.target=ItemList()
+comment2.params=pItemName\ pItem
+comment2.target=void\ setItemsList(java.lang.String,\ Item)
+numComments=3

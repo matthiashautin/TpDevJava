@@ -2,6 +2,7 @@ import java.util.Stack;
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.io.File;
+import java.util.List;
 
 /**
  * Allows create all rooms and command management 
@@ -386,7 +387,7 @@ public class GameEngine
     private void printPlayer() {
         this.aGui.println("Your name : " + this.aPlayer.getNamePlayer());
         this.aGui.println("Your life : " + this.aPlayer.getVie());
-        this.aGui.println("Your maximum possible weight now : " + this.aPlayer.getPoidsMax() + "\n");
+        this.aGui.println("Your maximum possible weight now : " + this.aPlayer.getPoidsMax());
     } //printPlayer
     
 } //GameEngine

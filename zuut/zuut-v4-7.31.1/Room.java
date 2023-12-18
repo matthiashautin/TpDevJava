@@ -19,7 +19,7 @@ public class Room
     private String aImageName;
     private String aAudioName;
     private Clip aAudioClip;
-    private HashMap<String, Item> aItems;
+    private ItemList aItemsList;
     
     /**
      * initialize all attribute
@@ -32,7 +32,7 @@ public class Room
         this.aExits = new HashMap<String, Room>();
         this.aImageName = pImage;
         this.aAudioName = pAudio;
-        this.aItems = new HashMap<String, Item>() ;
+        this.aItemsList = new ItemList();
     } // Room()
     
     /**
@@ -130,16 +130,16 @@ public class Room
      * @param pItemName (Item)
      */
     public void setItems(final String pItemName, final Item pItem) {
-        this.aItems.put(pItemName, pItem);
+        this.aItemsList.setItemsList(pItemName, pItem);
     } //setItem()
 
     /**
      * @return "Object : " + this.aItem.getNameItem()+ " (Weight: " + this.aItem.getPoids() + " )" if exist an Item 
      */
     public String getItemString() {
-       if(!this.aItems.isEmpty()){
+       if(!this.aItemsList.isEmpty()){
            StringBuilder vItemsString = new StringBuilder("Items: ");
-                for (Item vItem : this.aItems.values()) {
+                for (Item vItem : this.aItemsList.values()) {
                 vItemsString.append(vItem.getNameItem()).append(" (Weight: ").append(vItem.getPoids()).append("), ");
                 }
                 return vItemsString.substring(0, vItemsString.length() - 2); // Pour enlever la virgule finale
@@ -153,8 +153,8 @@ public class Room
      */
     public String getItemLongDescription() {
         StringBuilder vItemsDescription = new StringBuilder("Item descriptions:\n");
-        if (!this.aItems.isEmpty()) {
-            for (Item vItem : this.aItems.values()) {
+        if (!this.aItemsList.isEmpty()) {
+            for (Item vItem : this.aItemsList.values()) {
                 vItemsDescription.append(vItem.getNameItem()).append(": ").append(vItem.getLongDescrptionItem()).append("\n");
             }
         } else {
@@ -168,8 +168,8 @@ public class Room
      * @param itemName Nom de l'objet à supprimer.
      * @return L'objet supprimé, ou null si l'objet n'est pas trouvé.
      */
-    public Item removeItem(String itemName) {
-        return aItems.remove(itemName);
+    public Item removeItem(final String pItemName) {
+        return this.aItemsList.remove(pItemName);
     }
     
 } // Room

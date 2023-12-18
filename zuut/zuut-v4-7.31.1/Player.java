@@ -68,8 +68,6 @@ public class Player
        this.aCurrentRoom = pCurrentRoom;
    } //setCurrentRoom() 
    
-   
-   
    public List<Item> getInventoryItems() {
        return this.aInventoryItems;
    } //getInventoryItems()
