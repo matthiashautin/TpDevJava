@@ -39,9 +39,9 @@ public class UserInterface implements ActionListener
     private JButton    aBtnUpEast;
     private JButton    aBtnUpWest;
     private JButton    aBtnDownSouth;
-    
+
     private boolean    aBool;
-    
+
     /**
      * Construct a UserInterface. As a parameter, a Game Engine
      * (an object processing and executing the game commands) is
@@ -103,7 +103,7 @@ public class UserInterface implements ActionListener
             this.aEntryField.removeActionListener( this ); // won't react to entry
         }
     } // enable(.)
-    
+
     /**
      * Set up graphical user interface.
      */
@@ -117,30 +117,29 @@ public class UserInterface implements ActionListener
         JScrollPane vListScroller = new JScrollPane( this.aLog );
         vListScroller.setPreferredSize( new Dimension(450, 450) );
         vListScroller.setMinimumSize( new Dimension(200,200) );
-        
+
         //JButton
         this.aBtnAudio = new JButton("play audio");
         this.aBtnAudio.setPreferredSize(new Dimension(100,25));
-        
+
         this.aBtnQuit = new JButton("quit");
         this.aBtnQuit.setPreferredSize(new Dimension(100,25));
-    
+
         this.aBtnHelp = new JButton("help");
         this.aBtnHelp.setPreferredSize(new Dimension(100,25));
-        
+
         this.aBtnEat = new JButton("eat");
         this.aBtnEat.setPreferredSize(new Dimension(100,25));
-        
+
         this.aBtnLook = new JButton("look");
         this.aBtnLook.setPreferredSize(new Dimension(100,25));
-        
+
         this.aBtnBack = new JButton("back");
         this.aBtnBack.setPreferredSize(new Dimension(100,25));
-        
-        
+
         this.aBtnNorth = new JButton("North");
         this.aBtnNorth.setPreferredSize(new Dimension(100,25));
-        
+
         this.aBtnSouth = new JButton("South");
         this.aBtnSouth.setPreferredSize(new Dimension(100,25));
 
@@ -149,39 +148,37 @@ public class UserInterface implements ActionListener
 
         this.aBtnWest = new JButton("West");
         this.aBtnWest.setPreferredSize(new Dimension(100,25));
-        
-        
+
         this.aBtnUp = new JButton("Up");
         this.aBtnUp.setPreferredSize(new Dimension(100,25));
-        
+
         this.aBtnDown = new JButton("Down");
         this.aBtnDown.setPreferredSize(new Dimension(100,25));
-        
+
         this.aBtnDownWest = new JButton("DownWest");
         this.aBtnDownWest.setPreferredSize(new Dimension(100,25));
-        
+
         this.aBtnDownEast = new JButton("DownEast");
         this.aBtnDownEast.setPreferredSize(new Dimension(100,25));
-        
+
         this.aBtnUpNorth = new JButton("UpNorth");
         this.aBtnUpNorth.setPreferredSize(new Dimension(100,25));
-        
+
         this.aBtnUpEast = new JButton("UpEast");
         this.aBtnUpEast.setPreferredSize(new Dimension(100,25));
-        
+
         this.aBtnUpWest = new JButton("UpWest");
         this.aBtnUpWest.setPreferredSize(new Dimension(100,25));
-        
+
         this.aBtnDownSouth = new JButton("DownSouth");
         this.aBtnDownSouth.setPreferredSize(new Dimension(100,25));
-        
-        
+
         //JLabel
         this.aImage = new JLabel();
 
         //temporraire je change la size de l'emplacement de l'image 
         //this.aImage.setPreferredSize(new Dimension(500, 400));
-        
+
         JPanel vPaneCommand = new JPanel();   
         vPaneCommand.setLayout(new GridLayout(3, 2) );
         vPaneCommand.add(this.aBtnAudio, BorderLayout.CENTER );
@@ -197,7 +194,7 @@ public class UserInterface implements ActionListener
         vPaneDirection.add(this.aBtnSouth,BorderLayout.SOUTH );
         vPaneDirection.add(this.aBtnEast,BorderLayout.EAST );
         vPaneDirection.add(this.aBtnWest,BorderLayout.WEST );
-        
+
         vPaneDirection.add(this.aBtnUp,BorderLayout.NORTH );
         vPaneDirection.add(this.aBtnDown,BorderLayout.SOUTH );
         vPaneDirection.add(this.aBtnDownWest,BorderLayout.WEST );
@@ -206,8 +203,7 @@ public class UserInterface implements ActionListener
         vPaneDirection.add(this.aBtnUpEast,BorderLayout.EAST );
         vPaneDirection.add(this.aBtnUpWest,BorderLayout.WEST );
         vPaneDirection.add(this.aBtnDownSouth,BorderLayout.SOUTH );
-        
-        
+
         JPanel vMainPanel = new JPanel();      
         vMainPanel.setLayout( new BorderLayout()); // ==> only five places
         vMainPanel.add( this.aImage, BorderLayout.NORTH );
@@ -215,24 +211,24 @@ public class UserInterface implements ActionListener
         vMainPanel.add( this.aEntryField, BorderLayout.SOUTH );
         vMainPanel.add( vPaneCommand, BorderLayout.EAST);//le placer à l'est
         vMainPanel.add( vPaneDirection, BorderLayout.WEST);//le placer à l'est
-        
+
         this.aMyFrame.getContentPane().add( vMainPanel, BorderLayout.CENTER );
 
         // add some event listeners to some components
         this.aEntryField.addActionListener( this );
-        
+
         this.aBtnAudio.addActionListener( this );
         this.aBtnQuit.addActionListener( this );
         this.aBtnHelp.addActionListener( this );
         this.aBtnEat.addActionListener( this );
         this.aBtnLook.addActionListener( this );
         this.aBtnBack.addActionListener(this );
-        
+
         this.aBtnNorth.addActionListener( this );
         this.aBtnSouth.addActionListener( this );
         this.aBtnEast.addActionListener( this );
         this.aBtnWest.addActionListener( this );
-        
+
         this.aBtnUp.addActionListener( this );
         this.aBtnDown.addActionListener( this );
         this.aBtnDownWest.addActionListener( this );
@@ -241,7 +237,7 @@ public class UserInterface implements ActionListener
         this.aBtnUpEast.addActionListener( this );
         this.aBtnUpWest.addActionListener( this );
         this.aBtnDownSouth.addActionListener( this );
-        
+
         // to end program when window is closed
         this.aMyFrame.addWindowListener(
             new WindowAdapter() { // anonymous class
@@ -249,8 +245,8 @@ public class UserInterface implements ActionListener
                 {
                     System.exit(0);
                 }
-        } );
-     
+            } );
+
         this.aMyFrame.pack();
         this.aMyFrame.setVisible( true );
         this.aEntryField.requestFocus();
@@ -272,57 +268,57 @@ public class UserInterface implements ActionListener
             }
         } else if(pE.getSource() == this.aBtnQuit ){
             this.aEngine.interpretCommand(this.aBtnQuit.getActionCommand());   
-            
+
         } else if(pE.getSource() == this.aBtnHelp ){
             this.aEngine.interpretCommand(this.aBtnHelp.getActionCommand()); 
-            
+
         }else if(pE.getSource() == this.aBtnEat ){
             this.aEngine.interpretCommand(this.aBtnEat.getActionCommand());
-            
+
         }else if(pE.getSource() == this.aBtnLook ){
             this.aEngine.interpretCommand(this.aBtnLook.getActionCommand());
-            
+
         }else if(pE.getSource() == this.aBtnBack ){
             this.aEngine.interpretCommand(this.aBtnBack.getActionCommand());
-            
+
         }else if(pE.getSource() == this.aBtnNorth ){
             this.aEngine.interpretCommand("go north");
-                
+
         }else if(pE.getSource() == this.aBtnSouth ){
             this.aEngine.interpretCommand("go south");
-        
+
         }else if(pE.getSource() == this.aBtnEast ){
             this.aEngine.interpretCommand("go east");
-        
+
         }else if(pE.getSource() == this.aBtnWest ){
             this.aEngine.interpretCommand("go west");
-            
+
         }else if(pE.getSource() == this.aBtnUp ){
             this.aEngine.interpretCommand("go up");
-        
+
         }else if(pE.getSource() == this.aBtnDown ){
             this.aEngine.interpretCommand("go down");
-            
+
         }else if(pE.getSource() == this.aBtnDownWest ){
             this.aEngine.interpretCommand("go downwest");
-            
+
         }else if(pE.getSource() == this.aBtnDownEast ){
             this.aEngine.interpretCommand("go downeast");
-            
+
         }else if(pE.getSource() == this.aBtnUpNorth ){
             this.aEngine.interpretCommand("go upnorth");
-            
+
         }else if(pE.getSource() == this.aBtnUpEast ){
             this.aEngine.interpretCommand("go upeast");
-            
+
         }else if(pE.getSource() == this.aBtnUpWest ){
             this.aEngine.interpretCommand("go upwest");
-            
+
         }else if(pE.getSource() == this.aBtnDownSouth ){
             this.aEngine.interpretCommand("go downsouth");
-        
+
         }else 
-        this.processCommand(); // never suppress this line
+            this.processCommand(); // never suppress this line
     } // actionPerformed(.)
 
     /**
@@ -335,11 +331,11 @@ public class UserInterface implements ActionListener
 
         this.aEngine.interpretCommand( vInput );
     } // processCommand()
-    
+
     public void closeFrame() {
         if (this.aMyFrame != null) {
             this.aMyFrame.dispose();
         }
     } //closeFrame()
-    
+
 } // UserInterface 
