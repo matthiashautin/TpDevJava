@@ -3,6 +3,7 @@ comment0.target=ItemList
 comment0.text=\r\n\ D\u00E9crivez\ votre\ classe\ ItemList\ ici.\r\n\r\n\ @author\ (votre\ nom)\r\n\ @version\ (un\ num\u00E9ro\ de\ version\ ou\ une\ date)\r\n
 comment1.params=
 comment1.target=ItemList()
+comment1.text=\r\n\ Initialise\ une\ liste\ d'objets\ Item\r\n\ La\ liste\ est\ impl\u00E9ment\u00E9e\ sous\ forme\ de\ HashMap,\ associant\ des\ noms\ d'objets\ \u00E0\ leurs\ Items\ respectives\r\n
 comment2.params=pItem
 comment2.target=Item\ getItem(java.lang.String)
 comment2.text=\r\n\ @return\ aItemList\ attribute,\ String,\ getter\r\n\ @param\ pItem\ String\r\n

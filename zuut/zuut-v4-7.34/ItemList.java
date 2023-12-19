@@ -13,6 +13,10 @@ public class ItemList
 {
     private HashMap<String, Item> aItemList;
 
+    /**
+     * Initialise une liste d'objets Item
+     * La liste est implémentée sous forme de HashMap, associant des noms d'objets à leurs Items respectives
+     */
     public ItemList() {
         this.aItemList = new  HashMap<String, Item>();
     } //ItemList()

@@ -20,15 +20,18 @@ public class GameEngine
     //pour activer ou non l'audio
     private boolean aIsAudioEnabled;
 
-    public GameEngine()
-    {
+    public GameEngine() {
         this.aParser = new Parser();
         this.createRoomsAndPlayers();
         this.aIsAudioEnabled = false; //l'audio est désactiver par défaut
     }
 
-    public void setGUI( final UserInterface pUserInterface )
-    {
+    /**
+     * Définit l'interface utilisateur du jeu. La méthode initialise l'interface utilisateur
+     * et affiche le message de bienvenue.
+     * @param pUserInterface L'interface utilisateur à définir.
+     */
+    public void setGUI(final UserInterface pUserInterface ) {
         this.aGui = pUserInterface;
         this.printWelcome();
     }
@@ -228,16 +231,16 @@ public class GameEngine
         }else if(vCommandWord.equals("back")) { //si la commande tapée est "audio"
             goback(vCommand);
 
-        }else if (vCommandWord.equals("test")) { //si la commande tepée est "test"
+        }else if (vCommandWord.equals("test")) { //si la commande tapée est "test"
             test(vCommand);
 
-        }else if (vCommandWord.equals("take")) { //si la commande tepée est "test"
+        }else if (vCommandWord.equals("take")) { //si la commande tapée est "take"
             take(vCommand);
 
-        }else if (vCommandWord.equals("drop")) { //si la commande tepée est "test"
+        }else if (vCommandWord.equals("drop")) { //si la commande tapée est "drop"
             drop(vCommand);
 
-        }else if (vCommandWord.equals("infoplayer")) {
+        }else if (vCommandWord.equals("infoplayer")) { //si la commande tapée est "infoplayer"
             printPlayer();
         }
         else { //si print "Erreur du programmeur : commande non reconnue !"
@@ -315,6 +318,10 @@ public class GameEngine
         this.aGui.closeFrame();
     } //endGame()
 
+    /**
+     * Active ou désactive l'audio du jeu. Si l'audio est activé, le son de la pièce actuelle est joué,
+     * sinon, le son est arrêté. La méthode met à jour l'état de l'audio et effectue les actions nécessaires
+     */
     public void toggleAudio() {
         if (this.aIsAudioEnabled) {
             this.aIsAudioEnabled = false;
@@ -367,12 +374,11 @@ public class GameEngine
         }
     }   //test()
 
-    /** Exécute la commande "take" pour que le joueur prenne un objet de la pièce actuelle.
-     * Si la commande n'a pas de deuxième mot (nom de l'objet à prendre), affiche un message.
-     * Sinon, vérifie si l'objet existe dans la pièce actuelle, s'il peut être pris en fonction du poids,
-     * et ajoute l'objet à l'inventaire du joueur tout en le retirant de la pièce.
-     *
-     * @param pCommand L'objet Command représentant la commande utilisateur.
+    /** Exécute la commande "take" pour que le joueur prenne un item de la pièce actuelle
+     * Si la commande n'a pas de deuxième mot (nom de l'item à prendre), affiche un message
+     * Sinon, vérifie si l'item existe dans la pièce actuelle, s'il peut être pris en fonction du poids,
+     * et ajoute l'objet à l'inventaire du joueur tout en le retirant de la pièce
+     * @param pCommand L'Item Command représentant la commande utilisateur
      */
     private void take(final Command pCommand) {
         if (!pCommand.hasSecondWord()) {
@@ -395,16 +401,14 @@ public class GameEngine
                 this.aGui.println("Unable to take the " + vItemName + ".\n"); //print si l'item n'existe pas
             }
         }
-
     } //takeItem()
 
     /**
-     * Exécute la commande "drop" pour que le joueur pose un objet de son inventaire dans la pièce actuelle.
-     * Si la commande n'a pas de deuxième mot (nom de l'objet à poser), affiche un message.
-     * Sinon, vérifie si l'objet existe dans l'inventaire du joueur, le retire de l'inventaire,
-     * et le place dans la pièce actuelle.
-     *
-     * @param pCommand L'objet Command représentant la commande utilisateur.
+     * Exécute la commande "drop" pour que le joueur pose un Item de son inventaire dans la pièce actuelle
+     * Si la commande n'a pas de deuxième mot (nom de l'item à poser), affiche un message
+     * Sinon, vérifie si l'item existe dans l'inventaire du joueur, le retire de l'inventaire,
+     * et le place dans la pièce actuelle
+     * @param pCommand L'objet Command représentant la commande utilisateur
      */
     private void drop(final Command pCommand) {
         if (!pCommand.hasSecondWord()) {
@@ -423,9 +427,12 @@ public class GameEngine
                 this.aGui.println("Error: The " + vItemName + " is not in your inventory.\n");
             }
         }
-
     } //drop()
 
+    /**
+     * Affiche les informations du joueur, y compris son nom, sa vie, son poids maximal possible,
+     * et la liste des objets dans son inventaire.
+     */
     private void printPlayer() {
         this.aGui.println("Your name : " + this.aPlayer.getNamePlayer());
         this.aGui.println("Your life : " + this.aPlayer.getVie());

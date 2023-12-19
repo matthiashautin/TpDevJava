@@ -44,39 +44,34 @@ public class UserInterface implements ActionListener
 
     /**
      * Construct a UserInterface. As a parameter, a Game Engine
-     * (an object processing and executing the game commands) is
-     * needed.
-     * @param pGameEngine  The GameEngine object implementing the game logic.
+     * (an object processing and executing the game commands) is needed
+     * @param pGameEngine  The GameEngine object implementing the game logic
      */
-    public UserInterface( final GameEngine pGameEngine )
-    {
+    public UserInterface(final GameEngine pGameEngine ) {
         this.aEngine = pGameEngine;
         this.createGUI();
         this.aBool = true;
     } // UserInterface(.)
 
     /**
-     * Print out some text into the text area.
+     * Print out some text into the text area
      */
-    public void print( final String pText )
-    {
+    public void print(final String pText ) {
         this.aLog.append( pText );
         this.aLog.setCaretPosition( this.aLog.getDocument().getLength() );
     } // print(.)
 
     /**
-     * Print out some text into the text area, followed by a line break.
+     * Print out some text into the text area, followed by a line break
      */
-    public void println( final String pText )
-    {
+    public void println(final String pText ) {
         this.print( pText + "\n" );
     } // println(.)
 
     /**
      * Show an image file in the interface.
      */
-    public void showImage( final String pImageName )
-    {
+    public void showImage(final String pImageName ) {
         String vImagePath = "" + pImageName; // to change the directory
         URL vImageURL = this.getClass().getClassLoader().getResource( vImagePath );
         if ( vImageURL == null )
@@ -89,10 +84,9 @@ public class UserInterface implements ActionListener
     } // showImage(.)
 
     /**
-     * Enable or disable input in the entry field.
+     * Enable or disable input in the entry field
      */
-    public void enable( final boolean pOnOff )
-    {
+    public void enable(final boolean pOnOff ) {
         this.aEntryField.setEditable( pOnOff ); // enable/disable
         if ( pOnOff ) { // enable
             this.aEntryField.getCaret().setBlinkRate( 500 ); // cursor blink
@@ -105,10 +99,9 @@ public class UserInterface implements ActionListener
     } // enable(.)
 
     /**
-     * Set up graphical user interface.
+     * Set up graphical user interface
      */
-    private void createGUI()
-    {
+    private void createGUI() {
         this.aMyFrame = new JFrame( "Crash ship" ); // change the title !
         this.aEntryField = new JTextField( 34 );
 
@@ -253,10 +246,9 @@ public class UserInterface implements ActionListener
     } // createGUI()
 
     /**
-     * Actionlistener interface for entry textfield.
+     * Actionlistener interface for entry textfield
      */
-    @Override public void actionPerformed( final ActionEvent pE ) 
-    {
+    @Override public void actionPerformed( final ActionEvent pE ) {
         if (pE.getSource() == this.aBtnAudio) {
             this.aBool =! this.aBool;
             if(aBool == false) {
@@ -322,8 +314,8 @@ public class UserInterface implements ActionListener
     } // actionPerformed(.)
 
     /**
-     * A command has been entered in the entry field.  
-     * Read the command and do whatever is necessary to process it.
+     * A command has been entered in the entry field
+     * Read the command and do whatever is necessary to process it
      */
     private void processCommand(){
         String vInput = this.aEntryField.getText();
@@ -332,6 +324,9 @@ public class UserInterface implements ActionListener
         this.aEngine.interpretCommand( vInput );
     } // processCommand()
 
+    /**
+     * Ferme la fenêtre de l'interface graphique, si elle est ouverte
+     */
     public void closeFrame() {
         if (this.aMyFrame != null) {
             this.aMyFrame.dispose();

@@ -116,33 +116,37 @@ public class Room
         } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
             e.printStackTrace();
         }
-
-    }
+    } //playAudio()
 
     public void stopAudio() {
         if (this.aAudioClip != null && this.aAudioClip.isRunning()) {
             this.aAudioClip.stop();
         }
-    }
+    } //stopAudio()
 
     /**
-     * define the items that are given to a room.
-     * @param pItem (string) 
-     * @param pItemName (Item)
-     */
+    * define the items that are given to a room.
+    * @param pItem (string) 
+    * @param pItemName (Item)
+    */
     public void setItems(final Item pItem) {
         this.aItemsList.setItemList(pItem);
     } //setItem()
 
     /**
-     * 
+     * Obtient l'Item correspondant au nom spécifié de la liste d'items de la pièce
+     * @param pItem Le nom de l'item à récupérer
+     * @return L'item correspondant au nom spécifié, ou null s'il n'est pas trouvé
      */
     public Item getItem(final String pItem) {
         return this.aItemsList.getItem(pItem);
-    } //getItem
+    } //getItem()
 
+    /**
+     * @return La liste d'Items de la pièce.
+     */
     public ItemList getItemList() {
         return this.aItemsList;
-    }
+    } //getItemList()
 
 } // Room

@@ -64,25 +64,22 @@ public class Player
     } //getVie()
 
     /**
-     * Renvoie une description détaillée de tous les objets dans l'inventaire du joueur.
-     * Utilise la méthode getItemLongDescription de la classe ItemList pour obtenir
-     * les descriptions longues de chaque objet présent dans l'inventaire.
-     *
-     * @return Une chaîne de caractères représentant la description détaillée des objets dans l'inventaire.
+     * Renvoie tous les objets dans l'inventaire du joueur avec le poid associé
+     * Utilise la méthode getItemString de la classe ItemList pour obtenir les Items de l'inventaire 
+     * @return Une chaîne de caractères représentant la description détaillée des objets dans l'inventaire
      */
     public String getInventoryItemList() {
         return this.aInventoryItems.getItemString();
-    }
+    } //getInventoryItemList()
 
     /**
-     * Obtient un objet spécifique de l'inventaire du joueur en fonction de son nom.
-     *
-     * @param pItemName Le nom de l'objet à récupérer.
-     * @return L'objet correspondant au nom spécifié, ou null s'il n'est pas trouvé dans l'inventaire.
+     * Obtient un Item spécifique de l'inventaire du joueur en fonction de son nom
+     * @param pItemName Le nom de l'item à récupérer
+     * @return L'item correspondant au nom spécifié, ou null s'il n'est pas trouvé dans l'inventaire
      */
     public Item getItemInInventory(final String pItemName) {
         return this.aInventoryItems.getItem(pItemName);
-    }
+    } //getItemInInventory()
 
     /**
      *  return this.aPreviousRoom
@@ -91,9 +88,14 @@ public class Player
         return this.aPreviousRoom;
     } //getPreviousRoom()
 
+    /**
+     * Obtient un Item spécifique de l'inventaire en fonction de son nom
+     * @param pItem Le nom de l'item à récupérer
+     * @return L'item correspondant au nom spécifié, ou null s'il n'est pas trouvé dans l'inventaire
+     */
     public Item getItem(final String pItem) {
         return this.aInventoryItems.getItem(pItem);
-    }
+    } //getItem()
 
     /**
      * Calculer le poids total des objets dans l'inventaire du joueur.
@@ -101,14 +103,19 @@ public class Player
      */
     public boolean getTotalWeight(Item pItemtotal) {
         return this.aPoidsMax - pItemtotal.getPoids() > 0;
-    }
-
-    public void donneVie(final int pVie) {
-        this.aVie += pVie;
-    }
+    } //getTotalWeight()
 
     /**
-     *  @param pCurrentRoom 
+     * Ajoute la quantité spécifiée de points de vie au joueur
+     * @param pVie La quantité de points de vie à ajouter
+     */
+    public void donneVie(final int pVie) {
+        this.aVie += pVie;
+    } //donneVie()
+
+    /**
+     * Définit la pièce actuelle du joueur
+     * @param pCurrentRoom La nouvelle pièce actuelle du joueur
      */
     public void setCurrentRoom(final Room pCurrentRoom) {
         this.aCurrentRoom = pCurrentRoom;
@@ -122,7 +129,7 @@ public class Player
     public void takeItem(final String pItemName, final Item pItem) {
         this.aInventoryItems.takeItem(pItemName,pItem);
         this.aPoidsMax = this.aPoidsMax - pItem.getPoids();
-    }
+    } //takeItem()
 
     /**
      * Poser un objet de l'inventaire du joueur dans la pièce actuelle.
@@ -132,6 +139,6 @@ public class Player
     public void dropItem(final String pItemName, final Item pItem) {
         this.aInventoryItems.removeItem(pItemName, pItem);
         this.aPoidsMax = this.aPoidsMax + pItem.getPoids();
-    }
+    } //dropItem()
 
 }
