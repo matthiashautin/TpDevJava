@@ -1,0 +1,26 @@
+#BlueJ class context
+comment0.target=ItemList
+comment0.text=\r\n\ D\u00E9crivez\ votre\ classe\ ItemList\ ici.\r\n\r\n\ @author\ (votre\ nom)\r\n\ @version\ (un\ num\u00E9ro\ de\ version\ ou\ une\ date)\r\n
+comment1.params=
+comment1.target=ItemList()
+comment2.params=pItem
+comment2.target=Item\ getItem(java.lang.String)
+comment3.params=pItem
+comment3.target=void\ setItemList(Item)
+comment4.params=pItemName\ pItem
+comment4.target=void\ takeItem(java.lang.String,\ Item)
+comment5.params=pItemName\ pItem
+comment5.target=void\ dropItem(java.lang.String,\ Item)
+comment6.params=pItemName
+comment6.target=Item\ removeItem(java.lang.String)
+comment6.text=\r\n\ Supprimer\ un\ objet\ de\ la\ pi\u00E8ce\ en\ fonction\ de\ son\ nom.\r\n\ @param\ itemName\ Nom\ de\ l'objet\ \u00E0\ supprimer.\r\n\ @return\ L'objet\ supprim\u00E9,\ ou\ null\ si\ l'objet\ n'est\ pas\ trouv\u00E9.\r\n
+comment7.params=
+comment7.target=java.lang.String\ getItemString()
+comment7.text=\r\n\ @return\ "Object\ \:\ "\ +\ this.aItem.getNameItem()+\ "\ (Weight\:\ "\ +\ this.aItem.getPoids()\ +\ "\ )"\ if\ exist\ an\ Item\ \r\n
+comment8.params=
+comment8.target=java.lang.String\ getItemLongDescription()
+comment8.text=\r\n\ @return\ "Item\ "\ +\ this.aItem.getNameItem()\ +\ "\ description\ \:\ "\ \ +\ this.aItem.getLongDescrptionItem();\ if\ exist\ an\ Item\ \r\n
+comment9.params=
+comment9.target=java.util.List\ getInventory()
+comment9.text=\r\n\ R\u00E9cup\u00E9rer\ une\ liste\ d'objets\ de\ l'inventaire.\r\n\ @return\ Liste\ d'objets\ de\ l'inventaire.\r\n
+numComments=10

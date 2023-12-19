@@ -75,7 +75,6 @@ public class Player
        this.aCurrentRoom = pCurrentRoom;
    } //setCurrentRoom()  
    
-   
    /**
      * Prendre un objet de la pièce actuelle et l'ajouter à l'inventaire du joueur.
      * @param itemName Nom de l'objet à prendre.
@@ -83,17 +82,25 @@ public class Player
      */
     public void takeItem(final String pItemName, final Item pItem) {
        this.aInventoryItems.takeItem(pItemName,pItem);
-}
+       this.aPoidsMax = this.aPoidsMax - pItem.getPoids();
+    }
     
-       /**
-         * Poser un objet de l'inventaire du joueur dans la pièce actuelle.
-         * @return true si l'objet a été posé avec succès, false sinon.
-         */
+   /**
+    * Poser un objet de l'inventaire du joueur dans la pièce actuelle.
+    * @return true si l'objet a été posé avec succès, false sinon.
+    */
        
-    public void dropItem(final String pItemName) {
-       this.aInventoryItems.removeItem(pItemName);
-}
-   
-    
+   public void dropItem(final String pItemName, final Item pItem) {
+       this.aInventoryItems.removeItem(pItemName, pItem);
+       this.aPoidsMax = this.aPoidsMax + pItem.getPoids();
+   }
+
+      /**
+     * Calculer le poids total des objets dans l'inventaire du joueur.
+     * @return Poids total des objets dans l'inventaire.
+     */
+   public boolean getTotalWeight(Item pItemtotal) {
+       return this.aPoidsMax - pItemtotal.getPoids() > 0;
+   }
    
 }

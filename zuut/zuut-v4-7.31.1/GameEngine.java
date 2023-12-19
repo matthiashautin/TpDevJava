@@ -45,8 +45,10 @@ public class GameEngine
         vMainPilot = new Room("in main pilot room", vLienImages + "mainpilot.jpg" , vLienAudios + "mainpilot.wav");
         Item vTW = new Item("Talkie-Walkie", 2, "Le talkie Walkie vous permetra de toujours être connecté avec Lara pour vous indiquer les étapes du jeu. Ces donc un outil important même obligatoire dans le jeu.");
         Item vTest = new Item("Test", 15, "un item en plus"); 
+        Item vMasse = new Item("Masse" , 80, "Une masse Lourd");
         vMainPilot.setItems(vTest);
         vMainPilot.setItems(vTW);
+        vMainPilot.setItems(vMasse);
         
         vMainWing = new Room("in main wing room", vLienImages + "mainwing.jpg" , vLienAudios + "mainwing.wav");
         vMainEngine = new Room("in main engine room", vLienImages + "mainengine.jpg" ,vLienAudios + "mainengine.wav");
@@ -350,6 +352,10 @@ public class GameEngine
         }
     }   //test()
     
+    /**
+     * 
+     * 
+     */
     private void take(final Command pCommand) {
         if (!pCommand.hasSecondWord()) {
             this.aGui.println("Take what?");
@@ -358,18 +364,23 @@ public class GameEngine
             String vItemName = pCommand.getSecondWord();
             Item vItem = this.aPlayer.getCurrentRoom().getItem(vItemName);
     
-            if (vItem != null) {
-                this.aPlayer.takeItem(vItemName, vItem);
-                this.aPlayer.getCurrentRoom().dropItem(vItemName);
-                this.aGui.println("You took the " + vItemName + ".");
-                this.aGui.println("Your Maximum possible weight now is " + this.aPlayer.getPoidsMax() + ".\n");
+            if(vItem != null ) {
+                if(this.aPlayer.getTotalWeight(vItem)) {
+                    this.aPlayer.takeItem(vItemName, vItem);
+                    this.aPlayer.getCurrentRoom().getItemList().removeItem(vItemName, vItem);
+                    this.aGui.println("You took the " + vItemName + ".");
+                    this.aGui.println("Your Maximum possible weight now is " + this.aPlayer.getPoidsMax() + ".\n");
+                } else {
+                    this.aGui.println("Trop lourd");
+                }
+                
             } else {
                 this.aGui.println("Unable to take the " + vItemName + ".\n");
             }
             
         }
     
-    } //takeItem
+    } //takeItem()
     
     private void drop(final Command pCommand) {
         if (!pCommand.hasSecondWord()) {
@@ -381,7 +392,7 @@ public class GameEngine
     
             if (vItem != null) {
                 this.aPlayer.getCurrentRoom().takeItem(vItemName, vItem);
-                this.aPlayer.dropItem(vItemName);
+                this.aPlayer.dropItem(vItemName, vItem);
                 this.aGui.println("You dropped the " + vItemName + ".");
                 this.aGui.println("Your Maximum possible weight now is " + this.aPlayer.getPoidsMax() + ".\n");
             } else {
@@ -389,12 +400,12 @@ public class GameEngine
             }
         }
         
-    }
+    } //drop()
 
     private void printPlayer() {
         this.aGui.println("Your name : " + this.aPlayer.getNamePlayer());
         this.aGui.println("Your life : " + this.aPlayer.getVie());
         this.aGui.println("Your maximum possible weight now : " + this.aPlayer.getPoidsMax());
-    } //printPlayer
+    } //printPlayer()
     
 } //GameEngine

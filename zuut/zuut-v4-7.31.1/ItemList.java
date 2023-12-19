@@ -27,16 +27,16 @@ public class ItemList
     
     public void takeItem(final String pItemName, final Item pItem) {
         this.aItemList.put(pItemName, pItem);
-    }
+    } //takeItem()
     
     /**
      * Supprimer un objet de la pièce en fonction de son nom.
      * @param itemName Nom de l'objet à supprimer.
      * @return L'objet supprimé, ou null si l'objet n'est pas trouvé.
      */
-    public Item removeItem(final String pItemName) {
-        return this.aItemList.remove(pItemName);
-    }
+    public void removeItem(final String pItemName, final Item pItem) {
+        this.aItemList.remove(pItemName, pItem);
+    } //romeveItem
     
     /**
      * @return "Object : " + this.aItem.getNameItem()+ " (Weight: " + this.aItem.getPoids() + " )" if exist an Item 
@@ -75,7 +75,7 @@ public class ItemList
      */
     public List<Item> getInventory() {
         return new ArrayList<>(this.aItemList.values());
-    }
+    } //getInventory()
     
 
 }
