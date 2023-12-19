@@ -306,7 +306,7 @@ public class GameEngine
             this.aGui.println("Just back.\n");
         
         } else if (!this.aPlayer.getPreviousRoom().isEmpty()) {
-            this.aPlayer.setCurrentRoom(this.aPlayer.getPreviousRoom().pop()); //retire la room au dessus de la pile avec pop et donne la valaeur de cette room à aCurrentRoom 
+            this.aPlayer.setCurrentRoom(this.aPlayer.getPreviousRoom().pop()); //retire la room au dessus de la pile avec pop et donne la valeur de cette room à aCurrentRoom 
             printLocationInfo();
         } else {
             this.aGui.println("You can't go back!");
