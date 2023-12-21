@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=ItemList
-comment0.text=\r\n\ D\u00E9crivez\ votre\ classe\ ItemList\ ici.\r\n\r\n\ @author\ (votre\ nom)\r\n\ @version\ (un\ num\u00E9ro\ de\ version\ ou\ une\ date)\r\n
+comment0.text=\r\n\ D\u00E9crivez\ votre\ classe\ ItemList\ ici.\r\n\r\n\ @author\ (votre\ nom)\r\n\ @7.31.1\r\n
 comment1.params=
 comment1.target=ItemList()
 comment2.params=pItem
@@ -18,7 +18,4 @@ comment6.text=\r\n\ @return\ "Object\ \:\ "\ +\ this.aItem.getNameItem()+\ "\ (W
 comment7.params=
 comment7.target=java.lang.String\ getItemLongDescription()
 comment7.text=\r\n\ @return\ "Item\ "\ +\ this.aItem.getNameItem()\ +\ "\ description\ \:\ "\ \ +\ this.aItem.getLongDescrptionItem();\ if\ exist\ an\ Item\ \r\n
-comment8.params=
-comment8.target=java.util.List\ getInventory()
-comment8.text=\r\n\ R\u00E9cup\u00E9rer\ une\ liste\ d'objets\ de\ l'inventaire.\r\n\ @return\ Liste\ d'objets\ de\ l'inventaire.\r\n
-numComments=9
+numComments=8
