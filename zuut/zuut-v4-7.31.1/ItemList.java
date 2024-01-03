@@ -7,7 +7,7 @@ import java.util.ArrayList;
  * Décrivez votre classe ItemList ici.
  *
  * @author (votre nom)
- * @version (un numéro de version ou une date)
+ * @7.31.1
  */
 public class ItemList
 {
@@ -67,15 +67,5 @@ public class ItemList
         }
         return vItemsDescription.toString();
     } //getItemLongDescription 
-
-    
-    /**
-     * Récupérer une liste d'objets de l'inventaire.
-     * @return Liste d'objets de l'inventaire.
-     */
-    public List<Item> getInventory() {
-        return new ArrayList<>(this.aItemList.values());
-    } //getInventory()
-    
 
 }

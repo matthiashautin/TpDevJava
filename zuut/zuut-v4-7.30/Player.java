@@ -74,7 +74,7 @@ public class Player
 
        if (vItem != null) {
            if (getTotalWeight() + vItem.getPoids() <= getPoidsMax()) {
-                aItem = vItem;
+                this.aItem = vItem;
                 this.aPoidsMax = this.aPoidsMax - this.aItem.getPoids();
                 return true;
            } else {
@@ -83,33 +83,33 @@ public class Player
            }
        }
        return false; // L'objet n'a pas été trouvé dans la pièce.
-   }
+   } //take()
     
    /**
      * Poser un objet de l'inventaire du joueur dans la pièce actuelle.
      * @return true si l'objet a été posé avec succès, false sinon.
      */
-   public boolean drop(String pItemName) {
+   public boolean drop(final String pItemName) {
        if (this.aItem != null && this.aItem.getNameItem().equalsIgnoreCase(pItemName)) {
            this.aCurrentRoom.setItems(pItemName, this.aItem);
            this.aPoidsMax = this.aPoidsMax + this.aItem.getPoids();
-           aItem = null;
+           this.aItem = null;
            return true;
        }
 
        return false; // L'objet n'a pas été trouvé dans l'inventaire du joueur.
-   }
+   } //drop()
    
    /**
      * Calculer le poids total des objets dans l'inventaire du joueur.
      * @return Poids total des objets dans l'inventaire.
      */
    private int getTotalWeight() {
-       if (aItem != null) {
-           return aItem.getPoids();
+       if (this.aItem != null) {
+           return this.aItem.getPoids();
        } else {
            return 0;
        }
-   }
+   } //getTotalWeight()
     
 }

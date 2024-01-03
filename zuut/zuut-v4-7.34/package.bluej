@@ -5,6 +5,7 @@ dependency1.type=UsesDependency
 dependency10.from=Player
 dependency10.to=Item
 dependency10.type=UsesDependency
+<<<<<<< HEAD
 dependency11.from=GameEngine
 dependency11.to=Parser
 dependency11.type=UsesDependency
@@ -22,9 +23,28 @@ dependency15.to=Room
 dependency15.type=UsesDependency
 dependency16.from=GameEngine
 dependency16.to=Command
+=======
+dependency11.from=ItemList
+dependency11.to=Item
+dependency11.type=UsesDependency
+dependency12.from=GameEngine
+dependency12.to=Parser
+dependency12.type=UsesDependency
+dependency13.from=GameEngine
+dependency13.to=UserInterface
+dependency13.type=UsesDependency
+dependency14.from=GameEngine
+dependency14.to=Item
+dependency14.type=UsesDependency
+dependency15.from=GameEngine
+dependency15.to=Player
+dependency15.type=UsesDependency
+dependency16.from=GameEngine
+dependency16.to=Room
+>>>>>>> f86ff3cad892f1e671822653554319bd42a244ef
 dependency16.type=UsesDependency
-dependency17.from=ItemList
-dependency17.to=Item
+dependency17.from=GameEngine
+dependency17.to=Command
 dependency17.type=UsesDependency
 dependency2.from=Game
 dependency2.to=GameEngine
@@ -35,6 +55,7 @@ dependency3.type=UsesDependency
 dependency4.from=Room
 dependency4.to=ItemList
 dependency4.type=UsesDependency
+<<<<<<< HEAD
 dependency5.from=Room
 dependency5.to=Item
 dependency5.type=UsesDependency
@@ -43,6 +64,16 @@ dependency6.to=CommandWords
 dependency6.type=UsesDependency
 dependency7.from=Parser
 dependency7.to=Command
+=======
+dependency5.from=UserInterface
+dependency5.to=GameEngine
+dependency5.type=UsesDependency
+dependency6.from=Room
+dependency6.to=ItemList
+dependency6.type=UsesDependency
+dependency7.from=Room
+dependency7.to=Item
+>>>>>>> f86ff3cad892f1e671822653554319bd42a244ef
 dependency7.type=UsesDependency
 dependency8.from=Player
 dependency8.to=Room

@@ -279,8 +279,8 @@ public class GameEngine
     } //look()
 
     /**
-     * Print "Just one thing at a time." if there have a second word after eat
-     * else print: "You have eaten now and you are not hungry any more."
+     * Gère la commande "eat" permettant au joueur de manger un objet spécifique
+     * @param pSecondMot Commande contenant le deuxième mot saisi par le joueur
      */
     private void eat(final Command pSecondMot) {
         if (pSecondMot.hasSecondWord()) {
@@ -352,11 +352,11 @@ public class GameEngine
 
     /**
      * test permet de tester automatiquement le jeu.
-     * @param pCommand est une commande taper par le joueur.
+     * @param pFileName est une commande taper par le joueur.
      */
     private void test(final Command pFileName){
         if (!pFileName.hasSecondWord()){
-            this.aGui.println( "tester quoi? (court, exploration, ideal)"); //si le joueur tape seulement test
+            this.aGui.println( "tester quoi? (court, exploration, ideal, takedrop, eat)"); //si le joueur tape seulement test
             return; //sortir directement de la fonction
         }
 

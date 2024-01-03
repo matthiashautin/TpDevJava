@@ -69,7 +69,6 @@ public class Player
    } //setCurrentRoom() 
    
    
-   
    public List<Item> getInventoryItems() {
        return this.aInventoryItems;
    } //getInventoryItems()

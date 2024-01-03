@@ -125,9 +125,8 @@ public class Room
     } //stopAudio()
 
     /**
-    * define the items that are given to a room.
+    * define the items that are given to a room
     * @param pItem (string) 
-    * @param pItemName (Item)
     */
     public void setItems(final Item pItem) {
         this.aItemsList.setItemList(pItem);

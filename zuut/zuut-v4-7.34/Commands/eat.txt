@@ -1,0 +1,6 @@
+eat 
+eat Masse
+eat Cookie
+take Cookie
+eat Cookie
+infoplayer

@@ -30,30 +30,28 @@ public class ItemList
     }
 
     /**
-     * Ajoute un objet à la liste d'objets de l'inventaire.
-     * Utilise le nom de l'objet comme clé dans la HashMap.
-     *
-     * @param pItem L'objet de type Item à ajouter à la liste.
+     * Ajoute un Item à la liste des Items de l'inventaire
+     * Utilise le nom de l'item comme clé dans la HashMap
+     * @param pItem L'Item à ajouter à la liste
      */
     public void setItemList(final Item pItem) {
         this.aItemList.put(pItem.getNameItem(), pItem);
     } //setItem()
 
     /**
-     * Ajoute un objet à la liste d'objets de l'inventaire en spécifiant son nom.
-     * Utilisé lorsque le joueur prend un objet dans une pièce et l'ajoute à son inventaire.
-     *
-     * @param pItemName Le nom de l'objet à ajouter à la liste d'objets.
-     * @param pItem L'objet de type Item à ajouter à la liste.
+     * Ajoute un Item à la liste des Items de l'inventaire en spécifiant son nom
+     * Utilisé lorsque le joueur prend un Item dans une pièce et l'ajoute à son inventaire
+     * @param pItemName Le nom de l'item à ajouter à la liste des Items
+     * @param pItem L'Item à ajouter à la liste
      */
     public void takeItem(final String pItemName, final Item pItem) {
         this.aItemList.put(pItemName, pItem);
     } //takeItem()
 
     /**
-     * Supprimer un objet de la pièce en fonction de son nom.
-     * @param itemName Nom de l'objet à supprimer.
-     * @return L'objet supprimé, ou null si l'objet n'est pas trouvé.
+     * Supprime un Item de la liste des Items en fonction de son nom
+     * @param pItemName Nom de l'item à supprimer
+     * @param pItem Item à supprimer
      */
     public void removeItem(final String pItemName, final Item pItem) {
         this.aItemList.remove(pItemName, pItem);
@@ -89,4 +87,4 @@ public class ItemList
         return vItemsDescription.toString();
     } //getItemLongDescription 
 
-}
+} //ItemList
