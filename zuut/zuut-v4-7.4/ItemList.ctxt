@@ -1,0 +1,25 @@
+#BlueJ class context
+comment0.target=ItemList
+comment0.text=\r\n\ D\u00E9crivez\ votre\ classe\ ItemList\ ici.\r\n\r\n\ @author\ (votre\ nom)\r\n\ @version\ (un\ num\u00E9ro\ de\ version\ ou\ une\ date)\r\n
+comment1.params=
+comment1.target=ItemList()
+comment1.text=\r\n\ Initialise\ une\ liste\ d'objets\ Item\r\n\ La\ liste\ est\ impl\u00E9ment\u00E9e\ sous\ forme\ de\ HashMap,\ associant\ des\ noms\ d'objets\ \u00E0\ leurs\ Items\ respectives\r\n
+comment2.params=pItem
+comment2.target=Item\ getItem(java.lang.String)
+comment2.text=\r\n\ @return\ aItemList\ attribute,\ String,\ getter\r\n\ @param\ pItem\ String\r\n
+comment3.params=pItem
+comment3.target=void\ setItemList(Item)
+comment3.text=\r\n\ Ajoute\ un\ Item\ \u00E0\ la\ liste\ des\ Items\ de\ l'inventaire\r\n\ Utilise\ le\ nom\ de\ l'item\ comme\ cl\u00E9\ dans\ la\ HashMap\r\n\ @param\ pItem\ L'Item\ \u00E0\ ajouter\ \u00E0\ la\ liste\r\n
+comment4.params=pItemName\ pItem
+comment4.target=void\ takeItem(java.lang.String,\ Item)
+comment4.text=\r\n\ Ajoute\ un\ Item\ \u00E0\ la\ liste\ des\ Items\ de\ l'inventaire\ en\ sp\u00E9cifiant\ son\ nom\r\n\ Utilis\u00E9\ lorsque\ le\ joueur\ prend\ un\ Item\ dans\ une\ pi\u00E8ce\ et\ l'ajoute\ \u00E0\ son\ inventaire\r\n\ @param\ pItemName\ Le\ nom\ de\ l'item\ \u00E0\ ajouter\ \u00E0\ la\ liste\ des\ Items\r\n\ @param\ pItem\ L'Item\ \u00E0\ ajouter\ \u00E0\ la\ liste\r\n
+comment5.params=pItemName\ pItem
+comment5.target=void\ removeItem(java.lang.String,\ Item)
+comment5.text=\r\n\ Supprime\ un\ Item\ de\ la\ liste\ des\ Items\ en\ fonction\ de\ son\ nom\r\n\ @param\ pItemName\ Nom\ de\ l'item\ \u00E0\ supprimer\r\n\ @param\ pItem\ Item\ \u00E0\ supprimer\r\n
+comment6.params=
+comment6.target=java.lang.String\ getItemString()
+comment6.text=\r\n\ @return\ "Object\ \:\ "\ +\ this.aItem.getNameItem()+\ "\ (Weight\:\ "\ +\ this.aItem.getPoids()\ +\ "\ )"\ if\ exist\ an\ Item\ \r\n
+comment7.params=
+comment7.target=java.lang.String\ getItemLongDescription()
+comment7.text=\r\n\ @return\ "Item\ "\ +\ this.aItem.getNameItem()\ +\ "\ description\ \:\ "\ \ +\ this.aItem.getLongDescrptionItem();\ if\ exist\ an\ Item\ \r\n
+numComments=8

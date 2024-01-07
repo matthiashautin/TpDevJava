@@ -1,0 +1,14 @@
+take Masse
+take Test
+take Talkie-Walkie
+look
+infoplayer
+go down 
+drop Test
+look
+infoplayer
+go south
+go east
+drop Talkie-Walkie
+look
+infoplayer

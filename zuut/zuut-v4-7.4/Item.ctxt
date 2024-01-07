@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.target=Item
+comment0.text=\r\n\ This\ class\ allows\ you\ to\ create\ an\ item\ from\ any\ room\u0000\r\n\ \r\n\ @author\ Matthias\ Hautin\ \ \r\n\ @version\ 25/11/23\r\n\ \r\n
+comment1.params=pNameItem\ pPoids\ pLongDescription
+comment1.target=Item(java.lang.String,\ int,\ java.lang.String)
+comment1.text=\r\n\ Initialise\ un\ objet\ de\ type\ Item\ avec\ un\ nom,\ un\ poids\ et\ une\ description\ d\u00E9taill\u00E9e\r\n\ @param\ pNameItem\ \ \ \ \ \ \ \ Le\ nom\ de\ l'Item\r\n\ @param\ pPoids\ \ \ \ \ \ \ \ \ \ \ Le\ poids\ de\ l'Item\r\n\ @param\ pLongDescription\ La\ description\ d\u00E9taill\u00E9e\ de\ l'Item\r\n
+comment2.params=
+comment2.target=java.lang.String\ getNameItem()
+comment2.text=\r\n\ @return\ aNameItem\r\n
+comment3.params=
+comment3.target=int\ getPoids()
+comment3.text=\r\n\ @return\ aPoids\r\n
+comment4.params=
+comment4.target=java.lang.String\ getLongDescrptionItem()
+comment4.text=\r\n\ @return\ aLongDescription\r\n
+numComments=5
