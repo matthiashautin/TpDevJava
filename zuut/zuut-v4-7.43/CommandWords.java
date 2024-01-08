@@ -11,7 +11,7 @@
 public class CommandWords
 {
     // a constant array that will hold all valid command words
-    private static final String aValidCommands[] = {"go", "help", "quit", "look", "eat", "audio", "back", "test", "take", "drop", "infoplayer"};
+    private static final String aValidCommands[] = {"go", "help", "quit", "look", "eat", "audio", "back", "test", "take", "drop", "infoplayer", "repare"};
 
     /**
      * Check whether a given String is a valid command word. 

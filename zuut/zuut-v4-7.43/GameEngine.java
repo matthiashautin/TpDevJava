@@ -21,6 +21,9 @@ public class GameEngine
     private int             aMaxMoves;
     private int             aCurrentMoves;
     
+    private Room            aRightEngine;
+    private Room            aLeftEngine;
+    
     //pour activer ou non l'audio
     private boolean aIsAudioEnabled;
 
@@ -28,7 +31,7 @@ public class GameEngine
         this.aParser = new Parser();
         this.createRoomsAndPlayers();
         this.aIsAudioEnabled = false; //l'audio est désactiver par défaut
-        this.aMaxMoves = 20;
+        this.aMaxMoves = 3;
         this.aCurrentMoves = 0;
     }
 
@@ -53,11 +56,9 @@ public class GameEngine
         //Main :
         vMainPilot = new Room("in main pilot room", vLienImages + "mainpilot.jpg" , vLienAudios + "mainpilot.wav");
         
-        Item vTW = new Item("Talkie-Walkie", 2, "Le talkie Walkie vous permetra de toujours être connecté avec Lara pour vous indiquer les étapes du jeu. Ces donc un outil important même obligatoire dans le jeu.");
-        Item vTest = new Item("Test", 15, "un item en plus"); 
-        Item vMasse = new Item("Masse" , 80, "Une masse Lourd");
-        Item vCookieMagic = new Item("Cookie" , 1, "Un cookie magique qui ajoute de la vie");
-        vMainPilot.setItems(vTest);
+        Item vTW = new Item("Talkie-Walkie", 2, "Le talkie Walkie vous permetra de toujours être connecté avec Lara pour vous indiquer les étapes du jeu. Ces donc un outil important même obligatoire dans le jeu.", 0);
+        Item vMasse = new Item("Masse" , 80, "Une masse Lourd", 0);
+        Item vCookieMagic = new Item("Cookie" , 1, "Un cookie magique qui ajoute de la vie", 0);
         vMainPilot.setItems(vTW);
         vMainPilot.setItems(vMasse);
         vMainPilot.setItems(vCookieMagic);
@@ -68,8 +69,8 @@ public class GameEngine
         // Left and Right room
         vRightWing = new Room("in right wing ", vLienImages + "rightroomwing.jpg" , vLienAudios + "rightroomwing.wav");
         vLeftWing = new Room("in left wing", vLienImages + "leftroomwing.png" , vLienAudios + "leftroomwing.wav");
-        vRightEngine = new Room("in right engine", vLienImages + "rightroomengine.jpg" , vLienAudios + "rightroomengine.wav");
-        vLeftEngine = new Room("in left engine", vLienImages + "leftroomengine.jpg" , vLienAudios + "leftroomengine.wav");
+        this.aRightEngine = new Room("in right engine", vLienImages + "rightroomengine.jpg" , vLienAudios + "rightroomengine.wav");
+        this.aLeftEngine = new Room("in left engine", vLienImages + "leftroomengine.jpg" , vLienAudios + "leftroomengine.wav");
 
         // Wing Corridor
         vCorridorRightWing = new Room("in corridor right wing", vLienImages + "corridorrightwing.jpg" , vLienAudios + "corridorrightwing.wav");
@@ -113,12 +114,14 @@ public class GameEngine
         vLeftWing.setExits("east", vCorridorLeftWing);
 
         //for vRightEngine
-        vRightEngine.setExits("upnorth", vCorridorHiddenRight);
-        vRightEngine.setExits("west", vCorridorRightEngine);
+        this.aRightEngine.setExits("upnorth", vCorridorHiddenRight);
+        this.aRightEngine.setExits("west", vCorridorRightEngine);
+        this.aRightEngine.setMotor1(false);
 
         //for vLeftEngine
-        vLeftEngine.setExits("upnorth", vCorridorHiddenLeft);
-        vLeftEngine.setExits("east", vCorridorLeftEngine);
+        this.aLeftEngine.setExits("upnorth", vCorridorHiddenLeft);
+        this.aLeftEngine.setExits("east", vCorridorLeftEngine);
+        this.aLeftEngine.setMotor2(false);
 
         //vCorridorRightWing
         vCorridorRightWing.setExits("west", vMainWing);
@@ -134,20 +137,20 @@ public class GameEngine
 
         //vCorridorRightEngine
         vCorridorRightEngine.setExits("upwest", vMainEngine);
-        vCorridorRightEngine.setExits("east", vRightEngine);
+        vCorridorRightEngine.setExits("east", this.aRightEngine);
 
         //vCorridorLeftEngine
-        vCorridorLeftEngine.setExits("west", vLeftEngine);
+        vCorridorLeftEngine.setExits("west", this.aLeftEngine);
         vCorridorLeftEngine.setExits("upeast", vMainEngine);
 
         //dans le futur on ne les verra pas 
         //vCorridorHiddenRight
         vCorridorHiddenRight.setExits("north", vRightWing);
-        vCorridorHiddenRight.setExits("downsouth", vRightEngine);
+        vCorridorHiddenRight.setExits("downsouth", this.aRightEngine);
 
         //vCorridorHiddenLeft
         vCorridorHiddenLeft.setExits("north", vLeftWing);
-        vCorridorHiddenLeft.setExits("downsouth", vLeftEngine);
+        vCorridorHiddenLeft.setExits("downsouth", this.aLeftEngine);
 
         this.aPlayer = new Player("Mike", vMainPilot, 20, 100);//creation du premier joueur
 
@@ -172,9 +175,12 @@ public class GameEngine
             this.aGui.println("There is no door !");
             return;
         } else {//si on change de room on donne la valeur de aCurrentRoom a notre nouvelle room
+            this.aCurrentMoves++; // Incrémente le compteur de mouvements à chaque commande entrée
+            checkTimeLimit(); // Vérifie si le joueur a dépassé la limite de temps
             this.aPlayer.getPreviousRoom().push(this.aPlayer.getCurrentRoom()); // mettre à jour la pièce précédente 
             this.aPlayer.setCurrentRoom(vNextRoom);
             printLocationInfo();
+            
         }
     } // goRoom()
 
@@ -252,13 +258,16 @@ public class GameEngine
 
         }else if (vCommandWord.equals("infoplayer")) { //si la commande tapée est "infoplayer"
             printPlayer();
+            
+        }else if (vCommandWord.equals("repare")) { //si la commande tapée est "repar"
+            repareMotor(vCommand);
         }
+        
         else { //si print "Erreur du programmeur : commande non reconnue !"
             this.aGui.println("Erreur du programmeur : commande non reconnue !");
         }   
         
-        this.aCurrentMoves++; // Incrémente le compteur de mouvements à chaque commande entrée
-        checkTimeLimit(); // Vérifie si le joueur a dépassé la limite de temps
+
         
     } //processCommand()
 
@@ -325,8 +334,7 @@ public class GameEngine
      * print "Thank you for playing.  Good bye." if you print "quit" or click on the "quit" button 
      * this command allows you to quit and close the frame
      */
-    private void endGame()
-    {
+    private void endGame() {
         this.aGui.println( "Thank you for playing.  Good bye." );
         this.aGui.enable( false ); 
         this.aGui.closeFrame();
@@ -461,23 +469,40 @@ public class GameEngine
         this.aGui.println("Your maximum possible weight now : " + this.aPlayer.getPoidsMax());
         this.aGui.println(this.aPlayer.getInventoryItemList());
     } //printPlayer()
-
     
      /**
      * Vérifie si le joueur a dépassé le nombre maximal de mouvements.
      * Si oui, met fin au jeu.
      */
     private void checkTimeLimit() {
-        if(this.aCurrentMoves > this.aMaxMoves - 1) {
-            this.aGui.println("Il vous reste seulement un Seulement Mouvement. Attention vous avez atteint votre limite de temps");
+        if(this.aCurrentMoves == this.aMaxMoves - 1) {
+            this.aGui.println("Il vous reste seulement un seul Mouvement. Attention vous avez atteint votre limite de temps");
         }
         
-        if (this.aCurrentMoves > this.aMaxMoves) {
+        if (this.aCurrentMoves == this.aMaxMoves) {
             this.aGui.println("Temps écoulé ! Vous avez dépassé le nombre maximal de mouvements. Fin du jeu.");
             this.endGame();
+            return;
         }
     }
     
-    
-
-} //GameEngine
+    private void repareMotor(final Command pCommand) {
+        if (!pCommand.hasSecondWord()) {
+            this.aGui.println("Repare what?");
+        } else {
+            String vString = pCommand.getSecondWord();
+            Room vRoom = this.aPlayer.getCurrentRoom();
+            
+            if (vString.equals("motor1") && this.aRightEngine == vRoom) {
+               vRoom.setMotor1(true);
+               this.aGui.println("Le moteur 1 est réparé.\n");
+            } else if (vString.equals("motor2") && this.aLeftEngine == vRoom) {
+                vRoom.setMotor2(true);
+               this.aGui.println("Le moteur 2 est réparé.\n");
+            } else {
+                this.aGui.println("Vous ne pouvez pas réparer le moteur");
+            }
+            
+        }
+    }
+}//GameEngine

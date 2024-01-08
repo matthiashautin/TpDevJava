@@ -23,6 +23,8 @@ public class Room
     private ItemList aItemsList;
     
     private boolean aIsExit;
+    private boolean aMotor1;
+    private boolean aMotor2;
 
     /**
      * initialize all attribute
@@ -37,6 +39,8 @@ public class Room
         this.aAudioName = pAudio;
         this.aItemsList = new ItemList();
         this.aIsExit = false;
+        this.aMotor1 = false;
+        this.aMotor2 = false;
     } // Room()
 
     public boolean getTrapDoor() {
@@ -45,6 +49,22 @@ public class Room
     
     public void setTrapDoor(final boolean vExit) {
         this.aIsExit = vExit;
+    }
+    
+    public boolean getMotor1() {
+        return this.aMotor1;
+    }
+    
+    public boolean getMotor2() {
+        return this.aMotor2;
+    }
+    
+    public void setMotor1(final boolean vMotor) {
+        this.aMotor1 = vMotor;
+    }
+    
+    public void setMotor2(final boolean vMotor) {
+        this.aMotor2 = vMotor;
     }
     
     /**
