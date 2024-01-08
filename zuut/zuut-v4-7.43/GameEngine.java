@@ -17,13 +17,17 @@ public class GameEngine
     private Item            aItem;
     private Player          aPlayer;
     private Room            aRoom;
-    
+    private Png             aPng;
+
     private int             aMaxMoves;
     private int             aCurrentMoves;
-    
+
     private Room            aRightEngine;
     private Room            aLeftEngine;
-    
+
+    private Item            aArmeLegere;
+    private Item            aArmeLourde;
+
     //pour activer ou non l'audio
     private boolean aIsAudioEnabled;
 
@@ -31,7 +35,7 @@ public class GameEngine
         this.aParser = new Parser();
         this.createRoomsAndPlayers();
         this.aIsAudioEnabled = false; //l'audio est désactiver par défaut
-        this.aMaxMoves = 3;
+        this.aMaxMoves = 30;
         this.aCurrentMoves = 0;
     }
 
@@ -55,13 +59,25 @@ public class GameEngine
 
         //Main :
         vMainPilot = new Room("in main pilot room", vLienImages + "mainpilot.jpg" , vLienAudios + "mainpilot.wav");
-        
+
         Item vTW = new Item("Talkie-Walkie", 2, "Le talkie Walkie vous permetra de toujours être connecté avec Lara pour vous indiquer les étapes du jeu. Ces donc un outil important même obligatoire dans le jeu.", 0);
         Item vMasse = new Item("Masse" , 80, "Une masse Lourd", 0);
         Item vCookieMagic = new Item("Cookie" , 1, "Un cookie magique qui ajoute de la vie", 0);
         vMainPilot.setItems(vTW);
         vMainPilot.setItems(vMasse);
         vMainPilot.setItems(vCookieMagic);
+
+        /*
+        Item vArmeLegere =  new Item("ArmeLegere" , 5, "Une Arme qui fait de petits dégâts aux ennemies", 10);
+        Item vArmeLourd =  new Item("ArmeLourd" , 10, "Une Arme qui fait de gros dégâts aux ennemies", 30);
+        vMainPilot.setItems(vArmeLegere);
+        vMainPilot.setItems(vArmeLourd);
+         */
+
+        this.aArmeLegere  = new Item("ArmeLegere" , 5, "Une Arme qui fait de petits dégâts aux ennemies", 10);
+        this.aArmeLourde  = new Item("ArmeLourde" , 10, "Une Arme qui fait de gros dégâts aux ennemies", 30);
+        vMainPilot.setItems(this.aArmeLegere);
+        vMainPilot.setItems(this.aArmeLourde);
 
         vMainWing = new Room("in main wing room", vLienImages + "mainwing.jpg" , vLienAudios + "mainwing.wav");
         vMainEngine = new Room("in main engine room", vLienImages + "mainengine.jpg" ,vLienAudios + "mainengine.wav");
@@ -89,7 +105,7 @@ public class GameEngine
 
         vCorridorHiddenRight.setTrapDoor(true);
         vCorridorHiddenRight.setTrapDoor(true);
-        
+
         //setExits : String pDirection, Room pNeighbor
         // for vMainPilot:
         vMainPilot.setExits("down", vMainWing);
@@ -152,7 +168,14 @@ public class GameEngine
         vCorridorHiddenLeft.setExits("north", vLeftWing);
         vCorridorHiddenLeft.setExits("downsouth", this.aLeftEngine);
 
-        this.aPlayer = new Player("Mike", vMainPilot, 20, 100);//creation du premier joueur
+        this.aPlayer = new Player("Mike", vMainPilot, 20, 100);//creation du joueur
+        Png vEnnemiNull  = new Png("EnnemiNull",vRightWing, 20, 1);//petit ennemi
+        Png vMiniBoss    = new Png("MiniBoss", vLeftWing, 50, 15);//mini boss
+        Png vBoss    = new Png("Boss", this.aLeftEngine, 150, 30);//Boss
+
+        vRightWing.setPng(vEnnemiNull);
+        vLeftWing.setPng(vMiniBoss);
+        this.aLeftEngine.setPng(vBoss);
 
         this.aPlayer.setCurrentRoom(vMainPilot); // start 
     } // createRooms()
@@ -180,7 +203,7 @@ public class GameEngine
             this.aPlayer.getPreviousRoom().push(this.aPlayer.getCurrentRoom()); // mettre à jour la pièce précédente 
             this.aPlayer.setCurrentRoom(vNextRoom);
             printLocationInfo();
-            
+
         }
     } // goRoom()
 
@@ -214,7 +237,7 @@ public class GameEngine
     public void interpretCommand(final String pAppelBonneMethod) {
         this.aGui.println( "> " + pAppelBonneMethod );
         Command vCommand = this.aParser.getCommand( pAppelBonneMethod );
-    
+
         if(vCommand.isUnknown() ) { //si la Commande tapée est inconnu
             this.aGui.println("I don't know what you mean...");
             return;
@@ -258,17 +281,17 @@ public class GameEngine
 
         }else if (vCommandWord.equals("infoplayer")) { //si la commande tapée est "infoplayer"
             printPlayer();
-            
-        }else if (vCommandWord.equals("repare")) { //si la commande tapée est "repar"
+
+        }else if (vCommandWord.equals("repare")) { //si la commande tapée est "repare"
             repareMotor(vCommand);
+
+        }else if (vCommandWord.equals("attaque")) { //si la commande tapée est "attaque"
+            attaque(vCommand);
         }
-        
         else { //si print "Erreur du programmeur : commande non reconnue !"
             this.aGui.println("Erreur du programmeur : commande non reconnue !");
         }   
-        
 
-        
     } //processCommand()
 
     /**
@@ -277,6 +300,10 @@ public class GameEngine
      */
     private void printLocationInfo() {
         this.aGui.println(this.aPlayer.getCurrentRoom().getLongDescription());
+        Png vCurrentPng = this.aPlayer.getCurrentRoom().getPng();
+        if(vCurrentPng != null) {
+            this.aGui.println("Attention il y a un ennemi qui se nomme " + vCurrentPng.getNamePng() + ". Vous pouvez l'attaquer avec attaque a condition d'avoir une Arme");
+        }
 
         if ( this.aPlayer.getCurrentRoom().getImageName() != null ) 
             this.aGui.showImage(this.aPlayer.getCurrentRoom().getImageName());   
@@ -297,7 +324,7 @@ public class GameEngine
             this.aGui.println("I don't know how to look at something in particular yet.\n");
 
         } else {
-            this.aGui.println(this.aPlayer.getCurrentRoom().getLongDescription());
+            printLocationInfo();
         }
     } //look()
 
@@ -363,10 +390,10 @@ public class GameEngine
     private void goback(final Command pSecondMot) {
         if(pSecondMot.hasSecondWord() == true ) {//si l'utilisateur tape un second mot apres "back" (exemple: "back south")
             this.aGui.println("Just back.\n");
-            
+
         } else if (!this.aPlayer.getPreviousRoom().isEmpty()) {
             Room vPreviousRoom = this.aPlayer.getPreviousRoom().peek();
-            
+
             // Vérifiez si la pièce précédente a une trappe
             if(vPreviousRoom != null && vPreviousRoom.getTrapDoor()) {
                 this.aPlayer.setCurrentRoom(this.aPlayer.getPreviousRoom().pop()); //retire la room au dessus de la pile avec pop et donne la valaeur de cette room à aCurrentRoom 
@@ -374,7 +401,7 @@ public class GameEngine
             } else {
                 aGui.println("You can't go back through the trapdoor!");
             }
-            
+
         } else {
             this.aGui.println("You can't go back!");
         }
@@ -419,13 +446,19 @@ public class GameEngine
             Item vItem = this.aPlayer.getCurrentRoom().getItem(vItemName); //Récupere l'objet de la pièce actuelle
 
             if(vItem != null ) {
-                if(this.aPlayer.getTotalWeight(vItem)) {// Vérifie si le poids de l'objet peut être ajouté à l'inventaire du joueur avec getTotalWeight contenu dans Player
-                    this.aPlayer.takeItem(vItemName, vItem);// ajoute l'item à l'inventaire du joueur 
-                    this.aPlayer.getCurrentRoom().getItemList().removeItem(vItemName, vItem); // retire l'item de la pièce actuelle
-                    this.aGui.println("You took the " + vItemName + "."); //print l'item 
-                    this.aGui.println("Your Maximum possible weight now is " + this.aPlayer.getPoidsMax() + ".\n"); //print le poid Max que peut porter le Player après avoir add l'item
-                } else {
-                    this.aGui.println("The item is too heavy."); //print si l'objet est supèrieur à ce que peut porter un Player
+                // Ajouter la logique de vérification pour les armes légères et lourdes
+                if ((vItem.getNameItem().equals("ArmeLegere") && this.aPlayer.getItemInInventory("ArmeLourd") != null) ||
+                (vItem.getNameItem().equals("ArmeLourd") && this.aPlayer.getItemInInventory("ArmeLegere") != null)) {
+                    this.aGui.println("Vous ne pouvez pas prendre l'arme légère et l'arme lourde en même temps.");
+                }else {
+                    if(this.aPlayer.getTotalWeight(vItem)) {// Vérifie si le poids de l'objet peut être ajouté à l'inventaire du joueur avec getTotalWeight contenu dans Player
+                        this.aPlayer.takeItem(vItemName, vItem);// ajoute l'item à l'inventaire du joueur 
+                        this.aPlayer.getCurrentRoom().getItemList().removeItem(vItemName, vItem); // retire l'item de la pièce actuelle
+                        this.aGui.println("You took the " + vItemName + "."); //print l'item 
+                        this.aGui.println("Your Maximum possible weight now is " + this.aPlayer.getPoidsMax() + ".\n"); //print le poid Max que peut porter le Player après avoir add l'item
+                    } else {
+                        this.aGui.println("The item is too heavy."); //print si l'objet est supèrieur à ce que peut porter un Player
+                    }
                 }
             } else {
                 this.aGui.println("Unable to take the " + vItemName + ".\n"); //print si l'item n'existe pas
@@ -469,8 +502,8 @@ public class GameEngine
         this.aGui.println("Your maximum possible weight now : " + this.aPlayer.getPoidsMax());
         this.aGui.println(this.aPlayer.getInventoryItemList());
     } //printPlayer()
-    
-     /**
+
+    /**
      * Vérifie si le joueur a dépassé le nombre maximal de mouvements.
      * Si oui, met fin au jeu.
      */
@@ -478,31 +511,68 @@ public class GameEngine
         if(this.aCurrentMoves == this.aMaxMoves - 1) {
             this.aGui.println("Il vous reste seulement un seul Mouvement. Attention vous avez atteint votre limite de temps");
         }
-        
+
         if (this.aCurrentMoves == this.aMaxMoves) {
             this.aGui.println("Temps écoulé ! Vous avez dépassé le nombre maximal de mouvements. Fin du jeu.");
             this.endGame();
             return;
         }
     }
-    
+
     private void repareMotor(final Command pCommand) {
         if (!pCommand.hasSecondWord()) {
             this.aGui.println("Repare what?");
+            return; //sortir directement de la fonction
         } else {
             String vString = pCommand.getSecondWord();
             Room vRoom = this.aPlayer.getCurrentRoom();
-            
+
             if (vString.equals("motor1") && this.aRightEngine == vRoom) {
-               vRoom.setMotor1(true);
-               this.aGui.println("Le moteur 1 est réparé.\n");
+                vRoom.setMotor1(true);
+                this.aGui.println("Le moteur 1 est réparé.\n");
             } else if (vString.equals("motor2") && this.aLeftEngine == vRoom) {
                 vRoom.setMotor2(true);
-               this.aGui.println("Le moteur 2 est réparé.\n");
+                this.aGui.println("Le moteur 2 est réparé.\n");
             } else {
                 this.aGui.println("Vous ne pouvez pas réparer le moteur");
             }
-            
+
         }
     }
+
+    private void attaque(final Command pCommand) {
+        if (pCommand.hasSecondWord()) {
+            this.aGui.println("Just Attaque");
+
+        }  else if (this.aPlayer.getVie() >= 0) { //Verifie si le Player à plus de 0 de Vie
+
+            if(this.aPlayer.getCurrentRoom().hasPng() ) {//Verifie si la piece actuelle contient un Png
+                Png vCurrentPng = this.aPlayer.getCurrentRoom().getPng();
+                this.aPlayer.perdVie(vCurrentPng.getDegat());
+                this.aGui.println("Il vous reste " + this.aPlayer.getVie() + " de vie");
+    
+                if (vCurrentPng.getVie() <= 0) {
+                    this.aGui.println(vCurrentPng.getNamePng() + " est vaincu !");
+                    this.aPlayer.getCurrentRoom().removePng();
+                } else { 
+                    if (this.aPlayer.getItemInInventory("ArmeLegere") != null && vCurrentPng != null) { // Vérifier si le joueur a une arme légère dans l'inventaire et si la pièce est valide pour une attaque
+                        vCurrentPng.prendDegat(this.aArmeLegere.getDegat());
+                        this.aGui.println("Il reste " + vCurrentPng.getVie() + " à " +  vCurrentPng.getNamePng());
+    
+                    } else if (this.aPlayer.getItemInInventory("ArmeLourde") != null && vCurrentPng != null) { // Vérifier si le joueur a une arme lourde dans l'inventaire et si la pièce est valide pour une attaque
+                        vCurrentPng.prendDegat(this.aArmeLourde.getDegat());
+                        this.aGui.println("Il reste " + vCurrentPng.getVie() + " à " +  vCurrentPng.getNamePng());
+                    } else {
+                        this.aGui.println("Vous ne pouvez pas attaquer ici.");
+                    } 
+                }
+                } else {
+                    this.aGui.println("Il n'y a pas d'ennemi ici.");
+                }  
+            } else {
+            this.aGui.println("You ne pouvez pas attaquer!");
+            endGame();
+        }
+    }
+
 }//GameEngine

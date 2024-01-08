@@ -21,6 +21,7 @@ public class Room
     private String aAudioName;
     private Clip aAudioClip;
     private ItemList aItemsList;
+    private Png aPng;
     
     private boolean aIsExit;
     private boolean aMotor1;
@@ -41,6 +42,7 @@ public class Room
         this.aIsExit = false;
         this.aMotor1 = false;
         this.aMotor2 = false;
+        this.aPng = null; // La pièce n'a pas de PNG par défaut
     } // Room()
 
     public boolean getTrapDoor() {
@@ -179,5 +181,25 @@ public class Room
     public ItemList getItemList() {
         return this.aItemsList;
     } //getItemList()
+    
+    // Méthode pour vérifier si la pièce a un PNG
+    public boolean hasPng() {
+        return this.aPng != null;
+    }
+    
+    // Méthode pour récupérer le PNG de la pièce
+    public Png getPng() {
+        return this.aPng;
+    }
+    
+    // Méthode pour définir un PNG dans la pièce
+    public void setPng(Png pPng) {
+        this.aPng = pPng;
+    }
+    
+    // Méthode pour retirer l'ennemi de la pièce
+    public void removePng() {
+        this.aPng = null;
+    }
 
 } // Room

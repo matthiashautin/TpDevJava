@@ -112,6 +112,10 @@ public class Player
     public void donneVie(final int pVie) {
         this.aVie += pVie;
     } //donneVie()
+    
+    public void perdVie(final int pVie) {
+        this.aVie -= pVie;
+    }
 
     /**
      * Définit la pièce actuelle du joueur
@@ -142,5 +146,5 @@ public class Player
         this.aInventoryItems.removeItem(pItemName, pItem);
         this.aPoidsMax = this.aPoidsMax + pItem.getPoids();
     } //dropItem()
-
+    
 }

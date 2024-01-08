@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.target=Png
+comment0.text=\r\n\ D\u00E9crivez\ votre\ classe\ png\ ici.\r\n\r\n\ @author\ Hautin\ Matthias\ \r\n\ @version\ 08/01/24\r\n
+comment1.params=pNamePng\ pCurrentRoom\ pVie\ pDegat
+comment1.target=Png(java.lang.String,\ Room,\ int,\ int)
+comment2.params=
+comment2.target=java.lang.String\ getNamePng()
+comment3.params=
+comment3.target=int\ getVie()
+comment4.params=
+comment4.target=int\ getDegat()
+comment5.params=pVie
+comment5.target=void\ prendDegat(int)
+numComments=6
