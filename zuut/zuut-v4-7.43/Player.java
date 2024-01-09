@@ -18,6 +18,8 @@ public class Player
     private int          aPoidsMax;
     private int          aVie;
     private ItemList     aInventoryItems;
+    
+    private Item        aAcrmeActuelle;
 
     /**
      * initialize all attribute
@@ -146,5 +148,14 @@ public class Player
         this.aInventoryItems.removeItem(pItemName, pItem);
         this.aPoidsMax = this.aPoidsMax + pItem.getPoids();
     } //dropItem()
+    
+    public Item getArmeActuelle() {
+        return this.aAcrmeActuelle;
+    }
+
+    public void setArmeActuelle(final Item pArmeActuelle) {
+        this.aAcrmeActuelle = pArmeActuelle;
+    }
+    
     
 }

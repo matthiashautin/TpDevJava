@@ -542,35 +542,33 @@ public class GameEngine
 
     private void attaque(final Command pCommand) {
         if (pCommand.hasSecondWord()) {
-            this.aGui.println("Just Attaque");
+            this.aGui.println("Juste Attaque");
+        } else if (this.aPlayer.getVie() > 0) { // Vérifie si le joueur a plus de 0 de Vie
 
-        }  else if (this.aPlayer.getVie() >= 0) { //Verifie si le Player à plus de 0 de Vie
-
-            if(this.aPlayer.getCurrentRoom().hasPng() ) {//Verifie si la piece actuelle contient un Png
+            if (this.aPlayer.getCurrentRoom().hasPng()) { // Vérifie si la pièce actuelle contient un Png
                 Png vCurrentPng = this.aPlayer.getCurrentRoom().getPng();
                 this.aPlayer.perdVie(vCurrentPng.getDegat());
                 this.aGui.println("Il vous reste " + this.aPlayer.getVie() + " de vie");
-    
-                if (vCurrentPng.getVie() <= 0) {
-                    this.aGui.println(vCurrentPng.getNamePng() + " est vaincu !");
-                    this.aPlayer.getCurrentRoom().removePng();
-                } else { 
-                    if (this.aPlayer.getItemInInventory("ArmeLegere") != null && vCurrentPng != null) { // Vérifier si le joueur a une arme légère dans l'inventaire et si la pièce est valide pour une attaque
+
+                if (vCurrentPng.getVie() > 1) {
+                    if (this.aPlayer.getItemInInventory("ArmeLegere") != null) { // Vérifier si le joueur a une arme légère dans l'inventaire
                         vCurrentPng.prendDegat(this.aArmeLegere.getDegat());
                         this.aGui.println("Il reste " + vCurrentPng.getVie() + " à " +  vCurrentPng.getNamePng());
-    
-                    } else if (this.aPlayer.getItemInInventory("ArmeLourde") != null && vCurrentPng != null) { // Vérifier si le joueur a une arme lourde dans l'inventaire et si la pièce est valide pour une attaque
+                    } else if (this.aPlayer.getItemInInventory("ArmeLourde") != null) { // Vérifier si le joueur a une arme lourde dans l'inventaire
                         vCurrentPng.prendDegat(this.aArmeLourde.getDegat());
                         this.aGui.println("Il reste " + vCurrentPng.getVie() + " à " +  vCurrentPng.getNamePng());
                     } else {
                         this.aGui.println("Vous ne pouvez pas attaquer ici.");
-                    } 
-                }
+                    }
                 } else {
-                    this.aGui.println("Il n'y a pas d'ennemi ici.");
-                }  
+                    this.aGui.println(vCurrentPng.getNamePng() + " est vaincu !");
+                    this.aPlayer.getCurrentRoom().removePng();
+                }
             } else {
-            this.aGui.println("You ne pouvez pas attaquer!");
+                this.aGui.println("Il n'y a pas d'ennemi ici.");
+            }
+        } else {
+            this.aGui.println("Vous ne pouvez pas attaquer!");
             endGame();
         }
     }
