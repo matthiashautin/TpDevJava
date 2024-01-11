@@ -49,7 +49,7 @@ public class GameEngine
         Item vTW = new Item("Talkie-Walkie", 2, "Le talkie Walkie vous permetra de toujours être connecté avec Lara pour vous indiquer les étapes du jeu. Ces donc un outil important même obligatoire dans le jeu.");
         Item vTest = new Item("Test", 15, "un item en plus"); 
         Item vMasse = new Item("Masse" , 80, "Une masse Lourd");
-        Item vCookieMagic = new Item("Cookie" , 1, "Un gros  cookie Magic de 1kils batard, qui te met bien ");
+        Item vCookieMagic = new Item("Cookie" , 1, "Un cookie magique qui ajoute de la vie ");
         vMainPilot.setItems(vTest);
         vMainPilot.setItems(vTW);
         vMainPilot.setItems(vMasse);

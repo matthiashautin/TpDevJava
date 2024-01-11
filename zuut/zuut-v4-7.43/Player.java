@@ -114,10 +114,14 @@ public class Player
     public void donneVie(final int pVie) {
         this.aVie += pVie;
     } //donneVie()
-    
+
+    /**
+     * Enleve la quantité spécifiée de points de vie du joueur
+     * @param pVie La quantité de points de vie à ajouter
+     */
     public void perdVie(final int pVie) {
         this.aVie -= pVie;
-    }
+    } //perdVie
 
     /**
      * Définit la pièce actuelle du joueur
@@ -149,13 +153,19 @@ public class Player
         this.aPoidsMax = this.aPoidsMax + pItem.getPoids();
     } //dropItem()
     
+    /**
+     *  @return this.aAcrmeActuelle
+     */
     public Item getArmeActuelle() {
         return this.aAcrmeActuelle;
     }
-
+    
+    /**
+     * pour récupèrer l'arme que le joueur veut
+     * @param pArmeActuelle l'arme que le joueur récupère
+     */
     public void setArmeActuelle(final Item pArmeActuelle) {
         this.aAcrmeActuelle = pArmeActuelle;
     }
-    
-    
-}
+        
+} //Player

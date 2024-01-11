@@ -22,7 +22,8 @@ public class Room
     private Clip aAudioClip;
     private ItemList aItemsList;
     private Png aPng;
-    
+    private Player aPlayer;
+
     private boolean aIsExit;
     private boolean aMotor1;
     private boolean aMotor2;
@@ -40,42 +41,15 @@ public class Room
         this.aAudioName = pAudio;
         this.aItemsList = new ItemList();
         this.aIsExit = false;
-        this.aMotor1 = false;
-        this.aMotor2 = false;
         this.aPng = null; // La pièce n'a pas de PNG par défaut
     } // Room()
 
-    public boolean getTrapDoor() {
-        return this.aIsExit;
-    }
-    
-    public void setTrapDoor(final boolean vExit) {
-        this.aIsExit = vExit;
-    }
-    
-    public boolean getMotor1() {
-        return this.aMotor1;
-    }
-    
-    public boolean getMotor2() {
-        return this.aMotor2;
-    }
-    
-    public void setMotor1(final boolean vMotor) {
-        this.aMotor1 = vMotor;
-    }
-    
-    public void setMotor2(final boolean vMotor) {
-        this.aMotor2 = vMotor;
-    }
-    
     /**
      * @return aDescription attribute, String, getter
      */
     public String getDescription() {
         return this.aDescription;
     } //getDescription()
-    
 
     /**
      * define the exits for the all rooms. All direction if its possible, if that rooms egal null no exits here, procedure, setter
@@ -139,15 +113,28 @@ public class Room
         return this.aAudioName;
     } //getAudioName()
 
+    /**
+     * Joue le fichier audio associé à cette instance de la classe.
+     * Si le fichier audio n'existe pas, la méthode ne fait rien.
+     * En cas d'erreur lors de la lecture du fichier audio, une trace
+     * de la pile est affichée.
+     * 
+     */
     public void playAudio() {
         try {
+            // Création d'un objet File à partir du nom de fichier audio
             File vAudioFile = new File(this.aAudioName);
-            AudioInputStream vAudioStream = AudioSystem.getAudioInputStream(vAudioFile);
 
-            this.aAudioClip = AudioSystem.getClip();
-            this.aAudioClip.open(vAudioStream);
-            this.aAudioClip.start();
+            if (!vAudioFile.exists()) { // Vérifie si le fichier audio existe
+                return; // Si le fichier n'existe pas, la méthode se termine
+            } else {
+                AudioInputStream vAudioStream = AudioSystem.getAudioInputStream(vAudioFile);// Obtient un flux audio à partir du fichier audio
+                this.aAudioClip = AudioSystem.getClip();// Création d'un objet Clip pour la lecture du fichier audio
+                this.aAudioClip.open(vAudioStream);// Ouverture du Clip avec le flux audio
+                this.aAudioClip.start(); // Démarre la lecture du fichier audio
+            }
         } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
+            // En cas d'erreur, affiche la trace de la pile
             e.printStackTrace();
         }
     } //playAudio()
@@ -159,9 +146,9 @@ public class Room
     } //stopAudio()
 
     /**
-    * define the items that are given to a room
-    * @param pItem (string) 
-    */
+     * define the items that are given to a room
+     * @param pItem (string) 
+     */
     public void setItems(final Item pItem) {
         this.aItemsList.setItemList(pItem);
     } //setItem()
@@ -181,25 +168,83 @@ public class Room
     public ItemList getItemList() {
         return this.aItemsList;
     } //getItemList()
-    
-    // Méthode pour vérifier si la pièce a un PNG
+
+    /**
+     * @return true si la pièce a une trappe de sortie, sinon false.
+     */
+    public boolean getTrapDoor() {
+        return this.aIsExit;
+    } //getTrapDoor()
+
+    /**
+     * Définit si la pièce a une trappe de sortie.
+     * 
+     * @param vExit true si la pièce a une trappe de sortie, sinon false.
+     */
+    public void setTrapDoor(final boolean vExit) {
+        this.aIsExit = vExit;
+    } //setTrapDoor()
+
+    /**
+     * @return true si le moteur 1 est activé, sinon false.
+     */
+    public boolean getMotor1() {
+        return this.aMotor1;
+    } //getMotor1
+
+    /**
+     * @return true si le moteur 2 est activé, sinon false.
+     */
+    public boolean getMotor2() {
+        return this.aMotor2;
+    } //getMotor2()
+
+    /**
+     * Active ou désactive le moteur 1.
+     * 
+     * @param vMotor true pour activer, false pour désactiver.
+     */
+    public void setMotor1(final boolean vMotor) {
+        this.aMotor1 = vMotor;
+    } //setMotor1()
+
+    /**
+     * Active ou désactive le moteur 2.
+     * 
+     * @param vMotor true pour activer, false pour désactiver.
+     */
+    public void setMotor2(final boolean vMotor) {
+        this.aMotor2 = vMotor;
+    } //setMotor2()
+
+    /**
+     * @return true si la pièce a un personnage non-joueur (PNG), sinon false.
+     */
     public boolean hasPng() {
         return this.aPng != null;
-    }
-    
-    // Méthode pour récupérer le PNG de la pièce
+    } //hasPng()
+
+    /**
+     * @return Le PNG de la pièce, null si la pièce n'a pas de PNG.
+     */
     public Png getPng() {
         return this.aPng;
-    }
-    
-    // Méthode pour définir un PNG dans la pièce
+    } //getPng()
+
+    /**
+     * Définit le PNG de la pièce.
+     * 
+     * @param pPng Le PNG à définir dans la pièce.
+     */
     public void setPng(Png pPng) {
         this.aPng = pPng;
-    }
-    
-    // Méthode pour retirer l'ennemi de la pièce
+    } //setPng()
+
+    /**
+     * Retire le personnage non-joueur (PNG) de la pièce.
+     */
     public void removePng() {
         this.aPng = null;
-    }
+    } //removePng()
 
 } // Room

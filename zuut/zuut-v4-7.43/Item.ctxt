@@ -15,4 +15,5 @@ comment4.target=java.lang.String\ getLongDescrptionItem()
 comment4.text=\r\n\ @return\ aLongDescription\r\n
 comment5.params=
 comment5.target=int\ getDegat()
+comment5.text=\r\n\ @return\ aDegat\r\n
 numComments=6

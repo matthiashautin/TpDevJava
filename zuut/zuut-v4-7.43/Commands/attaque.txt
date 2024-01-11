@@ -1,0 +1,11 @@
+take ArmeLegere
+take ArmeLourde
+go down
+go east
+go east
+look
+attaque
+attaque ArmeLourde
+attaque ArmeLegere
+attaque ArmeLegere
+look

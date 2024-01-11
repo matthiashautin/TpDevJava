@@ -18,6 +18,8 @@ public class UserInterface implements ActionListener
     private JTextField aEntryField;
     private JTextArea  aLog;
     private JLabel     aImage;
+    private JLabel     aImageMap;
+
     //Btn Command
     private JButton    aBtnAudio;
     private JButton    aBtnQuit;
@@ -39,6 +41,9 @@ public class UserInterface implements ActionListener
     private JButton    aBtnUpEast;
     private JButton    aBtnUpWest;
     private JButton    aBtnDownSouth;
+    
+    private JButton    aBtnAttackLegere;
+    private JButton    aBtnAttackLourde;
 
     private boolean    aBool;
 
@@ -51,6 +56,7 @@ public class UserInterface implements ActionListener
         this.aEngine = pGameEngine;
         this.createGUI();
         this.aBool = true;
+        showMinimapImage("./Images/Map.png");
     } // UserInterface(.)
 
     /**
@@ -83,6 +89,16 @@ public class UserInterface implements ActionListener
         }
     } // showImage(.)
 
+    public void showMinimapImage(String imagePath) {
+        URL imageURL = this.getClass().getClassLoader().getResource(imagePath);
+        if (imageURL == null) {
+            System.out.println("Image not found: " + imagePath);
+        } else {
+            ImageIcon icon = new ImageIcon(imageURL);
+            this.aImageMap.setIcon(icon);
+        }
+    }
+
     /**
      * Enable or disable input in the entry field
      */
@@ -104,7 +120,9 @@ public class UserInterface implements ActionListener
     private void createGUI() {
         this.aMyFrame = new JFrame( "Crash ship" ); // change the title !
         this.aEntryField = new JTextField( 34 );
-
+        
+        this.aMyFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        
         this.aLog = new JTextArea();
         this.aLog.setEditable( false );
         JScrollPane vListScroller = new JScrollPane( this.aLog );
@@ -113,99 +131,165 @@ public class UserInterface implements ActionListener
 
         //JButton
         this.aBtnAudio = new JButton("play audio");
-        this.aBtnAudio.setPreferredSize(new Dimension(100,25));
+        this.aBtnAudio.setPreferredSize(new Dimension(100,40));
 
         this.aBtnQuit = new JButton("quit");
-        this.aBtnQuit.setPreferredSize(new Dimension(100,25));
+        this.aBtnQuit.setPreferredSize(new Dimension(100,40));
 
         this.aBtnHelp = new JButton("help");
-        this.aBtnHelp.setPreferredSize(new Dimension(100,25));
+        this.aBtnHelp.setPreferredSize(new Dimension(100,40));
 
         this.aBtnEat = new JButton("eat");
-        this.aBtnEat.setPreferredSize(new Dimension(100,25));
+        this.aBtnEat.setPreferredSize(new Dimension(100,40));
 
         this.aBtnLook = new JButton("look");
-        this.aBtnLook.setPreferredSize(new Dimension(100,25));
+        this.aBtnLook.setPreferredSize(new Dimension(100,40));
 
         this.aBtnBack = new JButton("back");
-        this.aBtnBack.setPreferredSize(new Dimension(100,25));
+        this.aBtnBack.setPreferredSize(new Dimension(100,40));
 
         this.aBtnNorth = new JButton("North");
-        this.aBtnNorth.setPreferredSize(new Dimension(100,25));
+        this.aBtnNorth.setPreferredSize(new Dimension(100,40));
 
         this.aBtnSouth = new JButton("South");
-        this.aBtnSouth.setPreferredSize(new Dimension(100,25));
+        this.aBtnSouth.setPreferredSize(new Dimension(100,40));
 
         this.aBtnEast = new JButton("East");
-        this.aBtnEast.setPreferredSize(new Dimension(100,25));
+        this.aBtnEast.setPreferredSize(new Dimension(100,40));
 
         this.aBtnWest = new JButton("West");
-        this.aBtnWest.setPreferredSize(new Dimension(100,25));
+        this.aBtnWest.setPreferredSize(new Dimension(100,40));
 
         this.aBtnUp = new JButton("Up");
-        this.aBtnUp.setPreferredSize(new Dimension(100,25));
+        this.aBtnUp.setPreferredSize(new Dimension(100,40));
 
         this.aBtnDown = new JButton("Down");
-        this.aBtnDown.setPreferredSize(new Dimension(100,25));
+        this.aBtnDown.setPreferredSize(new Dimension(100,40));
 
         this.aBtnDownWest = new JButton("DownWest");
-        this.aBtnDownWest.setPreferredSize(new Dimension(100,25));
+        this.aBtnDownWest.setPreferredSize(new Dimension(100,40));
 
         this.aBtnDownEast = new JButton("DownEast");
-        this.aBtnDownEast.setPreferredSize(new Dimension(100,25));
+        this.aBtnDownEast.setPreferredSize(new Dimension(100,40));
 
         this.aBtnUpNorth = new JButton("UpNorth");
-        this.aBtnUpNorth.setPreferredSize(new Dimension(100,25));
+        this.aBtnUpNorth.setPreferredSize(new Dimension(100,40));
 
         this.aBtnUpEast = new JButton("UpEast");
-        this.aBtnUpEast.setPreferredSize(new Dimension(100,25));
+        this.aBtnUpEast.setPreferredSize(new Dimension(100,40));
 
         this.aBtnUpWest = new JButton("UpWest");
-        this.aBtnUpWest.setPreferredSize(new Dimension(100,25));
+        this.aBtnUpWest.setPreferredSize(new Dimension(100,40));
 
         this.aBtnDownSouth = new JButton("DownSouth");
-        this.aBtnDownSouth.setPreferredSize(new Dimension(100,25));
+        this.aBtnDownSouth.setPreferredSize(new Dimension(100,40));
+        
+        this.aBtnAttackLegere = new JButton("ArmeLegere");
+        this.aBtnAttackLegere.setPreferredSize(new Dimension(120,40));     
+        
+        this.aBtnAttackLourde = new JButton("ArmeLourde");
+        this.aBtnAttackLourde.setPreferredSize(new Dimension(120,40));      
 
         //JLabel
         this.aImage = new JLabel();
 
+        // Créez un nouveau JLabel pour la minimap
+        this.aImageMap = new JLabel();
+        this.aImageMap.setPreferredSize(new Dimension(469, 350));
+
         //temporraire je change la size de l'emplacement de l'image 
-        //this.aImage.setPreferredSize(new Dimension(500, 400));
+        //this.aImage.setPreferredSize(new Dimension(200, 200));
 
         JPanel vPaneCommand = new JPanel();   
-        vPaneCommand.setLayout(new GridLayout(3, 2) );
+        vPaneCommand.setLayout(new GridLayout(2, 7) );
         vPaneCommand.add(this.aBtnAudio, BorderLayout.CENTER );
         vPaneCommand.add(this.aBtnQuit,BorderLayout.CENTER );
         vPaneCommand.add(this.aBtnHelp,BorderLayout.CENTER );
         vPaneCommand.add(this.aBtnEat,BorderLayout.CENTER );
         vPaneCommand.add(this.aBtnLook,BorderLayout.CENTER );
         vPaneCommand.add(this.aBtnBack,BorderLayout.CENTER );
+        
+        vPaneCommand.add(this.aBtnNorth, BorderLayout.NORTH );
+        vPaneCommand.add(this.aBtnSouth,BorderLayout.SOUTH );
+        vPaneCommand.add(this.aBtnEast,BorderLayout.EAST );
+        vPaneCommand.add(this.aBtnWest,BorderLayout.WEST );
 
-        JPanel vPaneDirection = new JPanel();
-        vPaneDirection.setLayout(new GridLayout(3, 4) );
-        vPaneDirection.add(this.aBtnNorth, BorderLayout.NORTH );
-        vPaneDirection.add(this.aBtnSouth,BorderLayout.SOUTH );
-        vPaneDirection.add(this.aBtnEast,BorderLayout.EAST );
-        vPaneDirection.add(this.aBtnWest,BorderLayout.WEST );
-
-        vPaneDirection.add(this.aBtnUp,BorderLayout.NORTH );
-        vPaneDirection.add(this.aBtnDown,BorderLayout.SOUTH );
-        vPaneDirection.add(this.aBtnDownWest,BorderLayout.WEST );
-        vPaneDirection.add(this.aBtnDownEast,BorderLayout.EAST );
-        vPaneDirection.add(this.aBtnUpNorth,BorderLayout.NORTH );
-        vPaneDirection.add(this.aBtnUpEast,BorderLayout.EAST );
-        vPaneDirection.add(this.aBtnUpWest,BorderLayout.WEST );
-        vPaneDirection.add(this.aBtnDownSouth,BorderLayout.SOUTH );
-
+        vPaneCommand.add(this.aBtnUp,BorderLayout.NORTH );
+        vPaneCommand.add(this.aBtnDown,BorderLayout.SOUTH );
+        vPaneCommand.add(this.aBtnDownWest,BorderLayout.WEST );
+        vPaneCommand.add(this.aBtnDownEast,BorderLayout.EAST );
+        vPaneCommand.add(this.aBtnUpNorth,BorderLayout.NORTH );
+        vPaneCommand.add(this.aBtnUpEast,BorderLayout.EAST );
+        vPaneCommand.add(this.aBtnUpWest,BorderLayout.WEST );
+        vPaneCommand.add(this.aBtnDownSouth,BorderLayout.SOUTH );
+        
+        vPaneCommand.add(this.aBtnAttackLegere,BorderLayout.WEST );
+        vPaneCommand.add(this.aBtnAttackLourde,BorderLayout.SOUTH );
+        
+        /*
         JPanel vMainPanel = new JPanel();      
         vMainPanel.setLayout( new BorderLayout()); // ==> only five places
         vMainPanel.add( this.aImage, BorderLayout.NORTH );
         vMainPanel.add( vListScroller, BorderLayout.CENTER );
         vMainPanel.add( this.aEntryField, BorderLayout.SOUTH );
         vMainPanel.add( vPaneCommand, BorderLayout.EAST);//le placer à l'est
-        vMainPanel.add( vPaneDirection, BorderLayout.WEST);//le placer à l'est
+        //vMainPanel.add( vPaneDirection, BorderLayout.WEST);//le placer à l'est
+        vMainPanel.add(this.aImageMap, BorderLayout.WEST); // LINE_END est l'équivalent de EAST
+         */
 
-        this.aMyFrame.getContentPane().add( vMainPanel, BorderLayout.CENTER );
+        JPanel vMainPanel = new JPanel();
+        vMainPanel.setLayout(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
+
+        // this.aImage en haut à gauche
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.anchor = GridBagConstraints.NORTHWEST;
+        vMainPanel.add(this.aImage, gbc);
+
+        // vListScroller au milieu
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        gbc.gridwidth = 3;
+        gbc.fill = GridBagConstraints.BOTH;
+        vMainPanel.add(vListScroller, gbc);
+
+        // vMinimapContainer en haut à droite
+        JPanel vMinimapContainer = new JPanel();
+        vMinimapContainer.add(this.aImageMap, BorderLayout.CENTER);
+        vMinimapContainer.setPreferredSize(new Dimension(200, 200));  
+        Insets marginMinimap = new Insets(10, 0, 0, 0); 
+        gbc.gridx = 2;
+        gbc.gridy = 0;
+        gbc.gridwidth = 1;
+        gbc.anchor = GridBagConstraints.NORTHEAST;
+        gbc.insets = marginMinimap; 
+        vMainPanel.add(vMinimapContainer, gbc);
+
+        // vPaneCommand en bas à droite
+        gbc.gridx = 2;
+        gbc.gridy = 2;
+        gbc.gridwidth = 1;
+        gbc.fill = GridBagConstraints.VERTICAL;
+        gbc.anchor = GridBagConstraints.SOUTHEAST;
+        Insets marginPaneCommand = new Insets(0, 0, 10, 0); 
+        gbc.insets = marginPaneCommand;
+        vMainPanel.add(vPaneCommand, gbc);
+
+        // this.aEntryField en bas de la page
+        gbc.gridx = 0;
+        gbc.gridy = 3;
+        gbc.gridwidth = 3;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        Insets marginEntryField = new Insets(0, 0, 10, 0); 
+        gbc.insets = marginEntryField;
+        vMainPanel.add(this.aEntryField, gbc);
+
+        // Ajoutez le panneau principal au contenu du cadre
+        this.aMyFrame.getContentPane().add(vMainPanel);
+
+        // Ajoutez le label de la minimap au panneau principal
+        //this.aMyFrame.getContentPane().add( vMainPanel, BorderLayout.CENTER );
 
         // add some event listeners to some components
         this.aEntryField.addActionListener( this );
@@ -230,6 +314,8 @@ public class UserInterface implements ActionListener
         this.aBtnUpEast.addActionListener( this );
         this.aBtnUpWest.addActionListener( this );
         this.aBtnDownSouth.addActionListener( this );
+        this.aBtnAttackLegere.addActionListener( this );
+        this.aBtnAttackLourde.addActionListener( this );
 
         // to end program when window is closed
         this.aMyFrame.addWindowListener(
@@ -308,6 +394,12 @@ public class UserInterface implements ActionListener
 
         }else if(pE.getSource() == this.aBtnDownSouth ){
             this.aEngine.interpretCommand("go downsouth");
+            
+        }else if(pE.getSource() == this.aBtnAttackLegere ){
+            this.aEngine.interpretCommand("attack ArmeLegere");
+            
+        }else if(pE.getSource() == this.aBtnAttackLourde ){
+            this.aEngine.interpretCommand("attack ArmeLourde");
 
         }else 
             this.processCommand(); // never suppress this line
