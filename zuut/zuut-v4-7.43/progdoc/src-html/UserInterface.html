@@ -206,7 +206,7 @@
 <span class="source-line-no">193</span><span id="line-193">        //JLabel</span>
 <span class="source-line-no">194</span><span id="line-194">        this.aImage = new JLabel();</span>
 <span class="source-line-no">195</span><span id="line-195"></span>
-<span class="source-line-no">196</span><span id="line-196">        // Créez un nouveau JLabel pour la minimap</span>
+<span class="source-line-no">196</span><span id="line-196">        // CrÃ©ez un nouveau JLabel pour la minimap</span>
 <span class="source-line-no">197</span><span id="line-197">        this.aImageMap = new JLabel();</span>
 <span class="source-line-no">198</span><span id="line-198">        this.aImageMap.setPreferredSize(new Dimension(469, 350));</span>
 <span class="source-line-no">199</span><span id="line-199"></span>
@@ -245,16 +245,16 @@
 <span class="source-line-no">232</span><span id="line-232">        vMainPanel.add( this.aImage, BorderLayout.NORTH );</span>
 <span class="source-line-no">233</span><span id="line-233">        vMainPanel.add( vListScroller, BorderLayout.CENTER );</span>
 <span class="source-line-no">234</span><span id="line-234">        vMainPanel.add( this.aEntryField, BorderLayout.SOUTH );</span>
-<span class="source-line-no">235</span><span id="line-235">        vMainPanel.add( vPaneCommand, BorderLayout.EAST);//le placer à l'est</span>
-<span class="source-line-no">236</span><span id="line-236">        //vMainPanel.add( vPaneDirection, BorderLayout.WEST);//le placer à l'est</span>
-<span class="source-line-no">237</span><span id="line-237">        vMainPanel.add(this.aImageMap, BorderLayout.WEST); // LINE_END est l'équivalent de EAST</span>
+<span class="source-line-no">235</span><span id="line-235">        vMainPanel.add( vPaneCommand, BorderLayout.EAST);//le placer Ã  l'est</span>
+<span class="source-line-no">236</span><span id="line-236">        //vMainPanel.add( vPaneDirection, BorderLayout.WEST);//le placer Ã  l'est</span>
+<span class="source-line-no">237</span><span id="line-237">        vMainPanel.add(this.aImageMap, BorderLayout.WEST); // LINE_END est l'Ã©quivalent de EAST</span>
 <span class="source-line-no">238</span><span id="line-238">         */</span>
 <span class="source-line-no">239</span><span id="line-239"></span>
 <span class="source-line-no">240</span><span id="line-240">        JPanel vMainPanel = new JPanel();</span>
 <span class="source-line-no">241</span><span id="line-241">        vMainPanel.setLayout(new GridBagLayout());</span>
 <span class="source-line-no">242</span><span id="line-242">        GridBagConstraints gbc = new GridBagConstraints();</span>
 <span class="source-line-no">243</span><span id="line-243"></span>
-<span class="source-line-no">244</span><span id="line-244">        // this.aImage en haut à gauche</span>
+<span class="source-line-no">244</span><span id="line-244">        // this.aImage en haut Ã  gauche</span>
 <span class="source-line-no">245</span><span id="line-245">        gbc.gridx = 0;</span>
 <span class="source-line-no">246</span><span id="line-246">        gbc.gridy = 0;</span>
 <span class="source-line-no">247</span><span id="line-247">        gbc.anchor = GridBagConstraints.NORTHWEST;</span>
@@ -267,7 +267,7 @@
 <span class="source-line-no">254</span><span id="line-254">        gbc.fill = GridBagConstraints.BOTH;</span>
 <span class="source-line-no">255</span><span id="line-255">        vMainPanel.add(vListScroller, gbc);</span>
 <span class="source-line-no">256</span><span id="line-256"></span>
-<span class="source-line-no">257</span><span id="line-257">        // vMinimapContainer en haut à droite</span>
+<span class="source-line-no">257</span><span id="line-257">        // vMinimapContainer en haut Ã  droite</span>
 <span class="source-line-no">258</span><span id="line-258">        JPanel vMinimapContainer = new JPanel();</span>
 <span class="source-line-no">259</span><span id="line-259">        vMinimapContainer.add(this.aImageMap, BorderLayout.CENTER);</span>
 <span class="source-line-no">260</span><span id="line-260">        vMinimapContainer.setPreferredSize(new Dimension(200, 200));  </span>
@@ -279,7 +279,7 @@
 <span class="source-line-no">266</span><span id="line-266">        gbc.insets = marginMinimap; </span>
 <span class="source-line-no">267</span><span id="line-267">        vMainPanel.add(vMinimapContainer, gbc);</span>
 <span class="source-line-no">268</span><span id="line-268"></span>
-<span class="source-line-no">269</span><span id="line-269">        // vPaneCommand en bas à droite</span>
+<span class="source-line-no">269</span><span id="line-269">        // vPaneCommand en bas Ã  droite</span>
 <span class="source-line-no">270</span><span id="line-270">        gbc.gridx = 2;</span>
 <span class="source-line-no">271</span><span id="line-271">        gbc.gridy = 2;</span>
 <span class="source-line-no">272</span><span id="line-272">        gbc.gridwidth = 1;</span>
@@ -430,7 +430,7 @@
 <span class="source-line-no">417</span><span id="line-417">    } // processCommand()</span>
 <span class="source-line-no">418</span><span id="line-418"></span>
 <span class="source-line-no">419</span><span id="line-419">    /**</span>
-<span class="source-line-no">420</span><span id="line-420">     * Ferme la fenêtre de l'interface graphique, si elle est ouverte</span>
+<span class="source-line-no">420</span><span id="line-420">     * Ferme la fenÃªtre de l'interface graphique, si elle est ouverte</span>
 <span class="source-line-no">421</span><span id="line-421">     */</span>
 <span class="source-line-no">422</span><span id="line-422">    public void closeFrame() {</span>
 <span class="source-line-no">423</span><span id="line-423">        if (this.aMyFrame != null) {</span>

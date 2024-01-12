@@ -17,10 +17,10 @@
 <span class="source-line-no">004</span><span id="line-4">import java.util.ArrayList;</span>
 <span class="source-line-no">005</span><span id="line-5"></span>
 <span class="source-line-no">006</span><span id="line-6">/**</span>
-<span class="source-line-no">007</span><span id="line-7"> * Décrivez votre classe ItemList ici.</span>
+<span class="source-line-no">007</span><span id="line-7"> * DÃ©crivez votre classe ItemList ici.</span>
 <span class="source-line-no">008</span><span id="line-8"> *</span>
 <span class="source-line-no">009</span><span id="line-9"> * @author (votre nom)</span>
-<span class="source-line-no">010</span><span id="line-10"> * @version (un numéro de version ou une date)</span>
+<span class="source-line-no">010</span><span id="line-10"> * @version (un numÃ©ro de version ou une date)</span>
 <span class="source-line-no">011</span><span id="line-11"> */</span>
 <span class="source-line-no">012</span><span id="line-12">public class ItemList</span>
 <span class="source-line-no">013</span><span id="line-13">{</span>
@@ -28,7 +28,7 @@
 <span class="source-line-no">015</span><span id="line-15"></span>
 <span class="source-line-no">016</span><span id="line-16">    /**</span>
 <span class="source-line-no">017</span><span id="line-17">     * Initialise une liste d'objets Item</span>
-<span class="source-line-no">018</span><span id="line-18">     * La liste est implémentée sous forme de HashMap, associant des noms d'objets à leurs Items respectives</span>
+<span class="source-line-no">018</span><span id="line-18">     * La liste est implÃ©mentÃ©e sous forme de HashMap, associant des noms d'objets Ã  leurs Items respectives</span>
 <span class="source-line-no">019</span><span id="line-19">     */</span>
 <span class="source-line-no">020</span><span id="line-20">    public ItemList() {</span>
 <span class="source-line-no">021</span><span id="line-21">        this.aItemList = new  HashMap&lt;String, Item&gt;();</span>
@@ -43,19 +43,19 @@
 <span class="source-line-no">030</span><span id="line-30">    }</span>
 <span class="source-line-no">031</span><span id="line-31"></span>
 <span class="source-line-no">032</span><span id="line-32">    /**</span>
-<span class="source-line-no">033</span><span id="line-33">     * Ajoute un Item à la liste des Items de l'inventaire</span>
-<span class="source-line-no">034</span><span id="line-34">     * Utilise le nom de l'item comme clé dans la HashMap</span>
-<span class="source-line-no">035</span><span id="line-35">     * @param pItem L'Item à ajouter à la liste</span>
+<span class="source-line-no">033</span><span id="line-33">     * Ajoute un Item Ã  la liste des Items de l'inventaire</span>
+<span class="source-line-no">034</span><span id="line-34">     * Utilise le nom de l'item comme clÃ© dans la HashMap</span>
+<span class="source-line-no">035</span><span id="line-35">     * @param pItem L'Item Ã  ajouter Ã  la liste</span>
 <span class="source-line-no">036</span><span id="line-36">     */</span>
 <span class="source-line-no">037</span><span id="line-37">    public void setItemList(final Item pItem) {</span>
 <span class="source-line-no">038</span><span id="line-38">        this.aItemList.put(pItem.getNameItem(), pItem);</span>
 <span class="source-line-no">039</span><span id="line-39">    } //setItem()</span>
 <span class="source-line-no">040</span><span id="line-40"></span>
 <span class="source-line-no">041</span><span id="line-41">    /**</span>
-<span class="source-line-no">042</span><span id="line-42">     * Ajoute un Item à la liste des Items de l'inventaire en spécifiant son nom</span>
-<span class="source-line-no">043</span><span id="line-43">     * Utilisé lorsque le joueur prend un Item dans une pièce et l'ajoute à son inventaire</span>
-<span class="source-line-no">044</span><span id="line-44">     * @param pItemName Le nom de l'item à ajouter à la liste des Items</span>
-<span class="source-line-no">045</span><span id="line-45">     * @param pItem L'Item à ajouter à la liste</span>
+<span class="source-line-no">042</span><span id="line-42">     * Ajoute un Item Ã  la liste des Items de l'inventaire en spÃ©cifiant son nom</span>
+<span class="source-line-no">043</span><span id="line-43">     * UtilisÃ© lorsque le joueur prend un Item dans une piÃ¨ce et l'ajoute Ã  son inventaire</span>
+<span class="source-line-no">044</span><span id="line-44">     * @param pItemName Le nom de l'item Ã  ajouter Ã  la liste des Items</span>
+<span class="source-line-no">045</span><span id="line-45">     * @param pItem L'Item Ã  ajouter Ã  la liste</span>
 <span class="source-line-no">046</span><span id="line-46">     */</span>
 <span class="source-line-no">047</span><span id="line-47">    public void takeItem(final String pItemName, final Item pItem) {</span>
 <span class="source-line-no">048</span><span id="line-48">        this.aItemList.put(pItemName, pItem);</span>
@@ -63,8 +63,8 @@
 <span class="source-line-no">050</span><span id="line-50"></span>
 <span class="source-line-no">051</span><span id="line-51">    /**</span>
 <span class="source-line-no">052</span><span id="line-52">     * Supprime un Item de la liste des Items en fonction de son nom</span>
-<span class="source-line-no">053</span><span id="line-53">     * @param pItemName Nom de l'item à supprimer</span>
-<span class="source-line-no">054</span><span id="line-54">     * @param pItem Item à supprimer</span>
+<span class="source-line-no">053</span><span id="line-53">     * @param pItemName Nom de l'item Ã  supprimer</span>
+<span class="source-line-no">054</span><span id="line-54">     * @param pItem Item Ã  supprimer</span>
 <span class="source-line-no">055</span><span id="line-55">     */</span>
 <span class="source-line-no">056</span><span id="line-56">    public void removeItem(final String pItemName, final Item pItem) {</span>
 <span class="source-line-no">057</span><span id="line-57">        this.aItemList.remove(pItemName, pItem);</span>

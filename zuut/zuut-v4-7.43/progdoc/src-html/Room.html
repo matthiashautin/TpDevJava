@@ -54,7 +54,7 @@
 <span class="source-line-no">041</span><span id="line-41">        this.aAudioName = pAudio;</span>
 <span class="source-line-no">042</span><span id="line-42">        this.aItemsList = new ItemList();</span>
 <span class="source-line-no">043</span><span id="line-43">        this.aIsExit = false;</span>
-<span class="source-line-no">044</span><span id="line-44">        this.aPng = null; // La pièce n'a pas de PNG par défaut</span>
+<span class="source-line-no">044</span><span id="line-44">        this.aPng = null; // La piÃ¨ce n'a pas de PNG par dÃ©faut</span>
 <span class="source-line-no">045</span><span id="line-45">    } // Room()</span>
 <span class="source-line-no">046</span><span id="line-46"></span>
 <span class="source-line-no">047</span><span id="line-47">    /**</span>
@@ -99,7 +99,7 @@
 <span class="source-line-no">086</span><span id="line-86">     * You are in main pilot room.</span>
 <span class="source-line-no">087</span><span id="line-87">     *   Exits:  | down | </span>
 <span class="source-line-no">088</span><span id="line-88">     *   Object : Talkie Walkie (Weight: 2 )</span>
-<span class="source-line-no">089</span><span id="line-89">     *   Item Talkie Walkie description : Le talkie Walkie vous permetra de toujours être connecté avec Lara ...</span>
+<span class="source-line-no">089</span><span id="line-89">     *   Item Talkie Walkie description : Le talkie Walkie vous permetra de toujours Ãªtre connectÃ© avec Lara ...</span>
 <span class="source-line-no">090</span><span id="line-90">     */</span>
 <span class="source-line-no">091</span><span id="line-91">    public String getLongDescription() {</span>
 <span class="source-line-no">092</span><span id="line-92">        return "You are " + getDescription() + ".\n" + getExitString() + "\n" + this.aItemsList.getItemString() + "\n" + this.aItemsList.getItemLongDescription();</span>
@@ -127,140 +127,141 @@
 <span class="source-line-no">114</span><span id="line-114">    } //getAudioName()</span>
 <span class="source-line-no">115</span><span id="line-115"></span>
 <span class="source-line-no">116</span><span id="line-116">    /**</span>
-<span class="source-line-no">117</span><span id="line-117">     * Joue le fichier audio associé à cette instance de la classe.</span>
-<span class="source-line-no">118</span><span id="line-118">     * Si le fichier audio n'existe pas, la méthode ne fait rien.</span>
-<span class="source-line-no">119</span><span id="line-119">     * En cas d'erreur lors de la lecture du fichier audio, une trace</span>
-<span class="source-line-no">120</span><span id="line-120">     * de la pile est affichée.</span>
-<span class="source-line-no">121</span><span id="line-121">     * </span>
-<span class="source-line-no">122</span><span id="line-122">     */</span>
-<span class="source-line-no">123</span><span id="line-123">    public void playAudio() {</span>
-<span class="source-line-no">124</span><span id="line-124">        try {</span>
-<span class="source-line-no">125</span><span id="line-125">            // Création d'un objet File à partir du nom de fichier audio</span>
-<span class="source-line-no">126</span><span id="line-126">            File vAudioFile = new File(this.aAudioName);</span>
-<span class="source-line-no">127</span><span id="line-127"></span>
-<span class="source-line-no">128</span><span id="line-128">            if (!vAudioFile.exists()) { // Vérifie si le fichier audio existe</span>
-<span class="source-line-no">129</span><span id="line-129">                return; // Si le fichier n'existe pas, la méthode se termine</span>
-<span class="source-line-no">130</span><span id="line-130">            } else {</span>
-<span class="source-line-no">131</span><span id="line-131">                AudioInputStream vAudioStream = AudioSystem.getAudioInputStream(vAudioFile);// Obtient un flux audio à partir du fichier audio</span>
-<span class="source-line-no">132</span><span id="line-132">                this.aAudioClip = AudioSystem.getClip();// Création d'un objet Clip pour la lecture du fichier audio</span>
-<span class="source-line-no">133</span><span id="line-133">                this.aAudioClip.open(vAudioStream);// Ouverture du Clip avec le flux audio</span>
-<span class="source-line-no">134</span><span id="line-134">                this.aAudioClip.start(); // Démarre la lecture du fichier audio</span>
-<span class="source-line-no">135</span><span id="line-135">            }</span>
-<span class="source-line-no">136</span><span id="line-136">        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {</span>
-<span class="source-line-no">137</span><span id="line-137">            // En cas d'erreur, affiche la trace de la pile</span>
-<span class="source-line-no">138</span><span id="line-138">            e.printStackTrace();</span>
-<span class="source-line-no">139</span><span id="line-139">        }</span>
-<span class="source-line-no">140</span><span id="line-140">    } //playAudio()</span>
-<span class="source-line-no">141</span><span id="line-141"></span>
-<span class="source-line-no">142</span><span id="line-142">    public void stopAudio() {</span>
-<span class="source-line-no">143</span><span id="line-143">        if (this.aAudioClip != null &amp;&amp; this.aAudioClip.isRunning()) {</span>
-<span class="source-line-no">144</span><span id="line-144">            this.aAudioClip.stop();</span>
-<span class="source-line-no">145</span><span id="line-145">        }</span>
-<span class="source-line-no">146</span><span id="line-146">    } //stopAudio()</span>
-<span class="source-line-no">147</span><span id="line-147"></span>
-<span class="source-line-no">148</span><span id="line-148">    /**</span>
-<span class="source-line-no">149</span><span id="line-149">     * define the items that are given to a room</span>
-<span class="source-line-no">150</span><span id="line-150">     * @param pItem (string) </span>
-<span class="source-line-no">151</span><span id="line-151">     */</span>
-<span class="source-line-no">152</span><span id="line-152">    public void setItems(final Item pItem) {</span>
-<span class="source-line-no">153</span><span id="line-153">        this.aItemsList.setItemList(pItem);</span>
-<span class="source-line-no">154</span><span id="line-154">    } //setItem()</span>
-<span class="source-line-no">155</span><span id="line-155"></span>
-<span class="source-line-no">156</span><span id="line-156">    /**</span>
-<span class="source-line-no">157</span><span id="line-157">     * Obtient l'Item correspondant au nom spécifié de la liste d'items de la pièce</span>
-<span class="source-line-no">158</span><span id="line-158">     * @param pItem Le nom de l'item à récupérer</span>
-<span class="source-line-no">159</span><span id="line-159">     * @return L'item correspondant au nom spécifié, ou null s'il n'est pas trouvé</span>
-<span class="source-line-no">160</span><span id="line-160">     */</span>
-<span class="source-line-no">161</span><span id="line-161">    public Item getItem(final String pItem) {</span>
-<span class="source-line-no">162</span><span id="line-162">        return this.aItemsList.getItem(pItem);</span>
-<span class="source-line-no">163</span><span id="line-163">    } //getItem()</span>
-<span class="source-line-no">164</span><span id="line-164"></span>
-<span class="source-line-no">165</span><span id="line-165">    /**</span>
-<span class="source-line-no">166</span><span id="line-166">     * @return La liste d'Items de la pièce.</span>
-<span class="source-line-no">167</span><span id="line-167">     */</span>
-<span class="source-line-no">168</span><span id="line-168">    public ItemList getItemList() {</span>
-<span class="source-line-no">169</span><span id="line-169">        return this.aItemsList;</span>
-<span class="source-line-no">170</span><span id="line-170">    } //getItemList()</span>
-<span class="source-line-no">171</span><span id="line-171"></span>
-<span class="source-line-no">172</span><span id="line-172">    /**</span>
-<span class="source-line-no">173</span><span id="line-173">     * @return true si la pièce a une trappe de sortie, sinon false.</span>
-<span class="source-line-no">174</span><span id="line-174">     */</span>
-<span class="source-line-no">175</span><span id="line-175">    public boolean getTrapDoor() {</span>
-<span class="source-line-no">176</span><span id="line-176">        return this.aIsExit;</span>
-<span class="source-line-no">177</span><span id="line-177">    } //getTrapDoor()</span>
-<span class="source-line-no">178</span><span id="line-178"></span>
-<span class="source-line-no">179</span><span id="line-179">    /**</span>
-<span class="source-line-no">180</span><span id="line-180">     * Définit si la pièce a une trappe de sortie.</span>
-<span class="source-line-no">181</span><span id="line-181">     * </span>
-<span class="source-line-no">182</span><span id="line-182">     * @param vExit true si la pièce a une trappe de sortie, sinon false.</span>
-<span class="source-line-no">183</span><span id="line-183">     */</span>
-<span class="source-line-no">184</span><span id="line-184">    public void setTrapDoor(final boolean vExit) {</span>
-<span class="source-line-no">185</span><span id="line-185">        this.aIsExit = vExit;</span>
-<span class="source-line-no">186</span><span id="line-186">    } //setTrapDoor()</span>
-<span class="source-line-no">187</span><span id="line-187"></span>
-<span class="source-line-no">188</span><span id="line-188">    /**</span>
-<span class="source-line-no">189</span><span id="line-189">     * @return true si le moteur 1 est activé, sinon false.</span>
-<span class="source-line-no">190</span><span id="line-190">     */</span>
-<span class="source-line-no">191</span><span id="line-191">    public boolean getMotor1() {</span>
-<span class="source-line-no">192</span><span id="line-192">        return this.aMotor1;</span>
-<span class="source-line-no">193</span><span id="line-193">    } //getMotor1</span>
-<span class="source-line-no">194</span><span id="line-194"></span>
-<span class="source-line-no">195</span><span id="line-195">    /**</span>
-<span class="source-line-no">196</span><span id="line-196">     * @return true si le moteur 2 est activé, sinon false.</span>
-<span class="source-line-no">197</span><span id="line-197">     */</span>
-<span class="source-line-no">198</span><span id="line-198">    public boolean getMotor2() {</span>
-<span class="source-line-no">199</span><span id="line-199">        return this.aMotor2;</span>
-<span class="source-line-no">200</span><span id="line-200">    } //getMotor2()</span>
-<span class="source-line-no">201</span><span id="line-201"></span>
-<span class="source-line-no">202</span><span id="line-202">    /**</span>
-<span class="source-line-no">203</span><span id="line-203">     * Active ou désactive le moteur 1.</span>
-<span class="source-line-no">204</span><span id="line-204">     * </span>
-<span class="source-line-no">205</span><span id="line-205">     * @param vMotor true pour activer, false pour désactiver.</span>
-<span class="source-line-no">206</span><span id="line-206">     */</span>
-<span class="source-line-no">207</span><span id="line-207">    public void setMotor1(final boolean vMotor) {</span>
-<span class="source-line-no">208</span><span id="line-208">        this.aMotor1 = vMotor;</span>
-<span class="source-line-no">209</span><span id="line-209">    } //setMotor1()</span>
-<span class="source-line-no">210</span><span id="line-210"></span>
-<span class="source-line-no">211</span><span id="line-211">    /**</span>
-<span class="source-line-no">212</span><span id="line-212">     * Active ou désactive le moteur 2.</span>
-<span class="source-line-no">213</span><span id="line-213">     * </span>
-<span class="source-line-no">214</span><span id="line-214">     * @param vMotor true pour activer, false pour désactiver.</span>
-<span class="source-line-no">215</span><span id="line-215">     */</span>
-<span class="source-line-no">216</span><span id="line-216">    public void setMotor2(final boolean vMotor) {</span>
-<span class="source-line-no">217</span><span id="line-217">        this.aMotor2 = vMotor;</span>
-<span class="source-line-no">218</span><span id="line-218">    } //setMotor2()</span>
-<span class="source-line-no">219</span><span id="line-219"></span>
-<span class="source-line-no">220</span><span id="line-220">    /**</span>
-<span class="source-line-no">221</span><span id="line-221">     * @return true si la pièce a un personnage non-joueur (PNG), sinon false.</span>
-<span class="source-line-no">222</span><span id="line-222">     */</span>
-<span class="source-line-no">223</span><span id="line-223">    public boolean hasPng() {</span>
-<span class="source-line-no">224</span><span id="line-224">        return this.aPng != null;</span>
-<span class="source-line-no">225</span><span id="line-225">    } //hasPng()</span>
-<span class="source-line-no">226</span><span id="line-226"></span>
-<span class="source-line-no">227</span><span id="line-227">    /**</span>
-<span class="source-line-no">228</span><span id="line-228">     * @return Le PNG de la pièce, null si la pièce n'a pas de PNG.</span>
-<span class="source-line-no">229</span><span id="line-229">     */</span>
-<span class="source-line-no">230</span><span id="line-230">    public Png getPng() {</span>
-<span class="source-line-no">231</span><span id="line-231">        return this.aPng;</span>
-<span class="source-line-no">232</span><span id="line-232">    } //getPng()</span>
-<span class="source-line-no">233</span><span id="line-233"></span>
-<span class="source-line-no">234</span><span id="line-234">    /**</span>
-<span class="source-line-no">235</span><span id="line-235">     * Définit le PNG de la pièce.</span>
-<span class="source-line-no">236</span><span id="line-236">     * </span>
-<span class="source-line-no">237</span><span id="line-237">     * @param pPng Le PNG à définir dans la pièce.</span>
-<span class="source-line-no">238</span><span id="line-238">     */</span>
-<span class="source-line-no">239</span><span id="line-239">    public void setPng(Png pPng) {</span>
-<span class="source-line-no">240</span><span id="line-240">        this.aPng = pPng;</span>
-<span class="source-line-no">241</span><span id="line-241">    } //setPng()</span>
-<span class="source-line-no">242</span><span id="line-242"></span>
-<span class="source-line-no">243</span><span id="line-243">    /**</span>
-<span class="source-line-no">244</span><span id="line-244">     * Retire le personnage non-joueur (PNG) de la pièce.</span>
-<span class="source-line-no">245</span><span id="line-245">     */</span>
-<span class="source-line-no">246</span><span id="line-246">    public void removePng() {</span>
-<span class="source-line-no">247</span><span id="line-247">        this.aPng = null;</span>
-<span class="source-line-no">248</span><span id="line-248">    } //removePng()</span>
-<span class="source-line-no">249</span><span id="line-249"></span>
-<span class="source-line-no">250</span><span id="line-250">} // Room</span>
+<span class="source-line-no">117</span><span id="line-117">     * Joue le fichier audio associÃ© Ã  cette instance de la classe</span>
+<span class="source-line-no">118</span><span id="line-118">     * Si le fichier audio n'existe pas, la mÃ©thode ne fait rien</span>
+<span class="source-line-no">119</span><span id="line-119">     * En cas d'erreur lors de la lecture du fichier audio, une trace de la pile est affichÃ©e</span>
+<span class="source-line-no">120</span><span id="line-120">     */</span>
+<span class="source-line-no">121</span><span id="line-121">    public void playAudio() {</span>
+<span class="source-line-no">122</span><span id="line-122">        try {</span>
+<span class="source-line-no">123</span><span id="line-123">            // CrÃ©ation d'un objet File Ã  partir du nom de fichier audio</span>
+<span class="source-line-no">124</span><span id="line-124">            File vAudioFile = new File(this.aAudioName);</span>
+<span class="source-line-no">125</span><span id="line-125"></span>
+<span class="source-line-no">126</span><span id="line-126">            if (!vAudioFile.exists()) { // VÃ©rifie si le fichier audio existe</span>
+<span class="source-line-no">127</span><span id="line-127">                return; // Si le fichier n'existe pas, la mÃ©thode se termine</span>
+<span class="source-line-no">128</span><span id="line-128">            } else {</span>
+<span class="source-line-no">129</span><span id="line-129">                AudioInputStream vAudioStream = AudioSystem.getAudioInputStream(vAudioFile);// Obtient un flux audio Ã  partir du fichier audio</span>
+<span class="source-line-no">130</span><span id="line-130">                this.aAudioClip = AudioSystem.getClip();// CrÃ©ation d'un objet Clip pour la lecture du fichier audio</span>
+<span class="source-line-no">131</span><span id="line-131">                this.aAudioClip.open(vAudioStream);// Ouverture du Clip avec le flux audio</span>
+<span class="source-line-no">132</span><span id="line-132">                this.aAudioClip.start(); // DÃ©marre la lecture du fichier audio</span>
+<span class="source-line-no">133</span><span id="line-133">            }</span>
+<span class="source-line-no">134</span><span id="line-134">        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {</span>
+<span class="source-line-no">135</span><span id="line-135">            // UnsupportedAudioFileException Si le format du fichier audio n'est pas supportÃ©</span>
+<span class="source-line-no">136</span><span id="line-136">            // IOException En cas d'erreur d'entrÃ©e/sortie lors de la lecture du fichier audio</span>
+<span class="source-line-no">137</span><span id="line-137">            //LineUnavailableException Si une ligne de l'objet Clip n'est pas disponible pour la lecture</span>
+<span class="source-line-no">138</span><span id="line-138">            // En cas d'erreur, affiche la trace de la pile</span>
+<span class="source-line-no">139</span><span id="line-139">            e.printStackTrace();</span>
+<span class="source-line-no">140</span><span id="line-140">        }</span>
+<span class="source-line-no">141</span><span id="line-141">    } //playAudio()</span>
+<span class="source-line-no">142</span><span id="line-142"></span>
+<span class="source-line-no">143</span><span id="line-143">    public void stopAudio() {</span>
+<span class="source-line-no">144</span><span id="line-144">        if (this.aAudioClip != null &amp;&amp; this.aAudioClip.isRunning()) {</span>
+<span class="source-line-no">145</span><span id="line-145">            this.aAudioClip.stop();</span>
+<span class="source-line-no">146</span><span id="line-146">        }</span>
+<span class="source-line-no">147</span><span id="line-147">    } //stopAudio()</span>
+<span class="source-line-no">148</span><span id="line-148"></span>
+<span class="source-line-no">149</span><span id="line-149">    /**</span>
+<span class="source-line-no">150</span><span id="line-150">     * define the items that are given to a room</span>
+<span class="source-line-no">151</span><span id="line-151">     * @param pItem (string) </span>
+<span class="source-line-no">152</span><span id="line-152">     */</span>
+<span class="source-line-no">153</span><span id="line-153">    public void setItems(final Item pItem) {</span>
+<span class="source-line-no">154</span><span id="line-154">        this.aItemsList.setItemList(pItem);</span>
+<span class="source-line-no">155</span><span id="line-155">    } //setItem()</span>
+<span class="source-line-no">156</span><span id="line-156"></span>
+<span class="source-line-no">157</span><span id="line-157">    /**</span>
+<span class="source-line-no">158</span><span id="line-158">     * Obtient l'Item correspondant au nom spÃ©cifiÃ© de la liste d'items de la piÃ¨ce</span>
+<span class="source-line-no">159</span><span id="line-159">     * @param pItem Le nom de l'item Ã  rÃ©cupÃ©rer</span>
+<span class="source-line-no">160</span><span id="line-160">     * @return L'item correspondant au nom spÃ©cifiÃ©, ou null s'il n'est pas trouvÃ©</span>
+<span class="source-line-no">161</span><span id="line-161">     */</span>
+<span class="source-line-no">162</span><span id="line-162">    public Item getItem(final String pItem) {</span>
+<span class="source-line-no">163</span><span id="line-163">        return this.aItemsList.getItem(pItem);</span>
+<span class="source-line-no">164</span><span id="line-164">    } //getItem()</span>
+<span class="source-line-no">165</span><span id="line-165"></span>
+<span class="source-line-no">166</span><span id="line-166">    /**</span>
+<span class="source-line-no">167</span><span id="line-167">     * @return La liste d'Items de la piÃ¨ce.</span>
+<span class="source-line-no">168</span><span id="line-168">     */</span>
+<span class="source-line-no">169</span><span id="line-169">    public ItemList getItemList() {</span>
+<span class="source-line-no">170</span><span id="line-170">        return this.aItemsList;</span>
+<span class="source-line-no">171</span><span id="line-171">    } //getItemList()</span>
+<span class="source-line-no">172</span><span id="line-172"></span>
+<span class="source-line-no">173</span><span id="line-173">    /**</span>
+<span class="source-line-no">174</span><span id="line-174">     * @return true si la piÃ¨ce a une trappe de sortie, sinon false.</span>
+<span class="source-line-no">175</span><span id="line-175">     */</span>
+<span class="source-line-no">176</span><span id="line-176">    public boolean getTrapDoor() {</span>
+<span class="source-line-no">177</span><span id="line-177">        return this.aIsExit;</span>
+<span class="source-line-no">178</span><span id="line-178">    } //getTrapDoor()</span>
+<span class="source-line-no">179</span><span id="line-179"></span>
+<span class="source-line-no">180</span><span id="line-180">    /**</span>
+<span class="source-line-no">181</span><span id="line-181">     * DÃ©finit si la piÃ¨ce a une trappe de sortie.</span>
+<span class="source-line-no">182</span><span id="line-182">     * </span>
+<span class="source-line-no">183</span><span id="line-183">     * @param vExit true si la piÃ¨ce a une trappe de sortie, sinon false.</span>
+<span class="source-line-no">184</span><span id="line-184">     */</span>
+<span class="source-line-no">185</span><span id="line-185">    public void setTrapDoor(final boolean vExit) {</span>
+<span class="source-line-no">186</span><span id="line-186">        this.aIsExit = vExit;</span>
+<span class="source-line-no">187</span><span id="line-187">    } //setTrapDoor()</span>
+<span class="source-line-no">188</span><span id="line-188"></span>
+<span class="source-line-no">189</span><span id="line-189">    /**</span>
+<span class="source-line-no">190</span><span id="line-190">     * @return true si le moteur 1 est activÃ©, sinon false.</span>
+<span class="source-line-no">191</span><span id="line-191">     */</span>
+<span class="source-line-no">192</span><span id="line-192">    public boolean getMotor1() {</span>
+<span class="source-line-no">193</span><span id="line-193">        return this.aMotor1;</span>
+<span class="source-line-no">194</span><span id="line-194">    } //getMotor1</span>
+<span class="source-line-no">195</span><span id="line-195"></span>
+<span class="source-line-no">196</span><span id="line-196">    /**</span>
+<span class="source-line-no">197</span><span id="line-197">     * @return true si le moteur 2 est activÃ©, sinon false.</span>
+<span class="source-line-no">198</span><span id="line-198">     */</span>
+<span class="source-line-no">199</span><span id="line-199">    public boolean getMotor2() {</span>
+<span class="source-line-no">200</span><span id="line-200">        return this.aMotor2;</span>
+<span class="source-line-no">201</span><span id="line-201">    } //getMotor2()</span>
+<span class="source-line-no">202</span><span id="line-202"></span>
+<span class="source-line-no">203</span><span id="line-203">    /**</span>
+<span class="source-line-no">204</span><span id="line-204">     * Active ou dÃ©sactive le moteur 1.</span>
+<span class="source-line-no">205</span><span id="line-205">     * </span>
+<span class="source-line-no">206</span><span id="line-206">     * @param vMotor true pour activer, false pour dÃ©sactiver.</span>
+<span class="source-line-no">207</span><span id="line-207">     */</span>
+<span class="source-line-no">208</span><span id="line-208">    public void setMotor1(final boolean vMotor) {</span>
+<span class="source-line-no">209</span><span id="line-209">        this.aMotor1 = vMotor;</span>
+<span class="source-line-no">210</span><span id="line-210">    } //setMotor1()</span>
+<span class="source-line-no">211</span><span id="line-211"></span>
+<span class="source-line-no">212</span><span id="line-212">    /**</span>
+<span class="source-line-no">213</span><span id="line-213">     * Active ou dÃ©sactive le moteur 2.</span>
+<span class="source-line-no">214</span><span id="line-214">     * </span>
+<span class="source-line-no">215</span><span id="line-215">     * @param vMotor true pour activer, false pour dÃ©sactiver.</span>
+<span class="source-line-no">216</span><span id="line-216">     */</span>
+<span class="source-line-no">217</span><span id="line-217">    public void setMotor2(final boolean vMotor) {</span>
+<span class="source-line-no">218</span><span id="line-218">        this.aMotor2 = vMotor;</span>
+<span class="source-line-no">219</span><span id="line-219">    } //setMotor2()</span>
+<span class="source-line-no">220</span><span id="line-220"></span>
+<span class="source-line-no">221</span><span id="line-221">    /**</span>
+<span class="source-line-no">222</span><span id="line-222">     * @return true si la piÃ¨ce a un personnage non-joueur (PNG), sinon false.</span>
+<span class="source-line-no">223</span><span id="line-223">     */</span>
+<span class="source-line-no">224</span><span id="line-224">    public boolean hasPng() {</span>
+<span class="source-line-no">225</span><span id="line-225">        return this.aPng != null;</span>
+<span class="source-line-no">226</span><span id="line-226">    } //hasPng()</span>
+<span class="source-line-no">227</span><span id="line-227"></span>
+<span class="source-line-no">228</span><span id="line-228">    /**</span>
+<span class="source-line-no">229</span><span id="line-229">     * @return Le PNG de la piÃ¨ce, null si la piÃ¨ce n'a pas de PNG.</span>
+<span class="source-line-no">230</span><span id="line-230">     */</span>
+<span class="source-line-no">231</span><span id="line-231">    public Png getPng() {</span>
+<span class="source-line-no">232</span><span id="line-232">        return this.aPng;</span>
+<span class="source-line-no">233</span><span id="line-233">    } //getPng()</span>
+<span class="source-line-no">234</span><span id="line-234"></span>
+<span class="source-line-no">235</span><span id="line-235">    /**</span>
+<span class="source-line-no">236</span><span id="line-236">     * DÃ©finit le PNG de la piÃ¨ce.</span>
+<span class="source-line-no">237</span><span id="line-237">     * </span>
+<span class="source-line-no">238</span><span id="line-238">     * @param pPng Le PNG Ã  dÃ©finir dans la piÃ¨ce.</span>
+<span class="source-line-no">239</span><span id="line-239">     */</span>
+<span class="source-line-no">240</span><span id="line-240">    public void setPng(Png pPng) {</span>
+<span class="source-line-no">241</span><span id="line-241">        this.aPng = pPng;</span>
+<span class="source-line-no">242</span><span id="line-242">    } //setPng()</span>
+<span class="source-line-no">243</span><span id="line-243"></span>
+<span class="source-line-no">244</span><span id="line-244">    /**</span>
+<span class="source-line-no">245</span><span id="line-245">     * Retire le personnage non-joueur (PNG) de la piÃ¨ce.</span>
+<span class="source-line-no">246</span><span id="line-246">     */</span>
+<span class="source-line-no">247</span><span id="line-247">    public void removePng() {</span>
+<span class="source-line-no">248</span><span id="line-248">        this.aPng = null;</span>
+<span class="source-line-no">249</span><span id="line-249">    } //removePng()</span>
+<span class="source-line-no">250</span><span id="line-250"></span>
+<span class="source-line-no">251</span><span id="line-251">} // Room</span>
 
 
 

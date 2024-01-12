@@ -114,11 +114,9 @@ public class Room
     } //getAudioName()
 
     /**
-     * Joue le fichier audio associé à cette instance de la classe.
-     * Si le fichier audio n'existe pas, la méthode ne fait rien.
-     * En cas d'erreur lors de la lecture du fichier audio, une trace
-     * de la pile est affichée.
-     * 
+     * Joue le fichier audio associé à cette instance de la classe
+     * Si le fichier audio n'existe pas, la méthode ne fait rien
+     * En cas d'erreur lors de la lecture du fichier audio, une trace de la pile est affichée
      */
     public void playAudio() {
         try {
@@ -134,6 +132,9 @@ public class Room
                 this.aAudioClip.start(); // Démarre la lecture du fichier audio
             }
         } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
+            // UnsupportedAudioFileException Si le format du fichier audio n'est pas supporté
+            // IOException En cas d'erreur d'entrée/sortie lors de la lecture du fichier audio
+            //LineUnavailableException Si une ligne de l'objet Clip n'est pas disponible pour la lecture
             // En cas d'erreur, affiche la trace de la pile
             e.printStackTrace();
         }

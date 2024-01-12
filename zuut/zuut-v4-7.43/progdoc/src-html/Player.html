@@ -18,7 +18,7 @@
 <span class="source-line-no">005</span><span id="line-5">import java.util.Collection;</span>
 <span class="source-line-no">006</span><span id="line-6"></span>
 <span class="source-line-no">007</span><span id="line-7">/**</span>
-<span class="source-line-no">008</span><span id="line-8"> * player permet la création de nouveaux joueur et aussi d'ennemi</span>
+<span class="source-line-no">008</span><span id="line-8"> * player permet la crÃ©ation de nouveaux joueur et aussi d'ennemi</span>
 <span class="source-line-no">009</span><span id="line-9"> *</span>
 <span class="source-line-no">010</span><span id="line-10"> * @author Matthias Hautin</span>
 <span class="source-line-no">011</span><span id="line-11"> * @version 11/12/2023</span>
@@ -79,18 +79,18 @@
 <span class="source-line-no">066</span><span id="line-66">    } //getVie()</span>
 <span class="source-line-no">067</span><span id="line-67"></span>
 <span class="source-line-no">068</span><span id="line-68">    /**</span>
-<span class="source-line-no">069</span><span id="line-69">     * Renvoie tous les objets dans l'inventaire du joueur avec le poid associé</span>
-<span class="source-line-no">070</span><span id="line-70">     * Utilise la méthode getItemString de la classe ItemList pour obtenir les Items de l'inventaire </span>
-<span class="source-line-no">071</span><span id="line-71">     * @return Une chaîne de caractères représentant la description détaillée des objets dans l'inventaire</span>
+<span class="source-line-no">069</span><span id="line-69">     * Renvoie tous les objets dans l'inventaire du joueur avec le poid associÃ©</span>
+<span class="source-line-no">070</span><span id="line-70">     * Utilise la mÃ©thode getItemString de la classe ItemList pour obtenir les Items de l'inventaire </span>
+<span class="source-line-no">071</span><span id="line-71">     * @return Une chaÃ®ne de caractÃ¨res reprÃ©sentant la description dÃ©taillÃ©e des objets dans l'inventaire</span>
 <span class="source-line-no">072</span><span id="line-72">     */</span>
 <span class="source-line-no">073</span><span id="line-73">    public String getInventoryItemList() {</span>
 <span class="source-line-no">074</span><span id="line-74">        return this.aInventoryItems.getItemString();</span>
 <span class="source-line-no">075</span><span id="line-75">    } //getInventoryItemList()</span>
 <span class="source-line-no">076</span><span id="line-76"></span>
 <span class="source-line-no">077</span><span id="line-77">    /**</span>
-<span class="source-line-no">078</span><span id="line-78">     * Obtient un Item spécifique de l'inventaire du joueur en fonction de son nom</span>
-<span class="source-line-no">079</span><span id="line-79">     * @param pItemName Le nom de l'item à récupérer</span>
-<span class="source-line-no">080</span><span id="line-80">     * @return L'item correspondant au nom spécifié, ou null s'il n'est pas trouvé dans l'inventaire</span>
+<span class="source-line-no">078</span><span id="line-78">     * Obtient un Item spÃ©cifique de l'inventaire du joueur en fonction de son nom</span>
+<span class="source-line-no">079</span><span id="line-79">     * @param pItemName Le nom de l'item Ã  rÃ©cupÃ©rer</span>
+<span class="source-line-no">080</span><span id="line-80">     * @return L'item correspondant au nom spÃ©cifiÃ©, ou null s'il n'est pas trouvÃ© dans l'inventaire</span>
 <span class="source-line-no">081</span><span id="line-81">     */</span>
 <span class="source-line-no">082</span><span id="line-82">    public Item getItemInInventory(final String pItemName) {</span>
 <span class="source-line-no">083</span><span id="line-83">        return this.aInventoryItems.getItem(pItemName);</span>
@@ -104,9 +104,9 @@
 <span class="source-line-no">091</span><span id="line-91">    } //getPreviousRoom()</span>
 <span class="source-line-no">092</span><span id="line-92"></span>
 <span class="source-line-no">093</span><span id="line-93">    /**</span>
-<span class="source-line-no">094</span><span id="line-94">     * Obtient un Item spécifique de l'inventaire en fonction de son nom</span>
-<span class="source-line-no">095</span><span id="line-95">     * @param pItem Le nom de l'item à récupérer</span>
-<span class="source-line-no">096</span><span id="line-96">     * @return L'item correspondant au nom spécifié, ou null s'il n'est pas trouvé dans l'inventaire</span>
+<span class="source-line-no">094</span><span id="line-94">     * Obtient un Item spÃ©cifique de l'inventaire en fonction de son nom</span>
+<span class="source-line-no">095</span><span id="line-95">     * @param pItem Le nom de l'item Ã  rÃ©cupÃ©rer</span>
+<span class="source-line-no">096</span><span id="line-96">     * @return L'item correspondant au nom spÃ©cifiÃ©, ou null s'il n'est pas trouvÃ© dans l'inventaire</span>
 <span class="source-line-no">097</span><span id="line-97">     */</span>
 <span class="source-line-no">098</span><span id="line-98">    public Item getItem(final String pItem) {</span>
 <span class="source-line-no">099</span><span id="line-99">        return this.aInventoryItems.getItem(pItem);</span>
@@ -121,34 +121,34 @@
 <span class="source-line-no">108</span><span id="line-108">    } //getTotalWeight()</span>
 <span class="source-line-no">109</span><span id="line-109"></span>
 <span class="source-line-no">110</span><span id="line-110">    /**</span>
-<span class="source-line-no">111</span><span id="line-111">     * Ajoute la quantité spécifiée de points de vie au joueur</span>
-<span class="source-line-no">112</span><span id="line-112">     * @param pVie La quantité de points de vie à ajouter</span>
+<span class="source-line-no">111</span><span id="line-111">     * Ajoute la quantitÃ© spÃ©cifiÃ©e de points de vie au joueur</span>
+<span class="source-line-no">112</span><span id="line-112">     * @param pVie La quantitÃ© de points de vie Ã  ajouter</span>
 <span class="source-line-no">113</span><span id="line-113">     */</span>
 <span class="source-line-no">114</span><span id="line-114">    public void donneVie(final int pVie) {</span>
 <span class="source-line-no">115</span><span id="line-115">        this.aVie += pVie;</span>
 <span class="source-line-no">116</span><span id="line-116">    } //donneVie()</span>
 <span class="source-line-no">117</span><span id="line-117"></span>
 <span class="source-line-no">118</span><span id="line-118">    /**</span>
-<span class="source-line-no">119</span><span id="line-119">     * Enleve la quantité spécifiée de points de vie du joueur</span>
-<span class="source-line-no">120</span><span id="line-120">     * @param pVie La quantité de points de vie à ajouter</span>
+<span class="source-line-no">119</span><span id="line-119">     * Enleve la quantitÃ© spÃ©cifiÃ©e de points de vie du joueur</span>
+<span class="source-line-no">120</span><span id="line-120">     * @param pVie La quantitÃ© de points de vie Ã  ajouter</span>
 <span class="source-line-no">121</span><span id="line-121">     */</span>
 <span class="source-line-no">122</span><span id="line-122">    public void perdVie(final int pVie) {</span>
 <span class="source-line-no">123</span><span id="line-123">        this.aVie -= pVie;</span>
 <span class="source-line-no">124</span><span id="line-124">    } //perdVie</span>
 <span class="source-line-no">125</span><span id="line-125"></span>
 <span class="source-line-no">126</span><span id="line-126">    /**</span>
-<span class="source-line-no">127</span><span id="line-127">     * Définit la pièce actuelle du joueur</span>
-<span class="source-line-no">128</span><span id="line-128">     * @param pCurrentRoom La nouvelle pièce actuelle du joueur</span>
+<span class="source-line-no">127</span><span id="line-127">     * DÃ©finit la piÃ¨ce actuelle du joueur</span>
+<span class="source-line-no">128</span><span id="line-128">     * @param pCurrentRoom La nouvelle piÃ¨ce actuelle du joueur</span>
 <span class="source-line-no">129</span><span id="line-129">     */</span>
 <span class="source-line-no">130</span><span id="line-130">    public void setCurrentRoom(final Room pCurrentRoom) {</span>
 <span class="source-line-no">131</span><span id="line-131">        this.aCurrentRoom = pCurrentRoom;</span>
 <span class="source-line-no">132</span><span id="line-132">    } //setCurrentRoom()  </span>
 <span class="source-line-no">133</span><span id="line-133"></span>
 <span class="source-line-no">134</span><span id="line-134">    /**</span>
-<span class="source-line-no">135</span><span id="line-135">     * Prend un objet de la pièce actuelle et l'ajoute à l'inventaire du joueur</span>
-<span class="source-line-no">136</span><span id="line-136">     * Réduit le poids maximal du joueur en fonction du poids de l'objet pris</span>
-<span class="source-line-no">137</span><span id="line-137">     * @param pItemName Nom de l'objet à prendre</span>
-<span class="source-line-no">138</span><span id="line-138">     * @param pItem Objet à prendre</span>
+<span class="source-line-no">135</span><span id="line-135">     * Prend un objet de la piÃ¨ce actuelle et l'ajoute Ã  l'inventaire du joueur</span>
+<span class="source-line-no">136</span><span id="line-136">     * RÃ©duit le poids maximal du joueur en fonction du poids de l'objet pris</span>
+<span class="source-line-no">137</span><span id="line-137">     * @param pItemName Nom de l'objet Ã  prendre</span>
+<span class="source-line-no">138</span><span id="line-138">     * @param pItem Objet Ã  prendre</span>
 <span class="source-line-no">139</span><span id="line-139">     */</span>
 <span class="source-line-no">140</span><span id="line-140">    public void takeItem(final String pItemName, final Item pItem) {</span>
 <span class="source-line-no">141</span><span id="line-141">        this.aInventoryItems.takeItem(pItemName,pItem);</span>
@@ -156,10 +156,10 @@
 <span class="source-line-no">143</span><span id="line-143">    } //takeItem()</span>
 <span class="source-line-no">144</span><span id="line-144"></span>
 <span class="source-line-no">145</span><span id="line-145">    /**</span>
-<span class="source-line-no">146</span><span id="line-146">     * Pose un objet de l'inventaire du joueur dans la pièce actuelle</span>
-<span class="source-line-no">147</span><span id="line-147">     * Retire l'objet de l'inventaire du joueur et ajuste le poids maximal en conséquence</span>
-<span class="source-line-no">148</span><span id="line-148">     * @param pItemName Nom de l'objet à poser</span>
-<span class="source-line-no">149</span><span id="line-149">     * @param pItem Objet à poser</span>
+<span class="source-line-no">146</span><span id="line-146">     * Pose un objet de l'inventaire du joueur dans la piÃ¨ce actuelle</span>
+<span class="source-line-no">147</span><span id="line-147">     * Retire l'objet de l'inventaire du joueur et ajuste le poids maximal en consÃ©quence</span>
+<span class="source-line-no">148</span><span id="line-148">     * @param pItemName Nom de l'objet Ã  poser</span>
+<span class="source-line-no">149</span><span id="line-149">     * @param pItem Objet Ã  poser</span>
 <span class="source-line-no">150</span><span id="line-150">     */</span>
 <span class="source-line-no">151</span><span id="line-151">    public void dropItem(final String pItemName, final Item pItem) {</span>
 <span class="source-line-no">152</span><span id="line-152">        this.aInventoryItems.removeItem(pItemName, pItem);</span>
@@ -174,8 +174,8 @@
 <span class="source-line-no">161</span><span id="line-161">    }</span>
 <span class="source-line-no">162</span><span id="line-162">    </span>
 <span class="source-line-no">163</span><span id="line-163">    /**</span>
-<span class="source-line-no">164</span><span id="line-164">     * pour récupèrer l'arme que le joueur veut</span>
-<span class="source-line-no">165</span><span id="line-165">     * @param pArmeActuelle l'arme que le joueur récupère</span>
+<span class="source-line-no">164</span><span id="line-164">     * pour rÃ©cupÃ¨rer l'arme que le joueur veut</span>
+<span class="source-line-no">165</span><span id="line-165">     * @param pArmeActuelle l'arme que le joueur rÃ©cupÃ¨re</span>
 <span class="source-line-no">166</span><span id="line-166">     */</span>
 <span class="source-line-no">167</span><span id="line-167">    public void setArmeActuelle(final Item pArmeActuelle) {</span>
 <span class="source-line-no">168</span><span id="line-168">        this.aAcrmeActuelle = pArmeActuelle;</span>

@@ -290,7 +290,7 @@ public class GameEngine
             verifRepare();
         }else if (vCommandWord.equals("attack")) { //si la commande tapée est "attack"
             attack(vCommand);
-            verifAttaque();
+            verifAttack();
         }
         else { //si print "Erreur du programmeur : commande non reconnue !"
             this.aGui.println("Erreur du programmeur : commande non reconnue !");
@@ -369,7 +369,7 @@ public class GameEngine
                     }
                 } 
             } else {
-               this.aGui.println("You can't eat that!");
+                this.aGui.println("You can't eat that!");
             }
         } else {
             this.aGui.println("Just one thing at a time.");
@@ -612,56 +612,54 @@ public class GameEngine
      * @param pCommand la commande utilisateur
      */
     private void attack(final Command pCommand) {
+        if (!this.aPlayer.getCurrentRoom().hasPng()) { // Vérifie si la pièce actuelle contient un Png
+            this.aGui.println("Il n'y a pas d'ennemi ici.");
+            return;
+        }
+
         Png vCurrentPng = this.aPlayer.getCurrentRoom().getPng(); // Récupère le Png actuel dans la pièce du joueur
+        String vTypeArme = pCommand.getSecondWord(); // Récupère le type d'arme spécifié dans la commande
 
         if (!pCommand.hasSecondWord()) { // Vérifie s'il n'y a pas de second mot dans la commande
             this.aGui.println("Attaque avec quelle arme? Regardez dans votre inventaire avec 'infoplayer'.");
-        } else if (this.aPlayer.getVie() <= vCurrentPng.getDegat()) { // Vérifie si le joueur n'a plus de vie, termine le jeu s'il n'a pas assez de vie pour résister aux dégâts du Png
+        } else if (this.aPlayer.getVie() <= vCurrentPng.getDegat()) { // Vérifie si le joueur n'a plus de vie
             System.out.println("Vous vous êtes fait tuer par " + vCurrentPng.getNamePng());
             endGame();
         } else {
-            String vTypeArme = pCommand.getSecondWord(); // Récupère le type d'arme spécifié dans la commande
 
-            if (this.aPlayer.getCurrentRoom().hasPng()) { // Vérifie si la pièce actuelle contient un Png
-                // Le joueur perd de la vie en fonction des dégâts du Png
-                this.aPlayer.perdVie(vCurrentPng.getDegat());
-                this.aGui.println("Il vous reste " + this.aPlayer.getVie() + " de vie");
+            // Le joueur perd de la vie en fonction des dégâts du Png
+            this.aPlayer.perdVie(vCurrentPng.getDegat());
+            this.aGui.println("Il vous reste " + this.aPlayer.getVie() + " de vie");
 
-                int vDegatArme = 0;
+            int vDegatArme = 0;
+            
+            if ("ArmeLegere".equals(vTypeArme) && this.aPlayer.getItemInInventory("ArmeLegere") != null) {// Vérifie le type d'arme et si le joueur possède cette arme dans son inventaire
+                vDegatArme = this.aArmeLegere.getDegat();
+            } else if ("ArmeLourde".equals(vTypeArme) && this.aPlayer.getItemInInventory("ArmeLourde") != null) {
+                vDegatArme = this.aArmeLourde.getDegat();
+            } else {
+                // Si le type d'arme n'est pas valide ou le joueur ne possède pas cette arme, affiche un message et quitte la méthode
+                this.aGui.println("Vous ne pouvez pas attaquer avec cette arme, elle ne se trouve pas dans votre inventaire.");
+                return;
+            }
 
-                // Vérifie le type d'arme et si le joueur possède cette arme dans son inventaire
-                if ("ArmeLegere".equals(vTypeArme) && this.aPlayer.getItemInInventory("ArmeLegere") != null) {
-                    vDegatArme = this.aArmeLegere.getDegat();
-                } else if ("ArmeLourde".equals(vTypeArme) && this.aPlayer.getItemInInventory("ArmeLourde") != null) {
-                    vDegatArme = this.aArmeLourde.getDegat();
-                } else {
-                    // Si le type d'arme n'est pas valide, affiche un message et quitte la méthode
-                    this.aGui.println("Vous ne pouvez pas attaquer avec cette arme, elle ne se trouve pas dans votre inventaire.");
-                    return;
-                }
-
-                if (vCurrentPng.getVie() > vDegatArme) { // Vérifie si le Png a plus de vie que les dégâts de l'arme
-                    vCurrentPng.prendDegat(vDegatArme);//faire les dégâts de l'arme au Png
-                    this.aGui.println("Il reste " + vCurrentPng.getVie() + " à " + vCurrentPng.getNamePng());
-                } else {
-                    // Si le Png est vaincu, affiche un message et le supprime de la pièce
-                    vCurrentPng.setEnVie(false);
-                    this.aGui.println(vCurrentPng.getNamePng() + " est vaincu !");
-                    this.aPlayer.getCurrentRoom().removePng();
-                }
-            } 
-            // Si la pièce ne contient pas de Png, affiche un message
-            else {
-                this.aGui.println("Il n'y a pas d'ennemi ici.");
+            if (vCurrentPng.getVie() > vDegatArme) { // Vérifie si le Png a plus de vie que les dégâts de l'arme
+                vCurrentPng.prendDegat(vDegatArme); // Faire les dégâts de l'arme au Png
+                this.aGui.println("Il reste " + vCurrentPng.getVie() + " à " + vCurrentPng.getNamePng());
+            } else {
+                // Si le Png est vaincu, affiche un message et le supprime de la pièce
+                vCurrentPng.setEnVie(false);
+                this.aGui.println(vCurrentPng.getNamePng() + " est vaincu !");
+                this.aPlayer.getCurrentRoom().removePng();
             }
         }
-    }
+    } //attack()
 
     /**
      * Vérifie l'état des ennemis dans le jeu et informe le joueur sur les ennemis restants à vaincre.
      * @return true si tous les ennemis ont été vaincus, false sinon.
      */
-    private boolean verifAttaque() {
+    private boolean verifAttack() {
         if (!this.aEnnemiNul.getEnVie() && !this.aMiniBoss.getEnVie() && this.aBoss.getEnVie()) {
             this.aGui.println("Vous avez tué : " + this.aEnnemiNul.getNamePng() + " et " + this.aMiniBoss.getNamePng() + ". Il vous reste à tuer : " + this.aBoss.getNamePng() + "\n");
         } else if (!this.aMiniBoss.getEnVie() && !this.aBoss.getEnVie() && this.aEnnemiNul.getEnVie()) {
@@ -675,7 +673,7 @@ public class GameEngine
         } else if (!this.aBoss.getEnVie() && this.aMiniBoss.getEnVie() && !this.aEnnemiNul.getEnVie()) {
             this.aGui.println("Vous avez tué : " + this.aBoss.getNamePng() + ". Il vous reste à tuer : " + this.aMiniBoss.getNamePng() + " et " + this.aEnnemiNul.getNamePng() + "\n");
         } else if (this.aEnnemiNul.getEnVie() && this.aMiniBoss.getEnVie() && this.aBoss.getEnVie()) {
-            this.aGui.println("Vous avez tué : " + this.aMiniBoss.getNamePng() + " et " + this.aBoss.getNamePng() + ". Il vous reste à tuer : " + this.aEnnemiNul.getNamePng() + "\n");
+            this.aGui.println("Vous avez tué aucun ennemis !\n");
         } else if (!this.aEnnemiNul.getEnVie() && this.aMiniBoss.getEnVie() && this.aBoss.getEnVie()) {
             this.aGui.println("Vous avez tué : " + this.aEnnemiNul.getNamePng() + ". Il vous reste à tuer : " + this.aMiniBoss.getNamePng() + " et " + this.aBoss.getNamePng() + "\n");
         } else if (!this.aMiniBoss.getEnVie() && this.aEnnemiNul.getEnVie() && this.aBoss.getEnVie()) {
@@ -687,6 +685,6 @@ public class GameEngine
             return true;
         }
         return false;
-    }
+    } //verifAttack
 
 }//GameEngine
